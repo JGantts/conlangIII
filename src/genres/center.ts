@@ -68,3 +68,17 @@ export const vowels = [
   { phoneme: 'o', odds: 19 },
   { phoneme: 'u', odds: 17 },
 ];
+
+export const wordFinals = [
+  { phoneme: '', odds: 20 },
+]
+
+export const replacements = `
+% i    e    a    ɑ    o    u
+i iʔi  -    ja   jɑ   jo   ju
+e -    eʔe  eja  ejɑ  ejo  eju
+a +    +    aʔa  +    +    +
+ɑ +    +    +    ɑʔɑ  +    +
+o owi  owe  owa  +    oʔo oʔu
+u wi   we   wæ   wa   wo  uʔu
+`;

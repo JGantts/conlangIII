@@ -1,7 +1,10 @@
 // generator.ts
-import { onsets, vowels, codas, bannedClusters } from "./phonemes";
+import { onsets, vowels, codas, wordFinals, bannedClusters, replacements } 
+  from "../genres/death";
 import { getRandomPhoneme, getRandomSyllableCount } from "./helpers";
 import { applyChartRules } from "./chart";
+
+export { replacements }
 
 export const generateSyllable = (syllableType: string[]): string => {
   let syllable = "";
@@ -24,6 +27,8 @@ export const generateSyllable = (syllableType: string[]): string => {
       if (Math.random() > 0.5) {
         syllable += getRandomPhoneme(vowels);
       }
+    } else if (symbol === "F") {
+      syllable += getRandomPhoneme(wordFinals);
     }
   });
   return syllable;
@@ -36,15 +41,15 @@ const syllableCounts = [
   { count: 4, odds: 0 },
 ];
 
-export const generateRawWord = (chart: Record<string, Record<string, string>>): string => {
+export const generateRawWord = (): string => {
   let word = "";
   const syllableCount = getRandomSyllableCount(syllableCounts);
 
   word += generateSyllable(["V"])
   for (let i = 0; i < syllableCount-1; i++) {
-    word += generateSyllable(["O?", "V"]);
+    word += generateSyllable(["O?", "V", "C?"]);
   }
-  word += generateSyllable(["C?"])
+  word += generateSyllable(["F"])
 
   return word;
 };
@@ -70,11 +75,11 @@ export const getValidWord = (chart: Record<string, Record<string, string>>): str
   const maxAttempts = 100;
 
   do {
-    const rawWord = generateRawWord(chart);
+    const rawWord = generateRawWord();
     word = filterWord(rawWord, chart);
     attempts++;
     if (attempts >= maxAttempts) {
-      throw new Error("Failed to generate a valid word after 100 attempts.");
+      throw new Error(`Failed to generate a valid word after ${maxAttempts} attempts.`);
     }
   } while (!word);
 

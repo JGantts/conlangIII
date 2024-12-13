@@ -20,17 +20,16 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { romanize } from './helpers/romanize'; // Ensure this file is available
+import { romanize } from './helpers/romanize';
 import { parseChart } from './helpers/chart';
-import { getValidWord } from './helpers/generator';
-import { chartText } from './helpers/phonemes'
+import { getValidWord, replacements as chartText } from './helpers/generator';
 
 
 const chart = parseChart(chartText);
 
 const words = ref<string[]>([]);
 const errorMessage = ref("");
-const wordCount = 100;
+const wordCount = 1000;
 
 const generateWords = () => {
   words.value = [];

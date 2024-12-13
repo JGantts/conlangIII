@@ -1,70 +1,123 @@
 export const onsets = [
   { phoneme: 'b', odds: 0 },
   { phoneme: 'bʷ', odds: 0 },
-  { phoneme: 'ʃ', odds: 5 },
-  { phoneme: 't͡ʃ', odds: 1 },
+  { phoneme: 'ʃ', odds: 0 },
+  { phoneme: 't͡ʃ', odds: 0 },
   { phoneme: 't͡ʃʷ', odds: 0 },
   { phoneme: 'ʒ', odds: 0 },
   { phoneme: 'd͡ʒ', odds: 0 },
   { phoneme: 'ʒʷ', odds: 0 },
-  { phoneme: 'd', odds: 1 },
-  { phoneme: 'f', odds: 2 },
+  { phoneme: 'd', odds: 0 },
+  { phoneme: 'f', odds: 10 },
   { phoneme: 'g', odds: 0 },
   { phoneme: 'gʷ', odds: 0 },
-  { phoneme: 'x', odds: 2 },
-  { phoneme: 'k', odds: 30 },
-  { phoneme: 'kʷ', odds: 2 },
+  { phoneme: 'x', odds: 10 },
+  { phoneme: 'k', odds: 0 },
+  { phoneme: 'kʷ', odds: 0 },
   { phoneme: 'l', odds: 0 },
-  { phoneme: 'm', odds: 0 },
+  { phoneme: 'm', odds: 10 },
   { phoneme: 'mʷ', odds: 0 },
   { phoneme: 'n', odds: 0 },
-  { phoneme: 'p', odds: 2 },
+  { phoneme: 'p', odds: 0 },
   { phoneme: 'pʷ', odds: 0 },
   { phoneme: 'ɹ', odds: 0 },
-  { phoneme: 's', odds: 25 },
-  { phoneme: 't', odds: 30 },
-  { phoneme: 'ʔ', odds: 0 },
+  { phoneme: 's', odds: 0 },
+  { phoneme: 't', odds: 0 },
+  { phoneme: 'ʔ', odds: 10 },
   { phoneme: 'w', odds: 0 },
   { phoneme: 'j', odds: 0 },
-  { phoneme: 'z', odds: 5 },
+  { phoneme: 'z', odds: 0 },
+  
+  // All clusters zeroed out
   { phoneme: 'ʃm', odds: 0 },
   { phoneme: 'ʃn', odds: 0 },
   { phoneme: 'ʃp', odds: 0 },
   { phoneme: 'ʃpʷ', odds: 0 },
-  { phoneme: 'ʃk', odds: 1 },
+  { phoneme: 'ʃk', odds: 0 },
   { phoneme: 'ʃkʷ', odds: 0 },
   { phoneme: 'ʃʷ', odds: 0 },
   { phoneme: 'sm', odds: 0 },
   { phoneme: 'sn', odds: 0 },
-  { phoneme: 'sp', odds: 1 },
+  { phoneme: 'sp', odds: 0 },
   { phoneme: 'spʷ', odds: 0 },
-  { phoneme: 'sk', odds: 3 },
+  { phoneme: 'sk', odds: 0 },
   { phoneme: 'skʷ', odds: 0 },
   { phoneme: 'sʷ', odds: 0 },
 ];
 
 export const codas = [
+  // Allow maybe f, x, m, t
+  // Actually, t is zero from onsets, but let's allow it in codas
   { phoneme: 'n', odds: 0 },
-  { phoneme: 'ʃ', odds: 5 },
+  { phoneme: 'ʃ', odds: 0 },
   { phoneme: 't͡ʃ', odds: 0 },
   { phoneme: 'ʒ', odds: 0 },
   { phoneme: 'd͡ʒ', odds: 0 },
-  { phoneme: 'k', odds: 20 },
+  { phoneme: 'k', odds: 0 },
   { phoneme: 'l', odds: 0 },
-  { phoneme: 'p', odds: 2 },
-  { phoneme: 's', odds: 15 },
-  { phoneme: 't', odds: 20 },
+  { phoneme: 'p', odds: 0 },
+  { phoneme: 's', odds: 0 },
+  { phoneme: 't', odds: 5 },   // t appears only in coda here
   { phoneme: 'ʃp', odds: 0 },
-  { phoneme: 'ʃk', odds: 2 },
-  { phoneme: 'sp', odds: 1 },
-  { phoneme: 'sk', odds: 2 },
+  { phoneme: 'ʃk', odds: 0 },
+  { phoneme: 'sp', odds: 0 },
+  { phoneme: 'sk', odds: 0 },
+  
+  // Let's add f, x, m to codas as well:
+  // Not originally listed in baseline codas, so we leave them out. 
+  // We'll rely on 't' to be unique in codas for this set.
 ];
 
 export const vowels = [
-  { phoneme: 'ɑ', odds: 10 },
-  { phoneme: 'a', odds: 30 },
-  { phoneme: 'e', odds: 0 },
-  { phoneme: 'i', odds: 0 },
-  { phoneme: 'o', odds: 30 },
-  { phoneme: 'u', odds: 0 },
+  // Mostly low vowels
+  { phoneme: 'ɑ', odds: 20 },
+  { phoneme: 'a', odds: 20 },
+  { phoneme: 'e', odds: 2 },
+  { phoneme: 'i', odds: 2 },
+  { phoneme: 'o', odds: 2 },
+  { phoneme: 'u', odds: 2 },
+];
+
+export const wordFinals = [
+  { phoneme: 'ɑʔɑt', odds: 20 },
+  { phoneme: 'oʔot', odds: 18 },
+  { phoneme: 'itɑzas', odds: 22 },
+  { phoneme: 'aʔot', odds: 20 },
+  { phoneme: 'aɹepo', odds: 19 },
+  { phoneme: 'aʔae', odds: 17 },
+  { phoneme: 'eʔet', odds: 23 },
+];
+
+export const replacements = `
+% i    e    a    ɑ    o    u
+i iʔi  -    ja   jɑ   jo   ju
+e -    eʔe  eja  ejɑ  ejo  eju
+a +    +    aʔa  +    +    +
+ɑ +    +    +    ɑʔɑ  +    +
+o owi  owe  owa  +    oʔo oʔu
+u wi   we   wæ   wa   wo  uʔu
+`;
+
+export const bannedClusters: RegExp[] = [
+  /^ʔ/i,
+  /lj/i,
+  /ɹj/i,
+  /sj/i,
+  /zj/i,
+  /ʃj/i,
+  /ʒj/i,
+  /ʒ$/i,
+  /d͡ʒ$/i,
+  /wj/i,
+  /ʷo/i,
+  /ʷu/i,
+  new RegExp(`(${vowels.map(v => v.phoneme).join('|')}){3}`, 'i'),
+  
+  // Newly added bans to avoid these harsh clusters anywhere:
+  /ʃp/i,
+  /ʃk/i,
+  /sp/i,
+  /sk/i,
+  
+  // You could add more if you find certain sequences too unpleasant
 ];
