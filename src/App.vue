@@ -23,16 +23,8 @@ import { ref } from 'vue';
 import { romanize } from './helpers/romanize'; // Ensure this file is available
 import { parseChart } from './helpers/chart';
 import { getValidWord } from './helpers/generator';
+import { chartText } from './helpers/phonemes'
 
-const chartText = `
-% i    e    a    ɑ    o    u
-i iʔi  -    ja   jɑ   jo   ju
-e -    eʔe  eja  ejɑ  ejo  eju
-a +    +    aʔa  +    +    +
-ɑ +    +    +    ɑʔɑ  +    +
-o owi  owe  owa  +    oʔo oʔu
-u wi   we   wæ   wa   wo  uʔu
-`;
 
 const chart = parseChart(chartText);
 
