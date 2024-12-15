@@ -222,70 +222,28 @@ NOM.C.PL- star  HAB- VBZ.IPFV- whisper ACC.O- secret to  ACC.L.VOL- 3PL\\
             [ \color{accent}NOUN [ \leafnode{elibe}{star(s)} ] ]
         ]
     ]
-    [ 2 \\ 1
-        [ SPEC
-            [ HEAD
-                [ \color{accent}PREP [ \leafnode{iga}{ALL} ] ]
-            ]
-            [ COMP
-                [ SPEC
-                	[ \color{accent}CASE [ \leafnode{pu}{ACC.L.VOL} ] ]
-                ]
-                [ 2
-                    [ \color{accent}NOUN [ \leafnode{ina}{3PL} ] ]
-                ]
-            ]
-        ]
-        [ 2 \\ 3
-            [ HEAD \\ 1
-                [ SPEC
-                	[ \color{accent}VBLZ [\leafnode{ar}{V.IPFV} ] ]
-					] 
-                [ 2
-                	[ \color{accent}VERB [\leafnode{aqueçv}{whisper} ] ]
-					]
-            ]
-            [ COMP \\ 1
-                [ SPEC
-	                    [ \color{accent}CASE [\leafnode{u}{ACC.O.PL} ] ]
-                ]
-                [ 2
-                	[ \color{accent}NOUN [\leafnode{inalo}{secret(s)} ] ]
-                ]
-            ]
-        ]
-    ]
-]
-\end{forest}
-}
-
-\scalebox{1}{
-\begin{forest}
-  for tree={
-    every leaf node={my leaf},
-    every tree node={my tree},
-    parent anchor=south,
-    child anchor=north,
-    edge=primary
-  }
-[ SENTENCE \\ 1
-    [ SPEC \\ 1
-        [ SPEC
-            [ \color{accent}CASE [ \leafnode{m}{NOM.C.PL} ] ]
-        ]
-        [ 2
-            [ \color{accent}NOUN [ \leafnode{elibe}{star(s)} ] ]
-        ]
-    ]
     [ 2 \\ 3
         [ HEAD
-	        [ \color{accent}AUX [\leafnode{dç}{HAB(s)} ] ]
+	        [ \color{accent}AUX [\leafnode{dç}{HAB} ] ]
         ]
         [ COMP \\ 3
             [ HEAD
               	[ \color{accent}VBLZ [\leafnode{ar}{V.IPFV} ] ]
 			]
 			[ COMP
+                [ 2 \\ 3
+                    [ HEAD 
+                    	[ \color{accent}VERB [\leafnode{aqueçv}{whisper} ] ]
+                    ]
+                    [ COMP \\ 1
+                        [ SPEC
+    	                    [ \color{accent}CASE [\leafnode{u}{ACC.O.PL} ] ]
+                        ]
+                        [ 2
+                        	[ \color{accent}NOUN [\leafnode{inalo}{secret(s)} ] ]
+                        ]
+                    ]
+                ]
                 [ SPEC
                     [ HEAD
                         [ \color{accent}PREP [ \leafnode{iga}{ALL} ] ]
@@ -299,21 +257,6 @@ NOM.C.PL- star  HAB- VBZ.IPFV- whisper ACC.O- secret to  ACC.L.VOL- 3PL\\
                         ]
                     ]
                 ]
-                [ 2 \\ 3
-                    [ HEAD \\ 1
-                        [ 2
-                        	[ \color{accent}VERB [\leafnode{aqueçv}{whisper} ] ]
-    					]
-                    ]
-                    [ COMP \\ 1
-                        [ SPEC
-    	                    [ \color{accent}CASE [\leafnode{u}{ACC.O.PL} ] ]
-                        ]
-                        [ 2
-                        	[ \color{accent}NOUN [\leafnode{inalo}{secret(s)} ] ]
-                        ]
-                    ]
-                ]
             ]
         ]
     ]
@@ -321,37 +264,6 @@ NOM.C.PL- star  HAB- VBZ.IPFV- whisper ACC.O- secret to  ACC.L.VOL- 3PL\\
 \end{forest}
 }
 
-\begin{exe}
-\ex \label{ex:sidebyside}
-\begin{forest}
-  for tree={
-    every leaf node={my leaf},
-    every tree node={my tree},
-    parent anchor=south,
-    child anchor=north,
-    edge=primary
-  }
-[
-    HEAD \\ 1
-    [ SPEC \\ HEAD [ \color{accent}VBLZ [\leafnode{ar}{V.IPFV}] ] ]
-    [ 2 \\ HEAD [ \color{accent}VERB [\leafnode{aqueçv}{whisper}] ] ]
-]
-\end{forest}
-\begin{forest}
-  for tree={
-    every leaf node={my leaf},
-    every tree node={my tree},
-    parent anchor=south,
-    child anchor=north,
-    edge=primary
-  }
-[
-    HEAD \\ 1
-    [ HEAD \\HEAD [ \color{accent}VBLZ [\leafnode{ar}{V.IPFV}] ] ]
-    [ COMP \\ HEAD [ \color{accent}VERB [\leafnode{aqueçv}{whisper}] ] ]
-]
-\end{forest}
-\end{exe}
 
 Example \exref{ex:whisper} shows us how Voluntary Accusative can be used.\\
 
