@@ -79,13 +79,10 @@ export const vowels = [
 ];
 
 export const wordFinals = [
-  { phoneme: 'ɑʔɑt', odds: 20 },
-  { phoneme: 'oʔot', odds: 18 },
-  { phoneme: 'itɑzas', odds: 22 },
-  { phoneme: 'aʔot', odds: 20 },
-  { phoneme: 'aɹepo', odds: 19 },
-  { phoneme: 'aʔae', odds: 17 },
-  { phoneme: 'eʔet', odds: 23 },
+  { phoneme: 'ʔu', odds: 20 },
+  { phoneme: 's', odds: 18 },
+  { phoneme: 'kʷe', odds: 22 },
+  { phoneme: 'kʷi', odds: 20 },
 ];
 
 export const replacements = `
@@ -111,13 +108,10 @@ export const bannedClusters: RegExp[] = [
   /wj/i,
   /ʷo/i,
   /ʷu/i,
+  /wu/i,
+  /tʔ/,
+  /ʔt/,
+  /ʔ$/,
+  /ʔ[^ʔ]*ʔ/,
   new RegExp(`(${vowels.map(v => v.phoneme).join('|')}){3}`, 'i'),
-  
-  // Newly added bans to avoid these harsh clusters anywhere:
-  /ʃp/i,
-  /ʃk/i,
-  /sp/i,
-  /sk/i,
-  
-  // You could add more if you find certain sequences too unpleasant
 ];

@@ -1,5 +1,4 @@
 export const onsets = [
-  // Keep complex clusters and affricates, reduce plain consonants
   { phoneme: 'b', odds: 0 },
   { phoneme: 'bʷ', odds: 5 },
   { phoneme: 'ʃ', odds: 0 },
@@ -75,13 +74,9 @@ export const vowels = [
 ];
 
 export const wordFinals = [
-  { phoneme: 'uk', odds: 15 },
-  { phoneme: 'ak', odds: 20 },
-  { phoneme: 'op', odds: 18 },
-  { phoneme: 'ek', odds: 22 },
-  { phoneme: 'ot', odds: 17 },
-  { phoneme: 'ip', odds: 19 },
-  { phoneme: 'k', odds: 14 },
+  { phoneme: 't', odds: 15 },
+  { phoneme: 'k', odds: 20 },
+  { phoneme: 'be', odds: 18 },
 ];
 
 export const replacements = `
@@ -107,13 +102,10 @@ export const bannedClusters: RegExp[] = [
   /wj/i,
   /ʷo/i,
   /ʷu/i,
+  /wu/i,
+  /tʔ/,
+  /ʔt/,
+  /ʔ$/,  
+  /ʔ[^ʔ]*ʔ/,
   new RegExp(`(${vowels.map(v => v.phoneme).join('|')}){3}`, 'i'),
-  
-  // Newly added bans to avoid these harsh clusters anywhere:
-  /ʃp/i,
-  /ʃk/i,
-  /sp/i,
-  /sk/i,
-  
-  // You could add more if you find certain sequences too unpleasant
 ];

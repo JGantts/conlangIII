@@ -56,7 +56,8 @@ const generateWords = () => {
 
   for(let i=0; i<newWords.length; i++){
     let word = newWords[i]
-    newIPAPlusOrtho.push(`/${word}/ ⟨${romanize(word)}⟩`)
+    //newIPAPlusOrtho.push(`/${word}/ ⟨${romanize(word)}⟩`)
+    newIPAPlusOrtho.push(romanize(word))
   }
 
   words.value = newIPAPlusOrtho;

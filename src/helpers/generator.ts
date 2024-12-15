@@ -1,6 +1,6 @@
 // generator.ts
 import { onsets, vowels, codas, wordFinals, bannedClusters, replacements } 
-  from "../genres/death";
+  from "../genres/chaos";
 import { getRandomPhoneme, getRandomSyllableCount } from "./helpers";
 import { applyChartRules } from "./chart";
 
@@ -12,7 +12,7 @@ export const generateSyllable = (syllableType: string[]): string => {
     if (symbol === "O") {
       syllable += getRandomPhoneme(onsets);
     } else if (symbol === "O?") {
-      if (Math.random() > 0.5) {
+      if (Math.random() > 0.25) {
         syllable += getRandomPhoneme(onsets);
       }
     } else if (symbol === "C") {
@@ -45,11 +45,15 @@ export const generateRawWord = (): string => {
   let word = "";
   const syllableCount = getRandomSyllableCount(syllableCounts);
 
-  word += generateSyllable(["V"])
-  for (let i = 0; i < syllableCount-1; i++) {
-    word += generateSyllable(["O?", "V", "C?"]);
+  for (let i = 0; i < syllableCount; i++) {
+    if (i==0) {
+      word += generateSyllable(["V"]);
+    } else if (i < syllableCount-1) {
+      word += generateSyllable(["O", "V"]);
+    } else {
+      word += generateSyllable(["F"]);
+    }
   }
-  word += generateSyllable(["F"])
 
   return word;
 };
