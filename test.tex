@@ -1,0 +1,375 @@
+\documentclass[12pt]{article}
+
+% -----------------------------
+% Packages
+% -----------------------------
+
+% For advanced font selection
+\usepackage[linguistics]{forest}
+
+\usepackage{fontspec}
+
+% For colorful and modern layouts
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{titlesec}
+\usepackage{parskip} % Adds space between paragraphs
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{marginnote} % For margin notes
+\usepackage{tikz-qtree}
+\usepackage{float}
+
+\usepackage[block]{leipzig}
+\usepackage{gb4e}
+\usepackage{typgloss}
+
+% -----------------------------
+% Theme Colors
+% -----------------------------
+
+\definecolor{primary}{RGB}{47, 128, 190}    % Muted Blue
+\definecolor{secondary}{RGB}{192, 57, 43}   % Deep Red
+\definecolor{accent}{RGB}{39, 174, 96}      % Cool Green
+\definecolor{background}{RGB}{255, 255, 255} % Softer Light Gray
+
+
+% -----------------------------
+% Page Geometry
+% -----------------------------
+
+\geometry{
+    a4paper,
+    left=1in,
+    right=1in,
+    top=1in,
+    bottom=1in
+}
+
+% -----------------------------
+% Fonts
+% -----------------------------
+
+\setmainfont{NotoSansDisplay}[
+    Path=fonts/,
+    Extension=.ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic,
+]
+
+\newfontfamily{\textthin}{NotoSansDisplay}[
+    Path=fonts/,
+    Extension=.ttf,
+%    UprightFont=*-Thin, ItalicFont=*-ThinItalic,
+    UprightFont=*-Light, ItalicFont=*-LightItalic,
+]
+
+
+% -----------------------------
+% Section Formatting
+% -----------------------------
+
+\titleformat{\section}
+  {\color{primary}\normalfont\Large\bfseries}
+  {\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\color{secondary}\normalfont\large\bfseries}
+  {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\color{accent}\normalfont\normalsize\bfseries}
+  {\thesubsubsection}{1em}{}
+
+% -----------------------------
+% Header and Footer
+% -----------------------------
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{primary}{\leftmark}}
+\fancyhead[R]{\textcolor{secondary}{\thepage}}
+\fancyfoot[C]{\textcolor{accent}{My LaTeX Document}}
+
+% -----------------------------
+% Hyperlinks
+% -----------------------------
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=accent,
+    citecolor=secondary
+}
+
+% -----------------------------
+% Title Styling
+% -----------------------------
+
+\newcommand{\customtitle}[1]{
+    \begin{center}
+        \vspace*{2cm}
+        {\Huge\bfseries\color{primary} #1}\\
+        \vspace{0.5cm}
+        {\Large My Third Major Conlang Attempt}\\
+        \vspace{1cm}
+    \end{center}
+    \vspace{1cm}
+    \hrule
+    \vspace{1cm}
+}
+
+% -----------------------------
+% Decorative Elements with TikZ
+% -----------------------------
+
+\newcommand{\decorativeLine}{
+    \begin{tikzpicture}
+        \draw [primary, thick] (0,0) -- (\linewidth,0);
+        \draw [secondary, thick] (0,0.1) -- (\linewidth,0.1);
+    \end{tikzpicture}
+}
+
+\newcommand{\exref}[1]{(\ref{#1})}
+
+% -----------------------------
+% Tree Decoration
+% -----------------------------
+
+\tikzset{
+  my colour/.style={text=#1},
+  my tree/.style={
+    font=\textthin,
+  },
+  my leaf/.style={
+  },
+}
+\forestset{
+  every leaf node/.style={
+    if n children=0{#1}{}
+  },
+  every tree node/.style={
+    if n children=0{}{#1}
+  },
+}
+
+\newcommand{\leafnode}[2]{#1 \\ \textthin{\textit{#2}}}
+
+% -----------------------------
+% Gloss Terms
+% -----------------------------
+
+\newleipzig{vbz}{vbz}{verbalizer}
+\newleipzig{c}{c}{chaos class}
+\newleipzig{l}{l}{life class}
+\newleipzig{o}{o}{order class}
+\newleipzig{d}{d}{death class}
+\newleipzig{hab}{hab}{habitual}
+\newleipzig{vol}{vol}{voluntary}
+
+\makeglossaries
+
+% -----------------------------
+% Document
+% -----------------------------
+
+\begin{document}
+\pagecolor{background}
+
+% Custom Title
+\customtitle{Welcome to JGantts Conlang III}
+
+% Introduction Section
+\section{Intro}
+This is my third major conlang attempt since 2020-ish.
+
+Some of the \textbf{greatest} 
+{\textthin discoveries} in \underline{science} 
+were made by \textbf{\textit{accident}}.
+
+
+\newpage
+
+\begin{exe}
+\ex \label{ex:whisper}
+Melibe dçaraqueçv uinalo iga puina.
+\gll
+m-        elibe dç-  ar-     aqueçv  u-     inalo  iga pu-        ina\\
+NOM.C.PL- star  HAB- VBZ.IPFV- whisper ACC.O- secret to  ACC.L.VOL- 3PL\\
+
+\trans `The stars whisper secrets to those who listen.'\\
+\end{exe}
+
+\scalebox{1}{
+\begin{forest}
+  for tree={
+    every leaf node={my leaf},
+    every tree node={my tree},
+    parent anchor=south,
+    child anchor=north,
+    edge=primary
+  }
+[ SENTENCE \\ 1
+    [ SPEC \\ 1
+        [ SPEC
+            [ \color{accent}CASE [ \leafnode{m}{NOM.C.PL} ] ]
+        ]
+        [ 2
+            [ \color{accent}NOUN [ \leafnode{elibe}{star(s)} ] ]
+        ]
+    ]
+    [ 2 \\ 1
+        [ SPEC
+            [ HEAD
+                [ \color{accent}PREP [ \leafnode{iga}{ALL} ] ]
+            ]
+            [ COMP
+                [ SPEC
+                	[ \color{accent}CASE [ \leafnode{pu}{ACC.L.VOL} ] ]
+                ]
+                [ 2
+                    [ \color{accent}NOUN [ \leafnode{ina}{3PL} ] ]
+                ]
+            ]
+        ]
+        [ 2 \\ 3
+            [ HEAD \\ 1
+                [ SPEC
+                	[ \color{accent}VBLZ [\leafnode{ar}{V.IPFV} ] ]
+					] 
+                [ 2
+                	[ \color{accent}VERB [\leafnode{aqueçv}{whisper} ] ]
+					]
+            ]
+            [ COMP \\ 1
+                [ SPEC
+	                    [ \color{accent}CASE [\leafnode{u}{ACC.O.PL} ] ]
+                ]
+                [ 2
+                	[ \color{accent}NOUN [\leafnode{inalo}{secret(s)} ] ]
+                ]
+            ]
+        ]
+    ]
+]
+\end{forest}
+}
+
+\scalebox{1}{
+\begin{forest}
+  for tree={
+    every leaf node={my leaf},
+    every tree node={my tree},
+    parent anchor=south,
+    child anchor=north,
+    edge=primary
+  }
+[ SENTENCE \\ 1
+    [ SPEC \\ 1
+        [ SPEC
+            [ \color{accent}CASE [ \leafnode{m}{NOM.C.PL} ] ]
+        ]
+        [ 2
+            [ \color{accent}NOUN [ \leafnode{elibe}{star(s)} ] ]
+        ]
+    ]
+    [ 2 \\ 3
+        [ HEAD
+	        [ \color{accent}AUX [\leafnode{dç}{HAB(s)} ] ]
+        ]
+        [ COMP \\ 3
+            [ HEAD
+              	[ \color{accent}VBLZ [\leafnode{ar}{V.IPFV} ] ]
+			]
+			[ COMP
+                [ SPEC
+                    [ HEAD
+                        [ \color{accent}PREP [ \leafnode{iga}{ALL} ] ]
+                    ]
+                    [ COMP
+                        [ SPEC
+                        	[ \color{accent}CASE [ \leafnode{pu}{ACC.L.VOL} ] ]
+                        ]
+                        [ 2
+                            [ \color{accent}NOUN [ \leafnode{ina}{3PL} ] ]
+                        ]
+                    ]
+                ]
+                [ 2 \\ 3
+                    [ HEAD \\ 1
+                        [ 2
+                        	[ \color{accent}VERB [\leafnode{aqueçv}{whisper} ] ]
+    					]
+                    ]
+                    [ COMP \\ 1
+                        [ SPEC
+    	                    [ \color{accent}CASE [\leafnode{u}{ACC.O.PL} ] ]
+                        ]
+                        [ 2
+                        	[ \color{accent}NOUN [\leafnode{inalo}{secret(s)} ] ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ]
+]
+\end{forest}
+}
+
+\begin{exe}
+\ex \label{ex:sidebyside}
+\begin{forest}
+  for tree={
+    every leaf node={my leaf},
+    every tree node={my tree},
+    parent anchor=south,
+    child anchor=north,
+    edge=primary
+  }
+[
+    HEAD \\ 1
+    [ SPEC \\ HEAD [ \color{accent}VBLZ [\leafnode{ar}{V.IPFV}] ] ]
+    [ 2 \\ HEAD [ \color{accent}VERB [\leafnode{aqueçv}{whisper}] ] ]
+]
+\end{forest}
+\begin{forest}
+  for tree={
+    every leaf node={my leaf},
+    every tree node={my tree},
+    parent anchor=south,
+    child anchor=north,
+    edge=primary
+  }
+[
+    HEAD \\ 1
+    [ HEAD \\HEAD [ \color{accent}VBLZ [\leafnode{ar}{V.IPFV}] ] ]
+    [ COMP \\ HEAD [ \color{accent}VERB [\leafnode{aqueçv}{whisper}] ] ]
+]
+\end{forest}
+\end{exe}
+
+Example \exref{ex:whisper} shows us how Voluntary Accusative can be used.\\
+
+%\begin{table}[ht]
+%\begin{tabular}{ll}
+%C   & Chaos Class \\
+%L   & Life Class \\
+%O   & Order Class \\
+%D   & Death Class \\
+%NOM & Nominative \\
+%ACC & Accusative \\
+%PL  & Plural \\
+%V   & Verbalizer \\
+%HAB & Habitual \\
+%IPFV & Imperfective \\
+%VOL & Voluntary \\
+%\end{tabular}
+%\end{table}
+\setglossarysection{section}
+\printglosses
+\end{document}
