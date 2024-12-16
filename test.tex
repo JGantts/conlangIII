@@ -21,6 +21,7 @@
 \usepackage{marginnote} % For margin notes
 \usepackage{tikz-qtree}
 \usepackage{float}
+\usepackage{subcaption}
 
 \usepackage[block]{leipzig}
 \usepackage{gb4e}
@@ -34,7 +35,7 @@
 \definecolor{secondary}{RGB}{192, 57, 43}   % Deep Red
 \definecolor{accent}{RGB}{39, 174, 96}      % Cool Green
 \definecolor{background}{RGB}{255, 255, 255} % Softer Light Gray
-
+\definecolor{link}{RGB}{128, 0, 128}       % Regal Purple
 
 % -----------------------------
 % Page Geometry
@@ -101,7 +102,7 @@
 
 \hypersetup{
     colorlinks=true,
-    linkcolor=primary,
+    linkcolor=link,
     urlcolor=accent,
     citecolor=secondary
 }
@@ -157,7 +158,7 @@
   },
 }
 
-\newcommand{\leafnode}[2]{#1 \\ \textthin{\textit{#2}}}
+\newcommand{\leafnode}[2]{\textthin{#2} \\ #1 }
 
 % -----------------------------
 % Gloss Terms
@@ -170,8 +171,16 @@
 \newleipzig{d}{d}{death class}
 \newleipzig{hab}{hab}{habitual}
 \newleipzig{vol}{vol}{voluntary}
+\newleipzig{pprt}{pprt}{past participle}
+\newleipzig{aprt}{aprt}{active participle}
+\newleipzig{sup}{sup}{superessive}
+\newleipzig{pert}{pert}{pertingent}
+\newleipzig{dummy}{dummy}{dummy}
 
 \makeglossaries
+
+\glsdisablehyper
+\renewcommand{\leipzigfont}[1]{\color{primary}{\textsc{#1}}}
 
 % -----------------------------
 % Document
@@ -195,13 +204,129 @@ were made by \textbf{\textit{accident}}.
 \newpage
 
 \begin{exe}
-\ex \label{ex:whisper}
+\ex \label{ex:whisper1}
 Melibe dçaraqueçv uinalo iga puina.
 \gll
 m-        elibe dç-  ar-     aqueçv  u-     inalo  iga pu-        ina\\
 NOM.C.PL- star  HAB- VBZ.IPFV- whisper ACC.O- secret to  ACC.L.VOL- 3PL\\
-
 \trans `The stars whisper secrets to those who listen.'\\
+\end{exe}
+
+\scalebox{0.75}{
+\begin{forest}
+  for tree={
+    every leaf node={my leaf},
+    every tree node={my tree},
+    parent anchor=south,
+    child anchor=north,
+    edge=primary
+  }
+[ IP
+    [ NP
+        [ SPEC
+            [ \leafnode{m}{\Nom{}.\C{}.\Pl{}} ]
+        ]
+        [ N
+            [ \leafnode{elibe}{star(s)} ]
+        ]
+    ]
+    [ I'
+        [ I
+	        [\leafnode{dç}{\Hab{}} ]
+        ]
+        [ IP
+            [ I
+              	[\leafnode{ar}{\Vbz{}.\Ipfv{}} ]
+			]
+			[ VP
+                [ V'
+                    [ V 
+                    	[\leafnode{aqueçv}{whisper} ]
+                    ]
+                    [ NP
+                        [ SPEC
+    	                    [\leafnode{u}{\Acc{}.\O{}.\Pl{}} ]
+                        ]
+                        [ N
+                        	[\leafnode{inalo}{secret(s)} ]
+                        ]
+                    ]
+                ]
+                [ PP
+                    [ P
+                        [ \leafnode{iga}{\All{}} ]
+                    ]
+                    [ NP
+                        [ SPEC
+                        	[ \leafnode{pu}{\Acc{}.\L{}.\Vol{}} ]
+                        ]
+                        [ N
+                            [ \leafnode{ina}{\Third{}\Pl{}} ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ]
+]
+\end{forest}
+}
+
+Example \exref{ex:whisper1} shows us how Voluntary Accusative can be used.\\
+
+\newpage
+
+\begin{exe}
+\ex \label{voluntary}
+\begin{xlist}
+\ex \label{voluntary:invol}
+Bedi ogvbino metil.
+\gll
+b-         edi og-     vbino     m       etil \\
+ACC.SG/DU- 1SG PST.PFV hear/tell NOM.PL- birds \\
+\trans `I hear the birds.'\\
+
+\ex \label{voluntary:vol}
+Puedi ogvbino metil.
+\gll
+pu-            edi og-     vbino     m       etil \\
+ACC.SG/DU.VOL- 1SG PST.PFV hear/tell NOM.PL- birds \\
+\trans `I listened to the birds.'\\
+\end{xlist}
+\end{exe}
+
+Example \exref{voluntary} shows us how Voluntary Accusative can be used.
+\exref{voluntary:invol} features the standard (involuntary) Accustative to mean "hear".
+\exref{voluntary:vol} meanwhile, shows the Voluntary Accustative to mean "listen".
+
+\begin{exe}
+\ex \label{fall}
+\begin{xlist}
+\ex \label{fall:invol}
+Tcitti bedi ogormir uilompi.
+\gll
+tc-       itti  b-         edi og-     ormir uilompi\\
+NOM.SG/DU DUMMY ACC.SG/DU- 1SG PST.PFV fall  downstairs\\
+\trans `I fell downstairs.'\\
+
+\ex \label{fall:vol}
+Tcitti puedi ogormir uilompi.
+\gll
+tc-       itti  pu-            edi og-     ormir    uilompi\\
+NOM.SG/DU DUMMY ACC.SG/DU.VOL- 1SG PST.PFV go(down) downstairs\\
+\trans `I went downstairs.'\\
+\end{xlist}
+\end{exe}
+
+\newpage
+
+\begin{exe}
+\ex \label{ex:catwindow}
+Tcipo ogitcuido bino mvho gueno, vrotizvlo uitto otemvsti yvno gueno.
+\gll
+tc-         ipo og-     itcuido bino {mvho gueno} vr-   ot-      izvlo u-          itto ot-      emvsti yvno gueno\\
+NOM-C.SG/DU cat PST.PFV perch   SUP  windowsill   APRT- PST.IPFV watch C.ACC.SG/DU rain PST.IPFV flow   PERT glass\\
+\trans `The cat perched on the windowsill, watching the rain cascade down the glass.'\\
 \end{exe}
 
 \scalebox{1}{
@@ -213,75 +338,36 @@ NOM.C.PL- star  HAB- VBZ.IPFV- whisper ACC.O- secret to  ACC.L.VOL- 3PL\\
     child anchor=north,
     edge=primary
   }
-[ SENTENCE \\ 1
-    [ SPEC \\ 1
-        [ SPEC
-            [ \color{accent}CASE [ \leafnode{m}{NOM.C.PL} ] ]
-        ]
-        [ 2
-            [ \color{accent}NOUN [ \leafnode{elibe}{star(s)} ] ]
-        ]
+[ VP
+    [ NP
+        [ \leafnode{tcipo}{cat.\Nom{}} ]
     ]
-    [ 2 \\ 3
-        [ HEAD
-	        [ \color{accent}AUX [\leafnode{dç}{HAB} ] ]
+    [ V'
+        [V'
+        	[VP
+        		[ V'
+					[V'
+    					[ V
+    	        			[ \leafnode{ogitcuido}{perched.\Pst{}.\Pfv{}} ]	
+    					]
+            		]
+        	        [PP [on the windowsill,roof ] ]
+	        	]
+            ] 
         ]
-        [ COMP \\ 3
-            [ HEAD
-              	[ \color{accent}VBLZ [\leafnode{ar}{V.IPFV} ] ]
+	        [CP 
+	        	[watching...,roof]
 			]
-			[ COMP
-                [ 2 \\ 3
-                    [ HEAD 
-                    	[ \color{accent}VERB [\leafnode{aqueçv}{whisper} ] ]
-                    ]
-                    [ COMP \\ 1
-                        [ SPEC
-    	                    [ \color{accent}CASE [\leafnode{u}{ACC.O.PL} ] ]
-                        ]
-                        [ 2
-                        	[ \color{accent}NOUN [\leafnode{inalo}{secret(s)} ] ]
-                        ]
-                    ]
-                ]
-                [ SPEC
-                    [ HEAD
-                        [ \color{accent}PREP [ \leafnode{iga}{ALL} ] ]
-                    ]
-                    [ COMP
-                        [ SPEC
-                        	[ \color{accent}CASE [ \leafnode{pu}{ACC.L.VOL} ] ]
-                        ]
-                        [ 2
-                            [ \color{accent}NOUN [ \leafnode{ina}{3PL} ] ]
-                        ]
-                    ]
-                ]
-            ]
-        ]
     ]
-]
+ ]
 \end{forest}
 }
 
+Example \exref{ex:catwindow} shows us how Participles can be used.
 
-Example \exref{ex:whisper} shows us how Voluntary Accusative can be used.\\
+\newpage
 
-%\begin{table}[ht]
-%\begin{tabular}{ll}
-%C   & Chaos Class \\
-%L   & Life Class \\
-%O   & Order Class \\
-%D   & Death Class \\
-%NOM & Nominative \\
-%ACC & Accusative \\
-%PL  & Plural \\
-%V   & Verbalizer \\
-%HAB & Habitual \\
-%IPFV & Imperfective \\
-%VOL & Voluntary \\
-%\end{tabular}
-%\end{table}
 \setglossarysection{section}
 \printglosses
+
 \end{document}
