@@ -27,6 +27,8 @@
 \usepackage{gb4e}
 \usepackage{typgloss}
 
+\usepackage{array}
+
 % -----------------------------
 % Theme Colors
 % -----------------------------
@@ -65,10 +67,29 @@
 \newfontfamily{\textthin}{NotoSansDisplay}[
     Path=fonts/,
     Extension=.ttf,
-%    UprightFont=*-Thin, ItalicFont=*-ThinItalic,
-    UprightFont=*-Light, ItalicFont=*-LightItalic,
+    UprightFont=*-Thin,
+    BoldFont=*-Light,
+    ItalicFont=*-ThinItalic,
+    BoldFont=*-LightItalic,
 ]
 
+\newfontfamily{\textserif}{NotoSerifDisplay}[
+    Path=fonts/,
+    Extension=.ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic,
+]
+
+\newfontfamily{\textserifthin}{NotoSerifDisplay}[
+    Path=fonts/,
+    Extension=.ttf,
+    UprightFont=*-Thin,
+    BoldFont=*-Light,
+    ItalicFont=*-ThinItalic,
+    BoldFont=*-LightItalic,
+]
 
 % -----------------------------
 % Section Formatting
@@ -176,6 +197,7 @@
 \newleipzig{sup}{sup}{superessive}
 \newleipzig{pert}{pert}{pertingent}
 \newleipzig{dummy}{dummy}{dummy}
+\newleipzig{comm}{comm}{communicative}
 
 \makeglossaries
 
@@ -196,13 +218,35 @@
 \section{Intro}
 This is my third major conlang attempt since 2020-ish.
 
-Some of the \textbf{greatest} 
-{\textthin discoveries} in \underline{science} 
-were made by \textbf{\textit{accident}}.
+\section{Phonology}
+\begin{table}[H]
+\begin{tabular}{clclllllllll}
+m                    & \multicolumn{1}{c}{mʷ} & n &                       &                         &                          &                       &                        &                       &  & \multicolumn{1}{c}{i} & \multicolumn{1}{c}{u} \\
+p                    & \multicolumn{1}{c}{pʷ} & t &                       &                         &                          & \multicolumn{1}{c}{k} & \multicolumn{1}{c}{kʷ} & \multicolumn{1}{c}{ʔ} &  & \multicolumn{1}{c}{e} & \multicolumn{1}{c}{o} \\
+b                    & \multicolumn{1}{c}{bʷ} & d &                       &                         &                          & \multicolumn{1}{c}{g} & \multicolumn{1}{c}{bʷ} &                       &  & \multicolumn{1}{c}{a} & \multicolumn{1}{c}{ɑ} \\
+f                    &                        & s & \multicolumn{1}{c}{ʃ} & \multicolumn{1}{c}{t̠ʃ} & \multicolumn{1}{c}{t̠ʃʷ} &                       &                        & \multicolumn{1}{c}{x} &  &                       &                       \\
+\multicolumn{1}{l}{} &                        & z & \multicolumn{1}{c}{ʒ} & \multicolumn{1}{c}{d̠ʒ} & \multicolumn{1}{c}{ʒʷ}   &                       &                        &                       &  &                       &                       \\
+w                    &                        & l & \multicolumn{1}{c}{ɹ} &                         &                          & \multicolumn{1}{c}{j} &                        &                       &  &                       &                      
+\end{tabular}
+\end{table}
+
+\section{Orthography (Latin)}
+\begin{table}[H]
+\begin{tabular}{clcllllllll}
+m                    & \multicolumn{1}{c}{mu} & n &                       &                        &                       &                        &                        &  & \multicolumn{1}{c}{i} & \multicolumn{1}{c}{}  \\
+p                    & \multicolumn{1}{c}{pu} & t &                       &                        & \multicolumn{1}{c}{k} & \multicolumn{1}{c}{qu} & \multicolumn{1}{c}{tt} &  & \multicolumn{1}{c}{e} & \multicolumn{1}{c}{o} \\
+b                    & \multicolumn{1}{c}{bu} & d &                       &                        & \multicolumn{1}{c}{g} & \multicolumn{1}{c}{gu} &                        &  & \multicolumn{1}{c}{æ} & \multicolumn{1}{c}{a} \\
+f                    &                        & s & \multicolumn{1}{c}{c} & \multicolumn{1}{c}{tc} &                       &                        & \multicolumn{1}{c}{h}  &  &                       &                       \\
+\multicolumn{1}{l}{} &                        & z & \multicolumn{1}{c}{ç} & \multicolumn{1}{c}{dç} &                       &                        &                        &  &                       &                       \\
+u                    &                        & l & \multicolumn{1}{c}{r} &                        & \multicolumn{1}{c}{y} &                        &                        &  &                       &                      
+\end{tabular}
+\end{table}
 
 
 \newpage
+\section{Grammar}
 
+\subsection{Intro to Grammar}
 \begin{exe}
 \ex \label{ex:whisper1}
 Melibe dçaraqueçv uinalo iga puina.
@@ -275,29 +319,51 @@ NOM.C.PL- star  HAB- VBZ.IPFV- whisper ACC.O- secret to  ACC.L.VOL- 3PL\\
 Example \exref{ex:whisper1} shows us how Voluntary Accusative can be used.\\
 
 \newpage
+.\\
+\newpage
+
+\subsection{Voluntary Accusative}
+
+\paragraph{Intro}
+The Voluntary Accustive is paired with the Unmarked Accusative,
+also known as the Involuntary Accusative.
+These two markers are used to switch the meaning of the verb
+in ways that would typically be
+different lexemes in English.
+
+\paragraph{Hear vs Listen — vbino \textit{(Sing)}}
+Example \exref{voluntary} shows us how Voluntary Accusative can be used.
+Ex. \exref{voluntary:invol} features the standard (involuntary) Accustative to mean "hear".
+Ex. \exref{voluntary:vol} meanwhile, shows the Voluntary Accustative to mean "listen".
 
 \begin{exe}
 \ex \label{voluntary}
 \begin{xlist}
 \ex \label{voluntary:invol}
-Bedi ogvbino metil.
+Iga bedi ogvbino metil.
 \gll
-b-         edi og-     vbino     m       etil \\
-ACC.SG/DU- 1SG PST.PFV hear/tell NOM.PL- birds \\
-\trans `I hear the birds.'\\
+iga  b-         edi og-     vbino     m-       etil \\
+COMM ACC.SG/DU- 1SG PST.PFV sing NOM.PL- birds \\
+\trans 
+    {\textthin{}'The birds sang to me.' \textit{(passive patient)}}\\
+    \textit{'I heard the birds singing.'}
 
 \ex \label{voluntary:vol}
-Puedi ogvbino metil.
+Iga puedi ogvbino metil.
 \gll
-pu-            edi og-     vbino     m       etil \\
-ACC.SG/DU.VOL- 1SG PST.PFV hear/tell NOM.PL- birds \\
-\trans `I listened to the birds.'\\
+iga  pu-            edi og-     vbino     m-       etil \\
+COMM ACC.SG/DU.VOL- 1SG PST.PFV sing NOM.PL- birds \\
+\trans 
+    {\textthin{}'The birds sang to me.' \textit{(active patient)}}\\
+    \textit{'I listened to the birds singing.'}
 \end{xlist}
 \end{exe}
 
-Example \exref{voluntary} shows us how Voluntary Accusative can be used.
-\exref{voluntary:invol} features the standard (involuntary) Accustative to mean "hear".
-\exref{voluntary:vol} meanwhile, shows the Voluntary Accustative to mean "listen".
+\paragraph{Go vs Fall — ormir \textit{(Lower)}}
+Here a dummy pronoun is used when there is no obvious Actor.
+The dummy gets the Nominative marker.
+In the case of \textbf{ormir} \textit{(lower)} the Nominative Chaos marker is used.
+The verbs are grouped by which class of marker they use.
 
 \begin{exe}
 \ex \label{fall}
@@ -306,15 +372,80 @@ Example \exref{voluntary} shows us how Voluntary Accusative can be used.
 Tcitti bedi ogormir uilompi.
 \gll
 tc-       itti  b-         edi og-     ormir uilompi\\
-NOM.SG/DU DUMMY ACC.SG/DU- 1SG PST.PFV fall  downstairs\\
-\trans `I fell downstairs.'\\
+NOM.C.SG/DU DUMMY ACC.SG/DU- 1SG PST.PFV lower  downstairs\\
+\trans 
+    {\textthin{}'It tossed me downstairs.'}\\
+    \textit{'I fell downstairs.'}\\
 
 \ex \label{fall:vol}
 Tcitti puedi ogormir uilompi.
 \gll
 tc-       itti  pu-            edi og-     ormir    uilompi\\
-NOM.SG/DU DUMMY ACC.SG/DU.VOL- 1SG PST.PFV go(down) downstairs\\
-\trans `I went downstairs.'\\
+NOM.C.SG/DU DUMMY ACC.SG/DU.VOL- 1SG PST.PFV lower downstairs\\
+\trans 
+    {\textthin{}'It lowered me downstairs.'}\\
+    \textit{'I went downstairs.'}\\
+\end{xlist}
+\end{exe}
+
+
+
+\begin{table}[H]
+\begin{tabular}{ m{1em} m{5em} | m{5em} | m{5em}| m{10em} }
+& Lexeme & INVOL & VOL & English Approx \\
+\hline\hline
+\multicolumn{5}{l}{ \textbf{Chaos} } \\
+\hline
+& ormir & fall & descend & lower \\ 
+& amuak & drift & go & put \\ 
+&       & stumble & run & put \\
+&       & sink & dive & sink (something)\\ 
+
+& aspabe & be hit & catch & throw (at and hit) \\ 
+
+\hline
+\multicolumn{4}{l}{ \textbf{Life} } \\
+\hline
+&        & see & look & show (self)\\ 
+&       & hear & listen & tell\\ 
+& vbino  & hear & listen & sing\\ 
+       
+\hline
+\multicolumn{4}{l}{ \textbf{Order} } \\
+\hline
+&       & remember & think & remind \\ 
+&       & realize & decide & pursuade\\ 
+       
+\hline
+\multicolumn{4}{l}{ \textbf{Death} } \\
+\hline
+& ackak  & shatter & break & break \\
+&       & drop & throw & take\\  
+
+\end{tabular}
+\end{table}
+
+\paragraph{Be Hit vs Catch – aspabe \textit{(Throw)}}
+\begin{exe}
+\ex \label{fall}
+\begin{xlist}
+\ex \label{fall:invol}
+Tcitti iga bedi ogaspabe fipa.
+\gll
+tc-         itti  iga  b-         edi og-     aspabe f-    ipa\\
+NOM.C.SG/DU DUMMY COMM ACC.SG/DU- 1SG PST.PFV throw  ACC.O rock\\
+\trans 
+    {\textthin{}'It threw a rock at me.'}\\
+    \textit{'A rock hit me.'}\\
+
+\ex \label{fall:vol}
+Tcitti iga puedi ogaspabe fipa.
+\gll
+tc-         itti  iga  pu-            edi og-     aspabe f-    ipa\\
+NOM.C.SG/DU DUMMY COMM ACC.SG/DU.VOL- 1SG PST.PFV throw  ACC.O rock\\
+\trans 
+    {\textthin{}'It threw a rock to me.'}\\
+    \textit{'I caught a rock.'}\\
 \end{xlist}
 \end{exe}
 
