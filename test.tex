@@ -8,6 +8,7 @@
 \usepackage[linguistics]{forest}
 
 \usepackage{fontspec}
+\usepackage{amssymb}
 
 % For colorful and modern layouts
 \usepackage{xcolor}
@@ -22,6 +23,7 @@
 \usepackage{tikz-qtree}
 \usepackage{float}
 \usepackage{subcaption}
+\usepackage{multirow}
 
 \usepackage[block]{leipzig}
 \usepackage{gb4e}
@@ -115,7 +117,7 @@
 \fancyhf{}
 \fancyhead[L]{\textcolor{primary}{\leftmark}}
 \fancyhead[R]{\textcolor{secondary}{\thepage}}
-\fancyfoot[C]{\textcolor{accent}{My LaTeX Document}}
+\fancyfoot[C]{\textcolor{accent}{JGantts Conlang III}}
 
 % -----------------------------
 % Hyperlinks
@@ -192,12 +194,15 @@
 \newleipzig{d}{d}{death class}
 \newleipzig{hab}{hab}{habitual}
 \newleipzig{vol}{vol}{voluntary}
+\newleipzig{nvol}{nvol}{involuntary}
 \newleipzig{pprt}{pprt}{past participle}
 \newleipzig{aprt}{aprt}{active participle}
 \newleipzig{sup}{sup}{superessive}
 \newleipzig{pert}{pert}{pertingent}
 \newleipzig{dummy}{dummy}{dummy}
 \newleipzig{comm}{comm}{communicative}
+\newleipzig{dir}{dir}{direct}
+\newleipzig{idr}{idr}{indirect}
 
 \makeglossaries
 
@@ -219,8 +224,10 @@
 This is my third major conlang attempt since 2020-ish.
 
 \section{Phonology}
+
+\subsection{IPA}
 \begin{table}[H]
-\begin{tabular}{clclllllllll}
+\begin{tabular}{m{1em}m{1em}m{1em}m{1em}m{1em}m{2em}m{1em}m{1em}m{1em}m{1em}m{1em}m{1em}}
 m                    & \multicolumn{1}{c}{mʷ} & n &                       &                         &                          &                       &                        &                       &  & \multicolumn{1}{c}{i} & \multicolumn{1}{c}{u} \\
 p                    & \multicolumn{1}{c}{pʷ} & t &                       &                         &                          & \multicolumn{1}{c}{k} & \multicolumn{1}{c}{kʷ} & \multicolumn{1}{c}{ʔ} &  & \multicolumn{1}{c}{e} & \multicolumn{1}{c}{o} \\
 b                    & \multicolumn{1}{c}{bʷ} & d &                       &                         &                          & \multicolumn{1}{c}{g} & \multicolumn{1}{c}{bʷ} &                       &  & \multicolumn{1}{c}{a} & \multicolumn{1}{c}{ɑ} \\
@@ -230,15 +237,15 @@ w                    &                        & l & \multicolumn{1}{c}{ɹ} &    
 \end{tabular}
 \end{table}
 
-\section{Orthography (Latin)}
+\subsection{Latin}
 \begin{table}[H]
-\begin{tabular}{clcllllllll}
-m                    & \multicolumn{1}{c}{mu} & n &                       &                        &                       &                        &                        &  & \multicolumn{1}{c}{i} & \multicolumn{1}{c}{}  \\
-p                    & \multicolumn{1}{c}{pu} & t &                       &                        & \multicolumn{1}{c}{k} & \multicolumn{1}{c}{qu} & \multicolumn{1}{c}{tt} &  & \multicolumn{1}{c}{e} & \multicolumn{1}{c}{o} \\
-b                    & \multicolumn{1}{c}{bu} & d &                       &                        & \multicolumn{1}{c}{g} & \multicolumn{1}{c}{gu} &                        &  & \multicolumn{1}{c}{æ} & \multicolumn{1}{c}{a} \\
-f                    &                        & s & \multicolumn{1}{c}{c} & \multicolumn{1}{c}{tc} &                       &                        & \multicolumn{1}{c}{h}  &  &                       &                       \\
-\multicolumn{1}{l}{} &                        & z & \multicolumn{1}{c}{ç} & \multicolumn{1}{c}{dç} &                       &                        &                        &  &                       &                       \\
-u                    &                        & l & \multicolumn{1}{c}{r} &                        & \multicolumn{1}{c}{y} &                        &                        &  &                       &                      
+\begin{tabular}{m{1em}m{1em}m{1em}m{1em}m{1em}m{2em}m{1em}m{1em}m{1em}m{1em}m{1em}m{1em}}
+m                    & \multicolumn{1}{c}{mu} & n &                       &                        &                         &                        &                        &                        &  & \multicolumn{1}{c}{i} & \multicolumn{1}{c}{v}  \\
+p                    & \multicolumn{1}{c}{pu} & t &                       &                        &                         & \multicolumn{1}{c}{k}  & \multicolumn{1}{c}{qu} & \multicolumn{1}{c}{tt} &  & \multicolumn{1}{c}{e} & \multicolumn{1}{c}{o} \\
+b                    & \multicolumn{1}{c}{bu} & d &                       &                        &                         & \multicolumn{1}{c}{g}   & \multicolumn{1}{c}{gu}&                        &  & \multicolumn{1}{c}{æ} & \multicolumn{1}{c}{a} \\
+f                    &                        & s & \multicolumn{1}{c}{c} & \multicolumn{1}{c}{tc} & \multicolumn{1}{c}{tcu} &                        &                        & \multicolumn{1}{c}{h}  &  &                       &                       \\
+\multicolumn{1}{l}{} &                        & z & \multicolumn{1}{c}{ç} & \multicolumn{1}{c}{dç} & \multicolumn{1}{c}{çu}  &                        &                        &                        &  &                       &                        \\
+u                    &                        & l & \multicolumn{1}{c}{r} &                        &                         & \multicolumn{1}{c}{y}  &                        &                        &  &                       &                      
 \end{tabular}
 \end{table}
 
@@ -247,84 +254,61 @@ u                    &                        & l & \multicolumn{1}{c}{r} &     
 \section{Grammar}
 
 \subsection{Intro to Grammar}
+
+\paragraph{Basic Sentences}
+The basic sentence is SVO.
+Subject (Nominative) is in the Direct Case.
+Object (Accusative) is in the Indirect Case.
+Dative is in the Indirect Case as well, preceeded by $\langle$iga$\rangle$.
+
 \begin{exe}
-\ex \label{ex:whisper1}
-Melibe dçaraqueçv uinalo iga puina.
+\ex \label{basicsentence}
+Quedi ogacmat bicket.
 \gll
-m-        elibe dç-  ar-     aqueçv  u-     inalo  iga pu-        ina\\
-NOM.C.PL- star  HAB- VBZ.IPFV- whisper ACC.O- secret to  ACC.L.VOL- 3PL\\
-\trans `The stars whisper secrets to those who listen.'\\
+qu-  edi og      acmat b-   icket\\
+DIR  1SG PST.PFV eat   IDR- cake\\
+\trans 
+    \textit{'I ate (some) cake.'}\\
 \end{exe}
 
-\scalebox{0.75}{
-\begin{forest}
-  for tree={
-    every leaf node={my leaf},
-    every tree node={my tree},
-    parent anchor=south,
-    child anchor=north,
-    edge=primary
-  }
-[ IP
-    [ NP
-        [ SPEC
-            [ \leafnode{m}{\Nom{}.\C{}.\Pl{}} ]
-        ]
-        [ N
-            [ \leafnode{elibe}{star(s)} ]
-        ]
-    ]
-    [ I'
-        [ I
-	        [\leafnode{dç}{\Hab{}} ]
-        ]
-        [ IP
-            [ I
-              	[\leafnode{ar}{\Vbz{}.\Ipfv{}} ]
-			]
-			[ VP
-                [ V'
-                    [ V 
-                    	[\leafnode{aqueçv}{whisper} ]
-                    ]
-                    [ NP
-                        [ SPEC
-    	                    [\leafnode{u}{\Acc{}.\O{}.\Pl{}} ]
-                        ]
-                        [ N
-                        	[\leafnode{inalo}{secret(s)} ]
-                        ]
-                    ]
-                ]
-                [ PP
-                    [ P
-                        [ \leafnode{iga}{\All{}} ]
-                    ]
-                    [ NP
-                        [ SPEC
-                        	[ \leafnode{pu}{\Acc{}.\L{}.\Vol{}} ]
-                        ]
-                        [ N
-                            [ \leafnode{ina}{\Third{}\Pl{}} ]
-                        ]
-                    ]
-                ]
-            ]
-        ]
-    ]
-]
-\end{forest}
-}
+\paragraph{Noun Classes}
+There are four noun classes,
+\textbf{Chaos}, \textbf{Life}, \textbf{Order}, and \textbf{Death}.
+They are the four classes of magic used in the conworld the langauge is set in.
+There are patterns in the classes, but overall they are arbitrary.
+The exception being Life class;
+it holds all animate nouns.
 
-Example \exref{ex:whisper1} shows us how Voluntary Accusative can be used.\\
+\begin{table}[H]
+\begin{tabular}{llllll}
+                            &           & \textbf{Chaos} & \textbf{Life} & \textbf{Order} & \textbf{Death} \\
+\hline\hline
+\multirow{2}{*}{DIR}        & SG/DU     & tc             & k, qu         & h              & r              \\
+                            & PL        & m, mu          & ik, iqu       & dç             & g              \\
+\hline
+\multirow{2}{*}{IDR}                 & SG/DU     & u, y           & b             & f              & s              \\
+                            & PL        & l              & ib            & if             & z              \\
+\hline
+\multirow{2}{*}{IDR (VOL)}  & SG/DU     &                & p, pu         &                &                \\
+                            & PL        &                & ip, ipu       &                &                \\
+\hline
+\multirow{2}{*}{OBL}        & SG/DU     & tatt           & oh            & g, gu          & zit            \\
+                            & PL        & datt           & ih            & ag, agu        & izit          
+\end{tabular}
+\end{table}
+
+\paragraph{Noun Cases}
+Direct and Indirect correspond to Nominative and Accusative respectively for most verbs.
+See subsection \ref{sec:voluntary} "Voluntary Accusative" for more information on the exceptions.
+
 
 \newpage
-.\\
-\newpage
 
-\subsection{Voluntary Accusative}
+\subsection{Voluntary Accusative} \label{sec:voluntary}
 
 \paragraph{Intro}
+The vast majority of verbs follow the NOM/ACC alignment.
+However, there is a class of verbs, called Voluntary Verbs, which follow ERB/ABS alignment.
 The Voluntary Accustive is paired with the Unmarked Accusative,
 also known as the Involuntary Accusative.
 These two markers are used to switch the meaning of the verb
@@ -407,7 +391,7 @@ NOM.C.SG/DU DUMMY ACC.SG/DU.VOL- 1SG PST.PFV lower downstairs\\
 \multicolumn{4}{l}{ \textbf{Life} } \\
 \hline
 &        & see & look & show (self)\\ 
-&       & hear & listen & tell\\ 
+& esnvbe & hear & listen & tell\\ 
 & vbino  & hear & listen & sing\\ 
        
 \hline
@@ -446,6 +430,61 @@ NOM.C.SG/DU DUMMY COMM ACC.SG/DU.VOL- 1SG PST.PFV throw  ACC.O rock\\
 \trans 
     {\textthin{}'It threw a rock to me.'}\\
     \textit{'I caught a rock.'}\\
+\end{xlist}
+\end{exe}
+
+
+\newpage
+
+\paragraph{Shatter vs Break – ackak (ACC/NOM)}
+\begin{exe}
+\ex \label{break:S}
+\begin{xlist}
+\ex \label{fall:invol}
+Reno ogackak.
+\gll
+r-  eno    og-     ackak\\
+DIR window PST.PFV break\\
+\trans 
+    \textit{'The window broke.'}\\
+
+\ex \label{break:AN}
+Reno bedi ogackak.
+\gll
+r-  eno    b-   edi og-     ackak\\
+DIR window IDR- 1SG PST.PFV break\\
+\trans 
+    \textit{'I broke the window. (invol)'}\\
+
+\ex \label{break:EA}
+Reno puedi ogackak.
+\gll
+r-  eno    pu-      edi og-     ackak\\
+DIR window IDR.VOL- 1SG PST.PFV break\\
+\trans
+    \textit{'I broke the window. (vol)'}\\
+\end{xlist}
+\end{exe}
+
+\paragraph{Eat – acmat (ERG/ABS)}
+\begin{exe}
+\ex \label{eat:S}
+\begin{xlist}
+\ex \label{fall:invol}
+Quedi ogacmat.
+\gll
+qu-  edi og      acmat\\
+DIR  1SG PST.PFV eat\\
+\trans 
+    \textit{'I ate.'}\\
+
+\ex \label{eat:AN}
+Quedi ogacmat bicket.
+\gll
+qu-  edi og      acmat b-   icket\\
+DIR  1SG PST.PFV eat   IDR- cake\\
+\trans 
+    \textit{'I ate (some) cake.'}\\
 \end{xlist}
 \end{exe}
 
@@ -495,6 +534,79 @@ NOM-C.SG/DU cat PST.PFV perch   SUP  windowsill   APRT- PST.IPFV watch C.ACC.SG/
 }
 
 Example \exref{ex:catwindow} shows us how Participles can be used.
+
+\newpage
+
+\section{Fun}
+\begin{exe}
+\ex \label{ex:whisper1}
+Melibe dçaraqueçv uinalo iga puina.
+\gll
+m-        elibe dç-  ar-     aqueçv  u-     inalo  iga pu-        ina\\
+NOM.C.PL- star  HAB- VBZ.IPFV- whisper ACC.O- secret to  ACC.L.VOL- 3PL\\
+\trans `The stars whisper secrets to those who listen.'\\
+\end{exe}
+
+\scalebox{0.75}{
+\begin{forest}
+  for tree={
+    every leaf node={my leaf},
+    every tree node={my tree},
+    parent anchor=south,
+    child anchor=north,
+    edge=primary
+  }
+[ IP
+    [ NP
+        [ SPEC
+            [ \leafnode{m}{\Nom{}.\C{}.\Pl{}} ]
+        ]
+        [ N
+            [ \leafnode{elibe}{star(s)} ]
+        ]
+    ]
+    [ I'
+        [ I
+	        [\leafnode{dç}{\Hab{}} ]
+        ]
+        [ IP
+            [ I
+              	[\leafnode{ar}{\Vbz{}.\Ipfv{}} ]
+			]
+			[ VP
+                [ V'
+                    [ V 
+                    	[\leafnode{aqueçv}{whisper} ]
+                    ]
+                    [ NP
+                        [ SPEC
+    	                    [\leafnode{u}{\Acc{}.\O{}.\Pl{}} ]
+                        ]
+                        [ N
+                        	[\leafnode{inalo}{secret(s)} ]
+                        ]
+                    ]
+                ]
+                [ PP
+                    [ P
+                        [ \leafnode{iga}{\All{}} ]
+                    ]
+                    [ NP
+                        [ SPEC
+                        	[ \leafnode{pu}{\Acc{}.\L{}.\Vol{}} ]
+                        ]
+                        [ N
+                            [ \leafnode{ina}{\Third{}\Pl{}} ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ]
+]
+\end{forest}
+}
+
 
 \newpage
 
