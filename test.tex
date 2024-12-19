@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 
 % -----------------------------
 % Packages
@@ -225,29 +225,42 @@ This is my third major conlang attempt since 2020-ish.
 
 \section{Phonology}
 
-\subsection{IPA}
 \begin{table}[H]
-\begin{tabular}{m{1em}m{1em}m{1em}m{1em}m{1em}m{2em}m{1em}m{1em}m{1em}m{1em}m{1em}m{1em}}
-m                    & \multicolumn{1}{c}{mʷ} & n &                       &                         &                          &                       &                        &                       &  & \multicolumn{1}{c}{i} & \multicolumn{1}{c}{u} \\
-p                    & \multicolumn{1}{c}{pʷ} & t &                       &                         &                          & \multicolumn{1}{c}{k} & \multicolumn{1}{c}{kʷ} & \multicolumn{1}{c}{ʔ} &  & \multicolumn{1}{c}{e} & \multicolumn{1}{c}{o} \\
-b                    & \multicolumn{1}{c}{bʷ} & d &                       &                         &                          & \multicolumn{1}{c}{g} & \multicolumn{1}{c}{bʷ} &                       &  & \multicolumn{1}{c}{a} & \multicolumn{1}{c}{ɑ} \\
-f                    &                        & s & \multicolumn{1}{c}{ʃ} & \multicolumn{1}{c}{t̠ʃ} & \multicolumn{1}{c}{t̠ʃʷ} &                       &                        & \multicolumn{1}{c}{x} &  &                       &                       \\
-\multicolumn{1}{l}{} &                        & z & \multicolumn{1}{c}{ʒ} & \multicolumn{1}{c}{d̠ʒ} & \multicolumn{1}{c}{ʒʷ}   &                       &                        &                       &  &                       &                       \\
-w                    &                        & l & \multicolumn{1}{c}{ɹ} &                         &                          & \multicolumn{1}{c}{j} &                        &                       &  &                       &                      
+\begin{center}
+\caption{IPA Phoneme}
+\label{table-phonemes-ipa}
+\setlength{\tabcolsep}{0.5em} % Adjust column spacing
+\renewcommand{\arraystretch}{1} % Adjust row spacing
+\begin{tabular}{l l l l l l l l l c c}
+ m & mʷ & n & & & & & & & & \\
+ p & pʷ & t & & & k & kʷ & ʔ & & i & u \\
+ b & bʷ & d & & & g & gʷ & & & e & o \\
+ f & & s & ʃ & t͡ʃ & t͡ʃʷ & x & xʷ & & a & ɒ \\
+ & & z & ʒ & d͡ʒ & ʒʷ & & & & & \\
+ w & & l & ɹ & j & & & & \\
 \end{tabular}
+\end{center}
 \end{table}
 
-\subsection{Latin}
 \begin{table}[H]
-\begin{tabular}{m{1em}m{1em}m{1em}m{1em}m{1em}m{2em}m{1em}m{1em}m{1em}m{1em}m{1em}m{1em}}
-m                    & \multicolumn{1}{c}{mu} & n &                       &                        &                         &                        &                        &                        &  & \multicolumn{1}{c}{i} & \multicolumn{1}{c}{v}  \\
-p                    & \multicolumn{1}{c}{pu} & t &                       &                        &                         & \multicolumn{1}{c}{k}  & \multicolumn{1}{c}{qu} & \multicolumn{1}{c}{tt} &  & \multicolumn{1}{c}{e} & \multicolumn{1}{c}{o} \\
-b                    & \multicolumn{1}{c}{bu} & d &                       &                        &                         & \multicolumn{1}{c}{g}   & \multicolumn{1}{c}{gu}&                        &  & \multicolumn{1}{c}{æ} & \multicolumn{1}{c}{a} \\
-f                    &                        & s & \multicolumn{1}{c}{c} & \multicolumn{1}{c}{tc} & \multicolumn{1}{c}{tcu} &                        &                        & \multicolumn{1}{c}{h}  &  &                       &                       \\
-\multicolumn{1}{l}{} &                        & z & \multicolumn{1}{c}{ç} & \multicolumn{1}{c}{dç} & \multicolumn{1}{c}{çu}  &                        &                        &                        &  &                       &                        \\
-u                    &                        & l & \multicolumn{1}{c}{r} &                        &                         & \multicolumn{1}{c}{y}  &                        &                        &  &                       &                      
+\begin{center}
+\caption{Latin}
+\label{table-phonemes-latin}
+\setlength{\tabcolsep}{0.5em} % Adjust column spacing
+\renewcommand{\arraystretch}{1}
+\begin{tabular}{l l l l l l l l l c c}
+ m & mu & n & & & & & & & & \\
+ p & pu & t & & & k & qu & tt & & i & v \\
+ b & bu & d & & & g & gu & & & e & o \\
+ f & & s & c & tc & tcu & h & hu & & æ & a \\
+ & & z & ç & dç & çu & & & & & \\
+ u & & l & r & y & & & & \\
 \end{tabular}
+\end{center}
 \end{table}
+
+
+
 
 
 \newpage
@@ -259,7 +272,6 @@ u                    &                        & l & \multicolumn{1}{c}{r} &     
 The basic sentence is SVO.
 Subject (Nominative) is in the Direct Case.
 Object (Accusative) is in the Indirect Case.
-Dative is in the Indirect Case as well, preceeded by $\langle$iga$\rangle$.
 
 \begin{exe}
 \ex \label{basicsentence}
@@ -271,15 +283,35 @@ DIR  1SG PST.PFV eat   IDR- cake\\
     \textit{'I ate (some) cake.'}\\
 \end{exe}
 
-\paragraph{Noun Classes}
+\paragraph{Ditransitive Sentences}
+Dative is in the Indirect Case as well, preceeded by $\langle$iga$\rangle$.
+
+\begin{exe}
+\ex \label{basicsentence}
+Quepona ogattot iga bedi bicket.
+\gll
+qu-  epona  og      attot iga b-   edi b-   icket\\
+DIR  3SG/DU PST.PFV give  DAT IDR- 1SG IDR- cake\\
+\trans 
+    \textit{'She gave me (some) cake.'}\\
+\end{exe}
+
+
+\subsection{Nouns}
+
+\paragraph{Classes}
 There are four noun classes,
 \textbf{Chaos}, \textbf{Life}, \textbf{Order}, and \textbf{Death}.
 They are the four classes of magic used in the conworld the langauge is set in.
 There are patterns in the classes, but overall they are arbitrary.
 The exception being Life class;
 it holds all animate nouns.
+Table \ref{table-cases} shows the case prefixes.
 
 \begin{table}[H]
+\begin{center}
+\caption{Case Prefixes}
+\label{table-cases}
 \begin{tabular}{llllll}
                             &           & \textbf{Chaos} & \textbf{Life} & \textbf{Order} & \textbf{Death} \\
 \hline\hline
@@ -295,12 +327,16 @@ it holds all animate nouns.
 \multirow{2}{*}{OBL}        & SG/DU     & tatt           & oh            & g, gu          & zit            \\
                             & PL        & datt           & ih            & ag, agu        & izit          
 \end{tabular}
+\end{center}
 \end{table}
 
-\paragraph{Noun Cases}
+\paragraph{Cases}
 Direct and Indirect correspond to Nominative and Accusative respectively for most verbs.
 See subsection \ref{sec:voluntary} "Voluntary Accusative" for more information on the exceptions.
 
+\paragraph{Number}
+There are two markers for number. SG/DU marks the Singular/Dual case;
+for singles and pairs. PL, Plural, marks anything in threes or above.
 
 \newpage
 
@@ -308,17 +344,15 @@ See subsection \ref{sec:voluntary} "Voluntary Accusative" for more information o
 
 \paragraph{Intro}
 The vast majority of verbs follow the NOM/ACC alignment.
-However, there is a class of verbs, called Voluntary Verbs, which follow ERB/ABS alignment.
-The Voluntary Accustive is paired with the Unmarked Accusative,
-also known as the Involuntary Accusative.
+However, there is a class of verbs, called Voluntary Verbs, which follow ERG/ABS alignment.
+The Voluntary Indirect is paired with the Unmarked Indirect.
 These two markers are used to switch the meaning of the verb
-in ways that would typically be
-different lexemes in English.
+in ways that would typically be different lexemes in English.
 
 \paragraph{Hear vs Listen — vbino \textit{(Sing)}}
-Example \exref{voluntary} shows us how Voluntary Accusative can be used.
-Ex. \exref{voluntary:invol} features the standard (involuntary) Accustative to mean "hear".
-Ex. \exref{voluntary:vol} meanwhile, shows the Voluntary Accustative to mean "listen".
+Example \exref{voluntary} shows us how Voluntary Indirect can be used.
+Ex. \exref{voluntary:invol} features the Unmarked (involuntary) Indirect to mean "hear".
+Ex. \exref{voluntary:vol} meanwhile, shows the Voluntary Indirect to mean "listen".
 
 \begin{exe}
 \ex \label{voluntary}
@@ -327,7 +361,7 @@ Ex. \exref{voluntary:vol} meanwhile, shows the Voluntary Accustative to mean "li
 Iga bedi ogvbino metil.
 \gll
 iga  b-         edi og-     vbino     m-       etil \\
-COMM ACC.SG/DU- 1SG PST.PFV sing NOM.PL- birds \\
+COMM IDR.SG/DU- 1SG PST.PFV sing DIR.PL- birds \\
 \trans 
     {\textthin{}'The birds sang to me.' \textit{(passive patient)}}\\
     \textit{'I heard the birds singing.'}
@@ -336,7 +370,7 @@ COMM ACC.SG/DU- 1SG PST.PFV sing NOM.PL- birds \\
 Iga puedi ogvbino metil.
 \gll
 iga  pu-            edi og-     vbino     m-       etil \\
-COMM ACC.SG/DU.VOL- 1SG PST.PFV sing NOM.PL- birds \\
+COMM IDR.SG/DU.VOL- 1SG PST.PFV sing DIR.PL- birds \\
 \trans 
     {\textthin{}'The birds sang to me.' \textit{(active patient)}}\\
     \textit{'I listened to the birds singing.'}
@@ -356,7 +390,7 @@ The verbs are grouped by which class of marker they use.
 Tcitti bedi ogormir uilompi.
 \gll
 tc-       itti  b-         edi og-     ormir uilompi\\
-NOM.C.SG/DU DUMMY ACC.SG/DU- 1SG PST.PFV lower  downstairs\\
+DIR.C.SG/DU DUMMY IDR.SG/DU- 1SG PST.PFV lower  downstairs\\
 \trans 
     {\textthin{}'It tossed me downstairs.'}\\
     \textit{'I fell downstairs.'}\\
@@ -365,7 +399,7 @@ NOM.C.SG/DU DUMMY ACC.SG/DU- 1SG PST.PFV lower  downstairs\\
 Tcitti puedi ogormir uilompi.
 \gll
 tc-       itti  pu-            edi og-     ormir    uilompi\\
-NOM.C.SG/DU DUMMY ACC.SG/DU.VOL- 1SG PST.PFV lower downstairs\\
+DIR.C.SG/DU DUMMY IDR.SG/DU.VOL- 1SG PST.PFV lower downstairs\\
 \trans 
     {\textthin{}'It lowered me downstairs.'}\\
     \textit{'I went downstairs.'}\\
@@ -417,7 +451,7 @@ NOM.C.SG/DU DUMMY ACC.SG/DU.VOL- 1SG PST.PFV lower downstairs\\
 Tcitti iga bedi ogaspabe fipa.
 \gll
 tc-         itti  iga  b-         edi og-     aspabe f-    ipa\\
-NOM.C.SG/DU DUMMY COMM ACC.SG/DU- 1SG PST.PFV throw  ACC.O rock\\
+DIR.C.SG/DU DUMMY COMM IDR.SG/DU- 1SG PST.PFV throw  ACC.O rock\\
 \trans 
     {\textthin{}'It threw a rock at me.'}\\
     \textit{'A rock hit me.'}\\
@@ -426,7 +460,7 @@ NOM.C.SG/DU DUMMY COMM ACC.SG/DU- 1SG PST.PFV throw  ACC.O rock\\
 Tcitti iga puedi ogaspabe fipa.
 \gll
 tc-         itti  iga  pu-            edi og-     aspabe f-    ipa\\
-NOM.C.SG/DU DUMMY COMM ACC.SG/DU.VOL- 1SG PST.PFV throw  ACC.O rock\\
+DIR.C.SG/DU DUMMY COMM IDR.SG/DU.VOL- 1SG PST.PFV throw  ACC.O rock\\
 \trans 
     {\textthin{}'It threw a rock to me.'}\\
     \textit{'I caught a rock.'}\\
