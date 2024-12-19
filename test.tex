@@ -6,6 +6,7 @@
 
 % For advanced font selection
 \usepackage[linguistics]{forest}
+\usepackage{linguex}
 
 \usepackage{fontspec}
 \usepackage{amssymb}
@@ -29,7 +30,12 @@
 \usepackage{gb4e}
 \usepackage{typgloss}
 
+\usepackage{amsmath}
+\usetikzlibrary{positioning}
 \usepackage{array}
+
+\usepackage{unicode-math}
+
 
 % -----------------------------
 % Theme Colors
@@ -148,15 +154,8 @@
 }
 
 % -----------------------------
-% Decorative Elements with TikZ
+% Example Reference
 % -----------------------------
-
-\newcommand{\decorativeLine}{
-    \begin{tikzpicture}
-        \draw [primary, thick] (0,0) -- (\linewidth,0);
-        \draw [secondary, thick] (0,0.1) -- (\linewidth,0.1);
-    \end{tikzpicture}
-}
 
 \newcommand{\exref}[1]{(\ref{#1})}
 
@@ -222,6 +221,10 @@
 % Introduction Section
 \section{Intro}
 This is my third major conlang attempt since 2020-ish.
+The "core" setting a far-future world where a generation ship landed,
+but about 6 years after landing, there was a coordinated act of sabotage.
+The sabotage destroyed all power generation stations, a significant portion
+of the power grid, and all (3D) printers capable of printing circuitry.
 
 \section{Phonology}
 
@@ -229,13 +232,11 @@ This is my third major conlang attempt since 2020-ish.
 \begin{center}
 \caption{IPA Phoneme}
 \label{table-phonemes-ipa}
-\setlength{\tabcolsep}{0.5em} % Adjust column spacing
-\renewcommand{\arraystretch}{1} % Adjust row spacing
-\begin{tabular}{l l l l l l l l l c c}
- m & mʷ & n & & & & & & & & \\
- p & pʷ & t & & & k & kʷ & ʔ & & i & u \\
- b & bʷ & d & & & g & gʷ & & & e & o \\
- f & & s & ʃ & t͡ʃ & t͡ʃʷ & x & xʷ & & a & ɒ \\
+\begin{tabular}{l l l l l l l l l l c c}
+ m & mʷ & n & & & &   &    &   & & i & u \\
+ p & pʷ & t & & & & k & kʷ & ʔ & & e & o \\
+ b & bʷ & d & & & & g & gʷ &   & & a & ɒ \\
+ f & & s & ʃ & t͡ʃ & t͡ʃʷ & x & xʷ & & &  \\
  & & z & ʒ & d͡ʒ & ʒʷ & & & & & \\
  w & & l & ɹ & j & & & & \\
 \end{tabular}
@@ -246,22 +247,103 @@ This is my third major conlang attempt since 2020-ish.
 \begin{center}
 \caption{Latin}
 \label{table-phonemes-latin}
-\setlength{\tabcolsep}{0.5em} % Adjust column spacing
-\renewcommand{\arraystretch}{1}
-\begin{tabular}{l l l l l l l l l c c}
- m & mu & n & & & & & & & & \\
- p & pu & t & & & k & qu & tt & & i & v \\
- b & bu & d & & & g & gu & & & e & o \\
- f & & s & c & tc & tcu & h & hu & & æ & a \\
+\begin{tabular}{l l l l l l l l l l c c}
+ m & mu & n & & & &   &    &    & & i & v \\
+ p & pu & t & & & & k & qu & tt & & e & o \\
+ b & bu & d & & & & g & gu &    & & æ & a \\
+ f & & s & c & tc & tcu & h & hu & & & \\
  & & z & ç & dç & çu & & & & & \\
  u & & l & r & y & & & & \\
 \end{tabular}
 \end{center}
 \end{table}
 
+\paragraph{Labialization}
+Labilized consonants are \textit{phonemeically} forbiden before
+rounded/back\footnote{
+Backness corresponds exactly with roundness.
+All back vowels are round and all round vowels are back.
+}
+vowels.
+\textit{Phonetically} all consonants before rounded vowels are labialized.
+This is revealed only in allohphones;
+that is to say, in production.
+In perception (and orthography) they are unlabialized consonants.
+Example \exref{ex:phono-labialized} shows both valid and invalid words.
 
+\begin{exe}
+\ex \label{ex:phono-labialized}
+\begin{xlist}
+\ex [] {$\langle$buine$\rangle$}
+\ex [] {$\langle$buæne$\rangle$}
+\ex [*] {$\langle$buone$\rangle$}
+\end{xlist}
+\end{exe}
 
+\paragraph{Valid Syllables Structure}
+Valid syllables include (C|((ʃ|s)(m|n|p|pʷ|k|kʷ)))
 
+\begin{forest}
+  for tree={}
+[ Syllable
+	[ Onset
+   		[ C^1
+			[
+$\begin{bmatrix}
+\textrm{C}
+\end{bmatrix}$
+			]
+		]
+		[ C^2 C^3
+			[
+$\begin{bmatrix}
+\textrm{s} & \textrm{ʃ}
+\end{bmatrix}$
+$\begin{bmatrix}
+\textrm{m} & \textrm{n}\\
+\textrm{p} & \textrm{pʷ}\\
+\textrm{k} & \textrm{kʷ}
+\end{bmatrix}$
+			 ]
+		 ]
+	]
+	[ Rhyme 
+		[ Nucleus 
+			[ V
+				[
+$\begin{bmatrix}
+\textrm{i} & \textrm{u}\\
+\textrm{e} & \textrm{o}\\
+\textrm{a} & \textrm{ɒ}
+\end{bmatrix}$
+			 	]
+			 ]
+		]
+		[ Coda
+   			[ C^4
+				[
+$\begin{bmatrix}
+\textrm{C}
+\end{bmatrix}$
+				]
+			]
+			[C^2 C^5   %(n|ʃ|t͡ʃ|ʒ|d͡ʒ|k|l|p|s|t|ʃp|ʃk|sp|sk)
+				[
+$\begin{bmatrix}
+\textrm{s} & \textrm{ʃ}
+\end{bmatrix}$
+$\begin{bmatrix}
+\textrm{p} & \textrm{k} \\
+\end{bmatrix}$
+%
+% n ʃ t͡ʃ ʒ d͡ʒ k l p s t ʃp ʃk sp sk
+%
+				]
+			]
+		]
+	]
+]
+\end{forest}
 
 \newpage
 \section{Grammar}
@@ -284,7 +366,7 @@ DIR  1SG PST.PFV eat   IDR- cake\\
 \end{exe}
 
 \paragraph{Ditransitive Sentences}
-Dative is in the Indirect Case as well, preceeded by $\langle$iga$\rangle$.
+Dative is in the Indirect Case as well, proceeded by $\langle$iga$\rangle$.
 
 \begin{exe}
 \ex \label{basicsentence}
