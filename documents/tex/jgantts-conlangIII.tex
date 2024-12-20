@@ -355,7 +355,6 @@ and $\langle$ckuik$\rangle$ /ʃkʷik/.
 C^1 is any consonant save for $\langle$tt$\rangle$ /ʔ/.
 C^2 is any consonant save for $\langle$m r u y$\rangle$ /m ɹ w j/.
 
-\newpage
 \section{Grammar}
 
 \subsection{Intro to Grammar}
@@ -429,8 +428,6 @@ See subsection \ref{sec:voluntary} "Voluntary Accusative" for more information o
 \paragraph{Number}
 There are two markers for number. SG/DU marks the Singular/Dual case;
 for singles and pairs. PL, Plural, marks anything in threes or above.
-
-\newpage
 
 \subsection{Voluntary Accusative} \label{sec:voluntary}
 
@@ -618,10 +615,10 @@ DIR  1SG PST.PFV eat   IDR- cake\\
 
 \begin{exe}
 \ex \label{ex:catwindow}
-Tcipo ogitcuido bino mvho gueno, vrotizvlo uitto otemvsti yvno gueno.
+Tcipo ogitcuido bino mvho, vrotizvlo uitto otemvsti yvno gueno.
 \gll
-tc-         ipo og-     itcuido bino {mvho gueno} vr-   ot-      izvlo u-          itto ot-      emvsti yvno gueno\\
-NOM-C.SG/DU cat PST.PFV perch   SUP  windowsill   APRT- PST.IPFV watch C.ACC.SG/DU rain PST.IPFV flow   PERT glass\\
+tc-         ipo ot-      itcuido bino mvho       vr-   ot-      izvlo u-          itto ot-      emvsti yvno gueno\\
+NOM-C.SG/DU cat PST.IPFV perch   SUP  windowsill APRT- PST.IPFV watch C.ACC.SG/DU rain PST.IPFV flow   PERT glass\\
 \trans `The cat perched on the windowsill, watching the rain cascade down the glass.'\\
 \end{exe}
 
@@ -635,27 +632,33 @@ NOM-C.SG/DU cat PST.PFV perch   SUP  windowsill   APRT- PST.IPFV watch C.ACC.SG/
     edge=primary
   }
 [ VP
-    [ NP
-        [ \leafnode{tcipo}{cat.\Nom{}} ]
-    ]
-    [ V'
+  [ NP
+    [ \leafnode{tcipo}{cat.\Nom{}} ]
+  ]
+  [ V'
+    [V'
+      [VP
+        [ V'
         [V'
-        	[VP
-        		[ V'
-					[V'
-    					[ V
-    	        			[ \leafnode{ogitcuido}{perched.\Pst{}.\Pfv{}} ]	
-    					]
-            		]
-        	        [PP [on the windowsill,roof ] ]
-	        	]
-            ] 
+          [ V
+            [ \leafnode{otitcuido}{perched.\Pst{}.\Ipfv{}} ]	
+          ]
         ]
-	        [CP 
-	        	[watching...,roof]
-			]
+        [PP [
+          \leafnode{bino {mvho gueno}}{on the windowsill}  
+          ,roof 
+        ] ]
+        ]
+      ] 
     ]
- ]
+    [CP 
+      [
+        \leafnode{otizvlo...}{watching...}  
+        ,roof
+      ]
+    ] 
+  ]
+]
 \end{forest}
 }
 
