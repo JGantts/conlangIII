@@ -7,8 +7,8 @@ const TEXDIR = "./documents/tex"
 const OUTDIR = `./latex-aux`;
 const TEXFILE = `./jgantts-conlangIII.tex`;
 
-if (!fs.existsSync(OUTDIR)) {
-  fs.mkdirSync(OUTDIR, { recursive: true });
+if (!fs.existsSync(`${TEXDIR}/${OUTDIR}`)) {
+  fs.mkdirSync(`${TEXDIR}/${OUTDIR}`, { recursive: true });
 }
 
 // Build Command

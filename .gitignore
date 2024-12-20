@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # Tex
-./documents/tex/latex-aux/*
+/documents/tex/latex-aux
