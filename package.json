@@ -11,7 +11,7 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
 
-    "latex": "node latex.cjs",
+    "tex": "node latex.cjs",
     "tex-clean": "rm -rf latex-aux"
   },
   "dependencies": {
