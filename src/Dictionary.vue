@@ -91,7 +91,6 @@ h1 {
 }
 
 .dictionary-entry:hover {
-  transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -149,23 +148,13 @@ h1 {
 
 .definition-holder {
   padding: 15px 15px;
-  border-top: 1px solid var(--text-color-faded);
+  border-bottom: 1px solid var(--text-color-faded);
   background-color: var(--bg-color);
 }
 
-.definition:hover {
-    transform: translateY(-4px);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.definition .examples-container {
-    pointer-events: none;
-    overflow: hidden;
-    height: 0;
-}
-
-.definition:hover .examples-container {
-    overflow: visible;
+.dictionary-entry:hover .definition-holder {
+    position: relative;
+    z-index: 10;
 }
 
 .definition:hover .def-elipsis {
