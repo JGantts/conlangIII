@@ -59,6 +59,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: flex-start;
   font-family: inherit;
   color: var(--text-color);
   background-color: var(--bg-color);
