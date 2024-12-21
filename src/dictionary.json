@@ -1,6 +1,7 @@
 [
     {
         "lexeme": "acmat",
+        "simple": "eat",
         "defs": [
             {
                 "type": {
@@ -54,6 +55,7 @@
     },
     {
         "lexeme": "attot",
+        "simple": "give",
         "defs": [
             {
                 "type": {
@@ -67,6 +69,7 @@
     },
     {
         "lexeme": "cami",
+        "simple": "river",
         "defs": [
             {
 
@@ -80,6 +83,7 @@
     },
     {
         "lexeme": "emvsti",
+        "simple": "flow, cascade",
         "defs": [
             {
 
@@ -94,6 +98,7 @@
     },
     {
         "lexeme": "icket",
+        "simple": "cake",
         "defs": [
             {
                 "type": {
@@ -114,6 +119,7 @@
     },
     {
         "lexeme": "vbino",
+        "simple": "sing",
         "defs": [
             {
                 "type": {
@@ -151,6 +157,7 @@
     },
     {
         "lexeme": "vlas",
+        "simple": "wild",
         "defs": [
             {
                 "type": {
@@ -164,6 +171,7 @@
     },
     {
         "lexeme": "vsta",
+        "simple": "bind",
         "defs": [
             {
                 "type": {
@@ -185,6 +193,7 @@
     },
     {
         "lexeme": "etil",
+        "simple": "bird",
         "defs": [
             {
                 "type": {
@@ -197,6 +206,7 @@
     },
     {
         "lexeme": "ormir",
+        "simple": "lower, descend",
         "defs": [
             {
                 "type": {

@@ -3,6 +3,7 @@
     <div class="dictionary">
       <div v-for="entry in dictionaryData" :key="entry.lexeme" class="dictionary-entry">
         <h2>{{ entry.lexeme }}</h2>
+        <h4>{{ entry.simple }}</h4>
         <ul class="definitions-list">
           <li v-for="(definition, index) in entry.defs" :key="index" class="definition-holder">
             <div class="definition">
@@ -78,10 +79,10 @@ h1 {
 
 /* Entry Styles */
 .dictionary-entry {
-  border: 1px solid var(--text-color-faded);
+    position: relative;
+  border: none;
   background-color: var(--bg-color);
-  border-radius: 10px;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   width: 200px;
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -94,22 +95,61 @@ h1 {
 }
 
 .dictionary-entry h2 {
-  margin-bottom: 10px;
+    margin: 0;
   font-size: 2rem;
   font-weight: bold;
   text-transform: lowercase;
   color: var(--text-color);
 }
 
+.dictionary-entry::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px; /* Adjust the height of the gradient */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, var(--bg-color) 100%);
+    pointer-events: none; /* Ensures the pseudo-element doesn't interfere with user interaction */
+}
+
+.dictionary-entry:hover::before {
+    background: none;
+}
+
+.dictionary-entry::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  border: 1px solid var(--text-color-faded);
+  border-radius: 10px;
+}
+
+.dictionary-entry .definitions-list {
+    height: 40px;
+    overflow: hidden;
+    transition: height 0.3s;
+}
+
+.dictionary-entry:hover .definitions-list {
+    height: 100px;
+    overflow: visible;
+}
+
 /* Definitions List */
 .definitions-list {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .definition-holder {
-  padding: 15px 0;
+  padding: 15px 15px;
   border-top: 1px solid var(--text-color-faded);
+  background-color: var(--bg-color);
 }
 
 .definition:hover {
@@ -177,9 +217,9 @@ strong {
 }
 
 h4 {
-  margin-bottom: 10px;
+  margin: 0;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 300;
   color: var(--text-color);
 }
 

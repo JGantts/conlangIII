@@ -7,6 +7,9 @@
         "lexeme": {
           "type": "string"
         },
+        "simple": {
+          "type": "string"
+        },
         "defs": {
           "type": "array",
           "items": {
@@ -82,7 +85,7 @@
           }
         }
       },
-      "required": ["lexeme", "defs"],
+      "required": ["lexeme", "simple", "defs"],
       "additionalProperties": false
     }
   }
