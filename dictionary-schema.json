@@ -47,6 +47,10 @@
                         "enum": [
                           "NVOL", "INDIR", "IGA"
                         ]
+                      },
+                      "dummy-class": {
+                        "type": "string",
+                        "enum": ["chaos", "life", "order", "death"]
                       }
                     },
                     "required": ["type", "valency", "volition"],

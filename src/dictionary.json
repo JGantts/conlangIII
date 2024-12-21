@@ -25,7 +25,7 @@
                     "valency": 2,
                     "volition": "NVOL"
                 },
-                "def": "DIR eats IDIR",
+                "def": "DIR eats INDIR",
                 "ex": [
                     {
                         "ex": "Quedi aracmat bicket.",
@@ -49,7 +49,7 @@
                     "valency": 3,
                     "volition": "IGA"
                 },
-                "def": "DIR feeds IDIR to IGA"
+                "def": "DIR feeds INDIR to IGA"
             }
         ]
     },
@@ -61,14 +61,15 @@
                 "type": {
                     "type": "verb",
                     "valency": 3,
-                    "volition": "IGA"
+                    "volition": "IGA",
+                    "dummy-class": "death"
                 },
-                "def": "DIR gives IDIR to IGA"
+                "def": "DIR gives INDIR to IGA"
             }
         ]
     },
     {
-        "lexeme": "cami",
+        "lexeme": "ecami",
         "simple": "river",
         "defs": [
             {
@@ -86,7 +87,6 @@
         "simple": "flow, cascade",
         "defs": [
             {
-
                 "type": {
                     "type": "verb",
                     "valency": 1,
@@ -133,15 +133,17 @@
                 "type": {
                     "type": "verb",
                     "valency": 2,
-                    "volition": "NVOL"
+                    "volition": "NVOL",
+                    "dummy-class": "life"
                 },
-                "def": "DIR sings IDIR"
+                "def": "DIR sings INDIR"
             },
             {
                 "type": {
                     "type": "verb",
                     "valency": 2,
-                    "volition": "IGA"
+                    "volition": "IGA",
+                    "dummy-class": "life"
                 },
                 "def": "DIR sings to IGA"
             },
@@ -149,9 +151,10 @@
                 "type": {
                     "type": "verb",
                     "valency": 3,
-                    "volition": "IGA"
+                    "volition": "IGA",
+                    "dummy-class": "life"
                 },
-                "def": "DIR sings IDIR to IGA"
+                "def": "DIR sings INDIR to IGA"
             }
         ]
     },
@@ -187,7 +190,7 @@
                     "valency": 3,
                     "volition": "NVOL"
                 },
-                "def": "DIR binds IDIR and IGA"
+                "def": "DIR binds INDIR and IGA"
             }
         ]
     },
@@ -212,15 +215,17 @@
                 "type": {
                     "type": "verb",
                     "valency": 2,
-                    "volition": "NVOL"
+                    "volition": "NVOL",
+                    "dummy-class": "chaos"
                 },
-                "def": "DIR lowers IDIR" 
+                "def": "DIR lowers INDIR" 
             },
             {
                 "type": {
                     "type": "verb",
                     "valency": 2,
-                    "volition": "NVOL"
+                    "volition": "NVOL",
+                    "dummy-class": "chaos"
                 },
                 "def": "DIR lowers INDIR",
                 "ex": [
@@ -234,7 +239,8 @@
                 "type": {
                     "type": "verb",
                     "valency": 2,
-                    "volition": "INDIR"
+                    "volition": "INDIR",
+                    "dummy-class": "chaos"
                 },
                 "def": "DIR lowers INDIR",
                 "ex": [

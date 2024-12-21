@@ -1,8 +1,9 @@
 <template>
+
   <h1>Dictionary</h1>
   <div class="dictionary">
     <div
-      v-for="entry in dictionaryData"
+      v-for="entry in sortedDictionary"
       :key="entry.lexeme"
       class="dictionary-entry"
     >
@@ -62,13 +63,14 @@
 import { defineComponent } from "vue";
 import dictionaryData from "./dictionary.json";
 
-console.log(dictionaryData);
+let sortedDictionary = dictionaryData
+sortedDictionary.sort((a, b) => {return a.lexeme < b.lexeme ? -1 : 1})
 
 export default defineComponent({
   name: "DictionaryDisplay",
   setup() {
     return {
-      dictionaryData,
+      sortedDictionary,
     };
   },
 });
@@ -166,6 +168,7 @@ h1 {
 
 /* Definitions List */
 .definitions-list {
+  pointer-events: none;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -177,8 +180,11 @@ h1 {
 }
 
 .definition-holder {
+  pointer-events: none;
+  border-radius: 10px;
   padding: 15px 15px;
   background-color: var(--bg-color-faded);
+  box-shadow: 0 10px 5px 10px var(--bg-color-faded);
 }
 
 .dictionary-entry:hover .definitions-list {
