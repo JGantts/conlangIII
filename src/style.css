@@ -16,6 +16,8 @@
 :root {
   /* Light mode colors */
   --bg-color: #f8f9fa;
+  --bg-color-faded: #e8e9ea;
+  --bg-color-faded-faded: #d8d9da;
   --text-color: #000;
   --text-color-faded: #888;
   --button-bg-color: #28a745;
@@ -27,6 +29,8 @@
   :root {
     /* Dark mode colors */
     --bg-color: #2b2b2b;
+    --bg-color-faded: #3b3b3b;
+    --bg-color-faded-faded: #4b4b4b;
     --text-color: #e8e8e8;
     --text-color-faded: #888;
     --button-bg-color: #4caf50;

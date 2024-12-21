@@ -14,7 +14,6 @@
                     <span v-if="definition.type.type=='verb'" style="font-style: italic;">v.</span>
                     <span>&nbsp;</span>
                     <span>{{ definition.def }}</span>
-                    <span v-if="definition.ex?.length > 0" class="def-elipsis">...</span>
                 </div>
                 <template v-if="definition.ex && definition.ex.length > 0">
                 <div class="examples-container">
@@ -144,15 +143,19 @@ h1 {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  border-radius: 10px;
+}
+
+.definitions-list:first-child {
+  border-radius: 10px;
 }
 
 .definition-holder {
   padding: 15px 15px;
-  border-bottom: 1px solid var(--text-color-faded);
-  background-color: var(--bg-color);
+  background-color: var(--bg-color-faded);
 }
 
-.dictionary-entry:hover .definition-holder {
+.dictionary-entry:hover .definitions-list {
     position: relative;
     z-index: 10;
 }
@@ -186,7 +189,7 @@ h1 {
 }
 
 .example {
-  background-color: var(--bg-color);
+  background-color: var(--bg-color-faded-faded);
   border-radius: 6px;
   padding: 10px;
   margin-bottom: 10px;
