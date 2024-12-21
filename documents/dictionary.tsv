@@ -1,9 +1,18 @@
-			
-acmat	v.		DIR eats (INDIR); DIR feeds INDIR to IGA
-attot	v.		DIR gives INDR to IGA
-cami	n.	C.	river
-emvsti	v.		DIR flows
-icket	n.	L.	"cake, sweet bread"
-vbino	v.		DIR sings INDR to IGA
-vlas	v.		be wild
-vsta	v.		bind
+acmat	v.		1	DIR eats
+acmat	v.		2	DIR eats INDIR
+acmat	v.		3	DIR feeds INDIR to IGA
+attot	v.		1	DIR gives INDIR to IGA
+cami	n.	C.	1	river
+emvsti	v.		1	DIR flows
+icket	n.	L.	1	cake
+icket	n.	L.	2	sweet bread
+vbino	v.		1	DIR sings (INDR) (to IGA)
+vlas	v.		1	DIR is wild
+vsta	v.		1	DIR binds (INDIR)
+etil	n.	L.	1	bird
+ormir	v.		1	DIR lowers INDIR
+ormir	v.		2	INDIR.VOL descends [by DIR.C]
+ormir	v.		3	INDIR.NVOL falls [by DIR.C]
+amuak	v.		1	DIR moves INDIR
+amuak	v.		2	INDIR.VOL goes [by DIR.C]
+amuak	v.		3	INDIR.NVOL drifts [by DIR.C]

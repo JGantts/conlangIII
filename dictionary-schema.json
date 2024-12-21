@@ -1,0 +1,89 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "lexeme": {
+          "type": "string"
+        },
+        "defs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "object",
+                "oneOf": [
+                  {
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "noun"
+                      },
+                      "class": {
+                        "type": "string",
+                        "enum": ["chaos", "life", "order", "death"]
+                      }
+                    },
+                    "required": ["type", "class"],
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "verb"
+                      },
+                      "valency": {
+                        "type": "integer",
+                        "enum": [1, 2, 3]
+                      },
+                      "volition": {
+                        "type": "string",
+                        "enum": [
+                          "NVOL", "INDIR", "IGA"
+                        ]
+                      }
+                    },
+                    "required": ["type", "valency", "volition"],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "def": {
+                "type": "string"
+              },
+              "ex": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "ex": {
+                      "type": "string"
+                    },
+                    "glossI": {
+                      "type": "string"
+                    },
+                    "glossII": {
+                      "type": "string"
+                    },
+                    "eng": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["ex", "eng"],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": ["type", "def"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": ["lexeme", "defs"],
+      "additionalProperties": false
+    }
+  }
+  

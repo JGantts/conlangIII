@@ -1,0 +1,239 @@
+[
+    {
+        "lexeme": "acmat",
+        "defs": [
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 1,
+                    "volition": "NVOL"
+                },
+                "def": "DIR eats",
+                "ex": [
+                    {
+                        "ex": "Quedi aracmat.",
+                        "glossI": "qu-edi ar-acmat",
+                        "glossII": "1SG-DIR IPFV.PRES-eat",
+                        "eng": "I am eating."
+                    }
+                ]
+            },
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 2,
+                    "volition": "NVOL"
+                },
+                "def": "DIR eats IDIR",
+                "ex": [
+                    {
+                        "ex": "Quedi aracmat bicket.",
+                        "eng": "I am eating cake."
+                    }
+                ]
+            },
+            {
+
+                "type": {
+                    "type": "verb",
+                    "valency": 2,
+                    "volition": "IGA"
+                },
+                "def": "DIR feeds IGA"
+            },
+            {
+
+                "type": {
+                    "type": "verb",
+                    "valency": 3,
+                    "volition": "IGA"
+                },
+                "def": "DIR feeds IDIR to IGA"
+            }
+        ]
+    },
+    {
+        "lexeme": "attot",
+        "defs": [
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 3,
+                    "volition": "IGA"
+                },
+                "def": "DIR gives IDIR to IGA"
+            }
+        ]
+    },
+    {
+        "lexeme": "cami",
+        "defs": [
+            {
+
+                "type": {
+                    "type": "noun",
+                    "class": "chaos"
+                },
+                "def": "river"
+            }
+        ]
+    },
+    {
+        "lexeme": "emvsti",
+        "defs": [
+            {
+
+                "type": {
+                    "type": "verb",
+                    "valency": 1,
+                    "volition": "NVOL"
+                },
+                "def": "DIR flows"
+            }
+        ]
+    },
+    {
+        "lexeme": "icket",
+        "defs": [
+            {
+                "type": {
+                    "type": "noun",
+                    "class": "life"
+                },
+                "def": "cake"
+            },
+            {
+
+                "type": {
+                    "type": "noun",
+                    "class": "life"
+                },
+                "def": "sweet bread"
+            }
+        ]
+    },
+    {
+        "lexeme": "vbino",
+        "defs": [
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 1,
+                    "volition": "NVOL"
+                },
+                "def": "DIR sings"
+            },
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 2,
+                    "volition": "NVOL"
+                },
+                "def": "DIR sings IDIR"
+            },
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 2,
+                    "volition": "IGA"
+                },
+                "def": "DIR sings to IGA"
+            },
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 3,
+                    "volition": "IGA"
+                },
+                "def": "DIR sings IDIR to IGA"
+            }
+        ]
+    },
+    {
+        "lexeme": "vlas",
+        "defs": [
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 1,
+                    "volition": "NVOL"
+                },
+                "def": "DIR is wild"
+            }
+        ]
+    },
+    {
+        "lexeme": "vsta",
+        "defs": [
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 2,
+                    "volition": "NVOL"
+                },
+                "def": "DIR binds IGA"
+            },
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 3,
+                    "volition": "NVOL"
+                },
+                "def": "DIR binds IDIR and IGA"
+            }
+        ]
+    },
+    {
+        "lexeme": "etil",
+        "defs": [
+            {
+                "type": {
+                    "type": "noun",
+                    "class": "life"
+                },
+                "def": "bird"
+            }
+        ]
+    },
+    {
+        "lexeme": "ormir",
+        "defs": [
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 2,
+                    "volition": "NVOL"
+                },
+                "def": "DIR lowers IDIR" 
+            },
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 2,
+                    "volition": "NVOL"
+                },
+                "def": "DIR lowers INDIR",
+                "ex": [
+                    {
+                        "ex": "Tcitti bedi ogormir uilompi.",
+                        "eng": "I fell downstairs."
+                    }
+                ]
+            },
+            {
+                "type": {
+                    "type": "verb",
+                    "valency": 2,
+                    "volition": "INDIR"
+                },
+                "def": "DIR lowers INDIR",
+                "ex": [
+                    {
+                        "ex": "Tcitti puedi ogormir uilompi.",
+                        "eng": "I went downstairs."
+                    }
+                ]
+            }
+        ]
+    }
+]

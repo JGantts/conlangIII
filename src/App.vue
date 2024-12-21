@@ -1,4 +1,6 @@
 <template>
+  <DictionaryDisplay />
+
   <div id="words-container">
     <h1>Conlang Word Generator</h1>
     
@@ -23,6 +25,7 @@ import { ref } from 'vue';
 import { romanize } from './helpers/romanize';
 import { parseChart } from './helpers/chart';
 import { getValidWord, replacements as chartText } from './helpers/generator';
+import DictionaryDisplay from './Dictionary.vue'
 
 
 const chart = parseChart(chartText);
