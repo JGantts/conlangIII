@@ -1,0 +1,33 @@
+name: Deploy to Linode
+
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm i
+        working-directory: ./jgantts-com/
+
+      - name: build
+        run: |
+          npm run build
+        working-directory: ./jgantts-com/
+
+      - name: Deploy JGantts Server
+        uses: appleboy/scp-action@v0.1.2
+        with:
+          host: ${{ secrets.LINODE_IP }}
+          username: ${{ secrets.LINODE_USER }}
+          key: ${{ secrets.LINODE_SSH_KEY }}
+          port: 22
+          source: './jgantts-server/*,./jgantts-com/dist/*,./jgantts-com/PUBLIC/*'
+          target: '/opt/nodejs-conlangiii/'
