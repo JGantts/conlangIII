@@ -30,4 +30,4 @@ jobs:
           key: ${{ secrets.LINODE_SSH_KEY }}
           port: 22
           source: './dist/*'
-          target: '/opt/nodejs-conlangiii/'
+          target: '/opt/nodejs/conlangiii/'
