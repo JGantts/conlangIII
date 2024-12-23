@@ -1,5 +1,3 @@
-%& -output-directory=./pdfout -aux-directory=./temp
-
 \documentclass[11pt]{article}
 
 % -----------------------------
@@ -38,6 +36,7 @@
 
 \usepackage{unicode-math}
 
+\usepackage{enumitem}
 
 % -----------------------------
 % Theme Colors
@@ -204,6 +203,7 @@
 \newleipzig{comm}{comm}{communicative}
 \newleipzig{dir}{dir}{direct}
 \newleipzig{idr}{idr}{indirect}
+\newleipzig{inst}{inst}{instrumental}
 
 \makeglossaries
 
@@ -223,7 +223,7 @@
 % Introduction Section
 \section{Intro}
 This is my third major conlang attempt since 2020-ish.
-The "core" setting a far-future world where a generation ship landed,
+The "core" setting is a far-future world where a generation ship landed,
 but about 6 years after landing, there was a coordinated act of sabotage.
 The sabotage destroyed all power generation stations, a significant portion
 of the power grid, and all (3D) printers capable of printing circuitry.
@@ -261,14 +261,14 @@ of the power grid, and all (3D) printers capable of printing circuitry.
 \end{table}
 
 \paragraph{Labialization}
-Labilized consonants are \textit{phonemeically} forbiden before
+Labialized consonants are \textit{phonemically} forbidden before
 rounded/back\footnote{
-Backness corresponds exactly with roundness.
-All back vowels are round and all round vowels are back.
+Backness corresponds exactly with roundedness.
+All back vowels are rounded and all rounded vowels are back.
 }
 vowels.
 \textit{Phonetically} all consonants before rounded vowels are labialized.
-This is revealed only in allohphones;
+This is revealed only in allophones;
 that is to say, in production.
 In perception (and orthography) they are unlabialized consonants.
 Example \exref{ex:phono-labialized} shows both valid and invalid words.
@@ -369,22 +369,22 @@ Object (Accusative) is in the Indirect Case.
 Quedi ogacmat bicket.
 \gll
 qu-  edi og      acmat b-   icket\\
-DIR  1SG PST.PFV eat   IDR- cake\\
+DIR- 1SG PST.PFV eat   IDR- cake\\
 \trans 
     \textit{'I ate (some) cake.'}\\
 \end{exe}
 
 \paragraph{Ditransitive Sentences}
-Dative is in the Indirect Case as well, proceeded by $\langle$iga$\rangle$.
+Dative is in the Indirect Case as well, preceded by $\langle$iga$\rangle$.
 
 \begin{exe}
 \ex \label{basicsentence}
 Quepona ogattot iga bedi bicket.
 \gll
-qu-  epona  og      attot iga b-   edi b-   icket\\
-DIR  3SG/DU PST.PFV give  DAT IDR- 1SG IDR- cake\\
+qu-  epona  og      acmat iga b-   edi b-   icket\\
+DIR  3SG/DU PST.PFV feed  DAT IDR- 1SG IDR- cake\\
 \trans 
-    \textit{'She gave me (some) cake.'}\\
+    \textit{'She fed me (some) cake.'}\\
 \end{exe}
 
 
@@ -393,10 +393,11 @@ DIR  3SG/DU PST.PFV give  DAT IDR- 1SG IDR- cake\\
 \paragraph{Classes}
 There are four noun classes,
 \textbf{Chaos}, \textbf{Life}, \textbf{Order}, and \textbf{Death}.
-They are the four classes of magic used in the conworld the langauge is set in.
+They are the four classes of magic used in the conworld the language is set in.
 There are patterns in the classes, but overall they are arbitrary.
 The exception being Life class;
-it holds all animate nouns.
+it holds all highly-animate nouns.
+This includes all people and pets.
 Table \ref{table-cases} shows the case prefixes.
 
 \begin{table}[H]
@@ -432,39 +433,68 @@ for singles and pairs. PL, Plural, marks anything in threes or above.
 \subsection{Voluntary Accusative} \label{sec:voluntary}
 
 \paragraph{Intro}
-The vast majority of verbs follow the NOM/ACC alignment.
-However, there is a class of verbs, called Voluntary Verbs, which follow ERG/ABS alignment.
+The majority of verbs follow the DIR/INDIR alignment.
+The verb is framed such that the actor is DIR and the patient is INDIR.
+However, there is a class of verbs, called Voluntary Verbs,
+which have an optional marker on the Indirect.
 The Voluntary Indirect is paired with the Unmarked Indirect.
 These two markers are used to switch the meaning of the verb
 in ways that would typically be different lexemes in English.
 
 \paragraph{Hear vs Listen — vbino \textit{(Sing)}}
-Example \exref{voluntary} shows us how Voluntary Indirect can be used.
-Ex. \exref{voluntary:invol} features the Unmarked (involuntary) Indirect to mean "hear".
-Ex. \exref{voluntary:vol} meanwhile, shows the Voluntary Indirect to mean "listen".
+Example \exref{sing-i} shows us how Voluntary Indirect can be used.
+Ex. \exref{sing-i:invol} features the Unmarked (involuntary) Indirect to mean "hear".
+Ex. \exref{sing-i:vol} meanwhile, shows the Voluntary Indirect to mean "listen".
 
 \begin{exe}
-\ex \label{voluntary}
+\ex \label{sing-i}
 \begin{xlist}
-\ex \label{voluntary:invol}
+
+\ex \label{sing-i:typei}
+Metil ogvbino.
+\gll
+m-      etil  og-     vbino\\
+DIR.PL- birds PST.PFV sing\\
+\trans
+    \textit{'The birds sang.'}
+
+\ex \label{sing-i:invol}
 Iga bedi ogvbino metil.
 \gll
-iga  b-         edi og-     vbino     m-       etil \\
-COMM IDR.SG/DU- 1SG PST.PFV sing DIR.PL- birds \\
+iga  b-         edi og-     vbino m-      etil \\
+COMM IDR.SG/DU- 1SG PST.PFV sing  DIR.PL- birds \\
 \trans 
     {\textthin{}'The birds sang to me.' \textit{(passive patient)}}\\
     \textit{'I heard the birds singing.'}
 
-\ex \label{voluntary:vol}
+\ex \label{sing-i:vol}
 Iga puedi ogvbino metil.
 \gll
-iga  pu-            edi og-     vbino     m-       etil \\
-COMM IDR.SG/DU.VOL- 1SG PST.PFV sing DIR.PL- birds \\
+iga  pu-            edi og-     vbino m-      etil \\
+COMM IDR.SG/DU.VOL- 1SG PST.PFV sing  DIR.PL- birds \\
 \trans 
     {\textthin{}'The birds sang to me.' \textit{(active patient)}}\\
     \textit{'I listened to the birds singing.'}
 \end{xlist}
 \end{exe}
+
+In Example \exref{sing-ii} a dummy pronoun is used because there is no obvious Actor.
+
+\begin{minipage}{\linewidth}
+\begin{exe}
+  \ex \label{sing-ii}
+  \begin{xlist}
+\ex \label{sing-ii:typei}
+Quitti iga bedi ogvbino .
+\gll
+qu-          itti  iga  b-         edi og-     vbino \\
+DIR.L.SG/DU- DUMMY COMM IDR.SG/DU- 1SG PST.PFV sing \\
+\trans 
+    {\textthin{}'It sang to me.' \textit{(passive patient)}}\\
+    \textit{'I heard singing.'}
+  \end{xlist}
+\end{exe}
+\end{minipage}
 
 \paragraph{Go vs Fall — ormir \textit{(Lower)}}
 Here a dummy pronoun is used when there is no obvious Actor.
@@ -475,10 +505,11 @@ The verbs are grouped by which class of marker they use.
 \begin{exe}
 \ex \label{fall}
 \begin{xlist}
+
 \ex \label{fall:invol}
 Tcitti bedi ogormir uilompi.
 \gll
-tc-       itti  b-         edi og-     ormir uilompi\\
+tc-         itti  b-         edi og-     ormir uilompi\\
 DIR.C.SG/DU DUMMY IDR.SG/DU- 1SG PST.PFV lower  downstairs\\
 \trans 
     {\textthin{}'It tossed me downstairs.'}\\
@@ -550,14 +581,11 @@ Tcitti iga puedi ogaspabe fipa.
 \gll
 tc-         itti  iga  pu-            edi og-     aspabe f-    ipa\\
 DIR.C.SG/DU DUMMY COMM IDR.SG/DU.VOL- 1SG PST.PFV throw  ACC.O rock\\
-\trans 
-    {\textthin{}'It threw a rock to me.'}\\
-    \textit{'I caught a rock.'}\\
+\trans
+  {\textthin{}'It threw a rock to me.'}\\
+  \textit{'I caught a rock.'}\\
 \end{xlist}
 \end{exe}
-
-
-\newpage
 
 \paragraph{Shatter vs Break – ackak (ACC/NOM)}
 \begin{exe}
@@ -589,6 +617,57 @@ DIR window IDR.VOL- 1SG PST.PFV break\\
 \end{xlist}
 \end{exe}
 
+\subsection{Relative Clauses} \label{sec:relative-clauses}
+
+\paragraph{Intro}
+Relative clauses are formed by the "four $\langle$no-$\rangle$'s:
+$\langle$noto$\rangle$,
+$\langle$nopa$\rangle$,
+$\langle$noti$\rangle$, and
+$\langle$noku$\rangle$.
+$\langle$noto$\rangle$ is used to refer to a noun and
+$\langle$nopa$\rangle$ is used for a clause.
+$\langle$noti$\rangle$ and $\langle$noku$\rangle$
+are used for a verb's manner/reason and time/location respectively.
+
+\begin{exe}
+  \ex \label{ex:relative}
+  \begin{xlist}
+  \ex \label{ex:relative:noto}
+  Tcipo, noto tcepona ogacmat, otitcuido bino mvho.
+  \gll
+  tc- ipo noto tc-  epona og      acmat ot-     itchuido bino mvho\\
+  DIR cat REL  DIR- 3SG   PST.PFV eat   PST.PFV perch    SUP  windowsill \\
+  \trans
+    \textit{'(The) cat, who was eating, (went and) perched on the windowsill.'}\\
+  
+  \ex \label{ex:relative:nopa}
+  Tcipo aracmat, nopa quepona bedi arape uisat.
+  \gll
+  tc- ipo ar      acmat nopa qu-  epona b-    edi ar-      ape   u-    isat\\
+  DIR cat PRS.PFV eat   REL  DIR- 3     IDR- 1SG PRS.IPFV cause IDR- happy\\
+  \trans 
+      \textit{'(The) cat is eating, which makes me happy.'}\\
+
+  \ex \label{ex:relative:noti}
+  Tcipo aracmat, noti qui vhok isnvk it vbak.
+  \gll
+  tc- ipo ar-     acmat noti qui  vhok isnvk  it  vbak\\
+  DIR cat PRS.PFV eat   REL  does INST hunger GEN army\\
+  \trans
+      \textit{'(The) cat is eating with the hunger of an army.'}\\
+
+  \ex \label{ex:relative:noku}
+  Tcipo aracmat, noku qui bino mvho.
+  \gll
+  tc- ipo ar-     acmat noku qui  \\
+  DIR cat PRS.PFV eat   REL  does \\
+  \trans
+      \textit{'(The) cat is eating on the windowsill.'}\\
+  \end{xlist}
+  \end{exe}
+
+
 \paragraph{Eat – acmat (ERG/ABS)}
 \begin{exe}
 \ex \label{eat:S}
@@ -610,8 +689,6 @@ DIR  1SG PST.PFV eat   IDR- cake\\
     \textit{'I ate (some) cake.'}\\
 \end{xlist}
 \end{exe}
-
-\newpage
 
 \begin{exe}
 \ex \label{ex:catwindow}
@@ -736,6 +813,25 @@ NOM.C.PL- star  HAB- VBZ.IPFV- whisper ACC.O- secret to  ACC.L.VOL- 3PL\\
 \end{forest}
 }
 
+\newpage
+
+\begin{exe}
+  \ex \label{ex:catwindow}
+  Tcecami dçaremvsti nikyækvsta igvlas.
+  \gll
+  tc-         ecami dç-  ar-       emvsti nik- yæk-  vsta ig-   vlas\\
+  NOM-C.SG/DU river HAB- PRS.IPFV- flow   NEG- PPRT- bind APRT- wild\\
+  \trans 'The river runs wild and free.'\\
+\end{exe}
+
+\begin{exe}
+  \ex \label{ex:catwindow}
+  Hottik asabe ibvcpebe.
+  \gll
+  h-          ottik    as-  abe  ib-         vcpebe\\
+  DIR.O.SG/DU kowledge HAB- form IDR.O.PL- future\\
+  \trans 'Knowledge shapes the future.'\\
+\end{exe}
 
 \newpage
 
