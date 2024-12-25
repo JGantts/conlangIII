@@ -29,6 +29,7 @@
 \usepackage[block]{leipzig}
 \usepackage{gb4e}
 \usepackage{typgloss}
+\usepackage{caption}
 
 \usepackage{amsmath}
 \usetikzlibrary{positioning}
@@ -368,8 +369,8 @@ Object (Accusative) is in the Indirect Case.
 \ex \label{basicsentence}
 Quedi ogacmat bicket.
 \gll
-qu-  edi og      acmat b-   icket\\
-DIR- 1SG PST.PFV eat   IDR- cake\\
+qu-edi ogacmat b-icket\\
+DIR-1SG   eat   IDR-cake\\
 \trans 
     \textit{'I ate (some) cake.'}\\
 \end{exe}
@@ -381,8 +382,8 @@ Dative is in the Indirect Case as well, preceded by $\langle$iga$\rangle$.
 \ex \label{basicsentence}
 Quepona ogattot iga bedi bicket.
 \gll
-qu-  epona  og      acmat iga b-   edi b-   icket\\
-DIR  3SG/DU PST.PFV feed  DAT IDR- 1SG IDR- cake\\
+qu-epona  ogacmat iga b-edi b-icket\\
+DIR-3SG/DU feed  DAT IDR-1SG IDR-cake\\
 \trans 
     \textit{'She fed me (some) cake.'}\\
 \end{exe}
@@ -430,16 +431,24 @@ See subsection \ref{sec:voluntary} "Voluntary Accusative" for more information o
 There are two markers for number. SG/DU marks the Singular/Dual case;
 for singles and pairs. PL, Plural, marks anything in threes or above.
 
-\subsection{Voluntary Accusative} \label{sec:voluntary}
-
-\paragraph{Intro}
+\subsection{Direct and Indirect} \label{sec:diridr}
 The majority of verbs follow the DIR/INDIR alignment.
 The verb is framed such that the actor is DIR and the patient is INDIR.
+However, that is not always the case.
+
+
+\subsection{Voluntary Indirect} \label{sec:voluntary}
+
+\paragraph{Intro}
+
 However, there is a class of verbs, called Voluntary Verbs,
 which have an optional marker on the Indirect.
 The Voluntary Indirect is paired with the Unmarked Indirect.
 These two markers are used to switch the meaning of the verb
 in ways that would typically be different lexemes in English.
+
+\paragraph{Noun Classes and Volition}
+The only noun class capable of being given volition, is the Life class.
 
 \paragraph{Hear vs Listen — vbino \textit{(Sing)}}
 Example \exref{sing-i} shows us how Voluntary Indirect can be used.
@@ -461,8 +470,8 @@ DIR.PL- birds PST.PFV sing\\
 \ex \label{sing-i:invol}
 Iga bedi ogvbino metil.
 \gll
-iga  b-         edi og-     vbino m-      etil \\
-COMM IDR.SG/DU- 1SG PST.PFV sing  DIR.PL- birds \\
+iga b-         edi og-     vbino m-      etil \\
+DAT IDR.SG/DU- 1SG PST.PFV sing  DIR.PL- birds \\
 \trans 
     {\textthin{}'The birds sang to me.' \textit{(passive patient)}}\\
     \textit{'I heard the birds singing.'}
@@ -470,25 +479,25 @@ COMM IDR.SG/DU- 1SG PST.PFV sing  DIR.PL- birds \\
 \ex \label{sing-i:vol}
 Iga puedi ogvbino metil.
 \gll
-iga  pu-            edi og-     vbino m-      etil \\
-COMM IDR.SG/DU.VOL- 1SG PST.PFV sing  DIR.PL- birds \\
+iga pu-            edi og-     vbino m-      etil \\
+DAT IDR.SG/DU.VOL- 1SG PST.PFV sing  DIR.PL- birds \\
 \trans 
     {\textthin{}'The birds sang to me.' \textit{(active patient)}}\\
     \textit{'I listened to the birds singing.'}
 \end{xlist}
 \end{exe}
 
+\begin{minipage}{\linewidth}
 In Example \exref{sing-ii} a dummy pronoun is used because there is no obvious Actor.
 
-\begin{minipage}{\linewidth}
 \begin{exe}
   \ex \label{sing-ii}
   \begin{xlist}
 \ex \label{sing-ii:typei}
 Quitti iga bedi ogvbino .
 \gll
-qu-          itti  iga  b-         edi og-     vbino \\
-DIR.L.SG/DU- DUMMY COMM IDR.SG/DU- 1SG PST.PFV sing \\
+qu-          itti  iga b-         edi og-     vbino \\
+DIR.L.SG/DU- DUMMY DAT IDR.SG/DU- 1SG PST.PFV sing \\
 \trans 
     {\textthin{}'It sang to me.' \textit{(passive patient)}}\\
     \textit{'I heard singing.'}
@@ -552,7 +561,7 @@ DIR.C.SG/DU DUMMY IDR.SG/DU.VOL- 1SG PST.PFV lower downstairs\\
 \multicolumn{4}{l}{ \textbf{Order} } \\
 \hline
 &       & remember & think & remind \\ 
-&       & realize & decide & pursuade\\ 
+&       & realize & decide & persuade\\ 
        
 \hline
 \multicolumn{4}{l}{ \textbf{Death} } \\
@@ -587,35 +596,36 @@ DIR.C.SG/DU DUMMY COMM IDR.SG/DU.VOL- 1SG PST.PFV throw  ACC.O rock\\
 \end{xlist}
 \end{exe}
 
-\paragraph{Shatter vs Break – ackak (ACC/NOM)}
-\begin{exe}
-\ex \label{break:S}
-\begin{xlist}
-\ex \label{fall:invol}
-Reno ogackak.
-\gll
-r-  eno    og-     ackak\\
-DIR window PST.PFV break\\
-\trans 
-    \textit{'The window broke.'}\\
 
-\ex \label{break:AN}
-Reno bedi ogackak.
-\gll
-r-  eno    b-   edi og-     ackak\\
-DIR window IDR- 1SG PST.PFV break\\
-\trans 
-    \textit{'I broke the window. (invol)'}\\
+% \paragraph{Shatter vs Break – ackak (ACC/NOM)}
+% \begin{exe}
+% \ex \label{break:S}
+% \begin{xlist}
+% \ex \label{fall:invol}
+% Reno ogackak.
+% \gll
+% r-  eno    og-     ackak\\
+% DIR window PST.PFV break\\
+% \trans 
+%     \textit{'The window broke.'}\\
 
-\ex \label{break:EA}
-Reno puedi ogackak.
-\gll
-r-  eno    pu-      edi og-     ackak\\
-DIR window IDR.VOL- 1SG PST.PFV break\\
-\trans
-    \textit{'I broke the window. (vol)'}\\
-\end{xlist}
-\end{exe}
+% \ex \label{break:AN}
+% Reno bedi ogackak.
+% \gll
+% r-  eno    b-   edi og-     ackak\\
+% DIR window IDR- 1SG PST.PFV break\\
+% \trans 
+%     \textit{'I broke the window. (invol)'}\\
+
+% \ex \label{break:EA}
+% Reno puedi ogackak.
+% \gll
+% r-  eno    pu-      edi og-     ackak\\
+% DIR window IDR.VOL- 1SG PST.PFV break\\
+% \trans
+%     \textit{'I broke the window. (vol)'}\\
+% \end{xlist}
+% \end{exe}
 
 \subsection{Relative Clauses} \label{sec:relative-clauses}
 
@@ -631,8 +641,8 @@ $\langle$noti$\rangle$ and $\langle$noku$\rangle$
 are used for a verb's manner/reason and time/location respectively.
 
 \begin{exe}
-  \ex \label{ex:relative}
-  \begin{xlist}
+\ex \label{ex:relative} 
+\begin{xlist}
   \ex \label{ex:relative:noto}
   Tcipo, noto tcepona ogacmat, otitcuido bino mvho.
   \gll
@@ -649,6 +659,7 @@ are used for a verb's manner/reason and time/location respectively.
   \trans 
       \textit{'(The) cat is eating, which makes me happy.'}\\
 
+  \begin{minipage}{\linewidth}
   \ex \label{ex:relative:noti}
   Tcipo aracmat, noti qui vhok isnvk it vbak.
   \gll
@@ -656,7 +667,9 @@ are used for a verb's manner/reason and time/location respectively.
   DIR cat PRS.PFV eat   REL  does INST hunger GEN army\\
   \trans
       \textit{'(The) cat is eating with the hunger of an army.'}\\
+  \end{minipage}
 
+  \begin{minipage}{\linewidth}
   \ex \label{ex:relative:noku}
   Tcipo aracmat, noku qui bino mvho.
   \gll
@@ -664,8 +677,9 @@ are used for a verb's manner/reason and time/location respectively.
   DIR cat PRS.PFV eat   REL  does \\
   \trans
       \textit{'(The) cat is eating on the windowsill.'}\\
-  \end{xlist}
-  \end{exe}
+  \end{minipage}
+\end{xlist}
+\end{exe}
 
 
 \paragraph{Eat – acmat (ERG/ABS)}
@@ -832,6 +846,17 @@ NOM.C.PL- star  HAB- VBZ.IPFV- whisper ACC.O- secret to  ACC.L.VOL- 3PL\\
   DIR.O.SG/DU kowledge HAB- form IDR.O.PL- future\\
   \trans 'Knowledge shapes the future.'\\
 \end{exe}
+
+\begin{exe}
+  \ex \label{ex:catwindow}
+  Hottik asabe ibvcpebe.
+  \gll
+  h-          ottik    as-  abe  ib-         vcpebe\\
+  DIR.O.SG/DU kowledge HAB- form IDR.O.PL- future\\
+  \trans 'The stars look down upon us, uncaring and eternal, as we search for meaning in the void.'\\
+\end{exe}
+
+
 
 \newpage
 
