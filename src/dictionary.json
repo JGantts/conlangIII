@@ -5,9 +5,7 @@
     "defs": [
       {
         "type": {
-          "type": "verb",
-          "valency": 1,
-          "volition": "NVOL"
+          "type": "verb"
         },
         "def": "DIR eats",
         "ex": [

@@ -1,3 +1,20 @@
+@font-face {
+  font-family: "Noto Sans Display";
+  src: url('@/assets/fonts/NotoSansDisplay-VariableFont_wdth,wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: "Noto Sans Display Italic";
+  src: url('@/assets/fonts/NotoSansDisplay-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: "Noto Serif Display";
+  src: url('@/assets/fonts/NotoSerifDisplay-VariableFont_wdth,wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: "Noto Serif Display Italic";
+  src: url('@/assets/fonts/NotoSerifDisplay-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+}
+
 :root {
   font-family: "Noto Sans Display", serif;
   line-height: 1.5;

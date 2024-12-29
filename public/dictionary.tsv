@@ -1,0 +1,21 @@
+acmat	eat	v.		NOM eats	Quedi aracmat	I am eating.
+acmat		v.		NOM eats ACC	Quedi aracmat bicket.	I am eating cake.
+acmat		v.		NOM feeds ACC to DAT		
+attot	give	v.		NOM gives ACC to DAT		
+cami	river	n.	C.	river		
+emvsti	flow	v.		NOM flows		
+icket	cake	n.	L.	cake		
+icket		n.	L.	sweet bread		
+vbino	sing	v.		NOM sings (ACC) (to DAT)		
+vlas	wild	v.		NOM is wild		
+vsta	bind	v.		NOM binds (ACC)		
+etil	bird	n.	L.	bird		
+ormir	lower	v.		NOM lowers ACC		
+ormir		v.		ACC.VOL descends [by NOM.C]		
+ormir		v.		ACC.NVOL falls [by NOM.C]		
+amuak	put	v.		NOM moves ACC		
+amuak		v.		ACC.VOL goes [by NOM.C]		
+amuak		v.		ACC.NVOL drifts [by NOM.C]		
+paho	valley	n.	C.	valley		
+atti	sun	n.	C.	sun		
+obe	up	v.		NOM rasies ACC

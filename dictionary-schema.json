@@ -37,23 +37,9 @@
                       "type": {
                         "type": "string",
                         "const": "verb"
-                      },
-                      "valency": {
-                        "type": "integer",
-                        "enum": [1, 2, 3]
-                      },
-                      "volition": {
-                        "type": "string",
-                        "enum": [
-                          "NVOL", "INDIR", "IGA"
-                        ]
-                      },
-                      "dummy-class": {
-                        "type": "string",
-                        "enum": ["chaos", "life", "order", "death"]
                       }
                     },
-                    "required": ["type", "valency", "volition"],
+                    "required": ["type"],
                     "additionalProperties": false
                   }
                 ]

@@ -3,7 +3,7 @@
   <h1>Dictionary</h1>
   <div class="dictionary">
     <div
-      v-for="entry in sortedDictionary"
+      v-for="entry in tsvData"
       :key="entry.lexeme"
       class="dictionary-entry"
     >
@@ -11,7 +11,7 @@
       <h4>{{ entry.simple }}</h4>
       <ul class="definitions-list">
         <li
-          v-for="(definition, index) in entry.defs"
+          v-for="(definition, index) in entry.entries"
           :key="index"
           class="definition-holder"
         >
@@ -20,25 +20,25 @@
               <span style="font-weight: bold;">{{ index + 1 }}</span>
               <span>&nbsp;</span>
               <span
-                v-if="definition.type.type === 'noun'"
+                v-if="definition.partOfSpeech === 'n.'"
                 style="font-style: italic;"
               >
                 n.
               </span>
               <span
-                v-if="definition.type.type === 'verb'"
+                v-if="definition.partOfSpeech === 'v.'"
                 style="font-style: italic;"
               >
                 v.
               </span>
               <span>&nbsp;</span>
-              <span>{{ definition.def }}</span>
+              <span>{{ definition.description }}</span>
             </div>
-            <template v-if="definition.ex && definition.ex.length > 0">
+            <template v-if="definition.examples && definition.examples.length > 0">
               <div class="examples-container">
                 <ul class="examples-list">
                   <li
-                    v-for="(example, exIndex) in definition.ex"
+                    v-for="(example, exIndex) in definition.examples"
                     :key="exIndex"
                     class="example"
                   >
@@ -47,7 +47,7 @@
                       <div><strong>Gloss I:</strong> {{ example.glossI || "N/A" }}</div>
                       <div><strong>Gloss II:</strong> {{ example.glossII || "N/A" }}</div>
                     -->
-                    <div class="english">"{{ example.eng }}"</div>
+                    <div class="english">"{{ example.english }}"</div>
                   </li>
                 </ul>
               </div>
@@ -59,21 +59,116 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+type CollapsedLexeme = {
+  lexeme: string;
+  simple: string;
+  entries: {
+    partOfSpeech: string;
+    nounClass?: string;
+    description: string;
+    examples: {
+      ex: string;
+      english: string;
+    }[]
+  }[];
+};
+
+
 import { defineComponent } from "vue";
-import dictionaryData from "./dictionary.json";
+import Papa from "papaparse";
+import { ref, onMounted } from "vue";
 
-let sortedDictionary = dictionaryData
-sortedDictionary.sort((a, b) => {return a.lexeme < b.lexeme ? -1 : 1})
+// Ref for storing TSV data
+const tsvData = ref<CollapsedLexeme[]>([]);
 
-export default defineComponent({
-  name: "DictionaryDisplay",
-  setup() {
-    return {
-      sortedDictionary,
-    };
-  },
+function collapseLexemes(rows: string[][]): CollapsedLexeme[] {
+  const result: Record<string, CollapsedLexeme> = {};
+
+  rows.forEach((row: string[]) => {
+    // Split the row by tabs
+    const [
+      lexeme, simple,
+      partOfSpeech, nounClass, description,
+      ex1, eng1,
+      ex2, eng2,
+      ex3, eng3
+    ] = [...row];
+
+    if (!lexeme || !description) {
+      console.warn(`Skipping invalid row: ${row}`);
+      return;
+    }
+
+    
+
+    // If the lexeme isn't already in the result, add it
+    if (!result[lexeme]) {
+      result[lexeme] = {
+        lexeme,
+        simple,
+        entries: [],
+      };
+    }
+
+    if (!result[lexeme].simple) {
+      result[lexeme].simple = simple
+    }
+
+    const examples: {ex: string, english: string}[] = []
+
+    if (ex1 != undefined && ex1 != "") {
+      examples.push({ex: ex1, english: eng1})
+    }
+    if (ex2 != undefined && ex2 != "") {
+      examples.push({ex: ex2, english: eng2})
+    }
+    if (ex3 != undefined && ex3 != "") {
+      examples.push({ex: ex3, english: eng3})
+    }
+
+    // Add this row's data to the lexeme's entries
+    result[lexeme].entries.push({
+      partOfSpeech: partOfSpeech || "",
+      nounClass: nounClass || undefined,
+      description: description || "",
+      examples
+    });
+  });
+
+  // Convert the result object back to an array
+  return Object.values(result).sort((x, y) => x.lexeme > y.lexeme ? 1 : -1);
+}
+
+// Function to fetch and parse TSV file from URL
+const fetchTSVFromURL = async (url: string) => {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch TSV file: ${response.statusText}`);
+    }
+    const text = await response.text();
+    // Parse the TSV data
+    Papa.parse(text, {
+      delimiter: "\t",
+      skipEmptyLines: true,
+      complete: (results: { data: string[][]; }) => {
+        console.log(results)
+        tsvData.value = collapseLexemes(results.data as string[][]);
+        console.log("Parsed TSV Data:", tsvData.value);
+      },
+    });
+  } catch (error) {
+    console.error("Error loading TSV file:", error);
+  }
+};
+
+// Load the TSV file on component mount
+onMounted(() => {
+  const tsvURL = "/conlangiii/dictionary.tsv"; // Replace with your TSV file URL
+  fetchTSVFromURL(tsvURL);
 });
+
 </script>
 
 <style scoped>
@@ -81,15 +176,15 @@ export default defineComponent({
 .dictionary {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   font-family: inherit;
   color: var(--text-color);
   background-color: var(--bg-color);
-  max-width: 800px;
+  max-width: 1200px;
+  width: calc(200px*4 + 20px*4);
   margin: 20px auto;
   padding: 20px;
-  width: 800px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -106,9 +201,8 @@ h1 {
   position: relative;
   border: none;
   background-color: var(--bg-color);
-  padding: 20px 20px 0 20px;
   width: 200px;
-  margin-bottom: 20px;
+  margin: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }

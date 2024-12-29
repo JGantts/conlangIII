@@ -65,7 +65,7 @@ export const filterWord = (word: string | false, chart: Record<string, Record<st
 
   for (const pattern of bannedClusters) {
     if (pattern.test(word)) {
-      console.log(`Word "${word}" is invalid due to banned cluster: ${pattern}`);
+      //console.log(`Word "${word}" is invalid due to banned cluster: ${pattern}`);
       return false;
     }
   }
