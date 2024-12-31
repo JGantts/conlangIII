@@ -35,6 +35,8 @@
 \usetikzlibrary{positioning}
 \usepackage{array}
 
+\usepackage[none]{hyphenat}
+
 \usepackage{unicode-math}
 
 \usepackage{enumitem}
@@ -203,6 +205,7 @@
 \newleipzig{inst}{inst}{instrumental}
 \newleipzig{cnj}{cnj}{conjunction}
 \newleipzig{tmp}{tmp}{temporal}
+\newleipzig{verb}{verb}{verb}
 
 \makeglossaries
 
@@ -871,13 +874,21 @@ NOM.C.PL- star  HAB- IPFV- whisper ACC.O- secret to  ACC.L.VOL- 3PL\\
 \end{exe}
 
 \begin{exe}
-  \ex \label{ex:catwindow}
-  Guin atti-yækobe ; i guin atti-yækormir, yvdçet qui ocpak.
+  \ex \label{ex:warI}
+  Guin katti yobe, quepona ogopak uihoto; i guin ttepona yormir, yvdçet ogequi yocpak.
   \gll
-  guin    atti yobe     \\
-  CNJ.TMP sun  rise \\
+  guin    k-     atti y-    obe qu-    epona  og-     opak u-   ihoto       i          
+  guin    tt-    epona  yormir y-     vdçet og-      equi y-    ocpak\\
+  CNJ.TMP OBL.C- sun  PPRT- rise NOM.L- 3SG/DU PST.PFV light ACC.C- signal-fire CNJ.before 
+  CNJ.TMP OBL.C- 3SG/PL set    ACC.C- city  PST.PFV- VERB PPRT- burn\\
   \trans
     \textit{'At sunrise, she lit the final signal fire. By sunset, the city was ash.'}\\
+\end{exe}
+
+\begin{exe}
+  \ex \label{ex:warI-beau}
+  \Huge{}Guin katti yobe, quepona ogopak uihoto; i guin ttepona yormir, yvdçet ogequi yocpak.\\
+  \Huge\color{primary}\textserifthin{}\textit{'At sunrise, she lit the final signal fire. By sunset, the city was ash.'}\\
 \end{exe}
 
 \newpage

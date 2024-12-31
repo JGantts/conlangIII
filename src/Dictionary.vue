@@ -137,7 +137,91 @@ function collapseLexemes(rows: string[][]): CollapsedLexeme[] {
   });
 
   // Convert the result object back to an array
-  return Object.values(result).sort((x, y) => x.lexeme > y.lexeme ? 1 : -1);
+  return Object.values(result).sort(compareWords);
+}
+
+const customAlphabet = [
+'a', 'æ',
+'b', 'bu',
+'c', 'tc', 'tcu',
+'ç', 'dç', 'çu',
+'d',
+'e',
+'f',
+'g', 'gu',
+'i',
+'v',
+'k',
+'l',
+'m', 'mu',
+'n',
+'o',
+'p', 'pu',
+'qu',
+'r',
+'s',
+'t',
+'tt',
+'u',
+'h', 'hu',
+'y',
+'z' 
+]
+
+/*
+a æ b bu c tc tcu ç dç çu d e f g gu i v k l m mu n o p pu qu r s t tt u h hu y z 
+*/
+
+const letterOrder = new Map<string, number>();
+customAlphabet.forEach((letter, index) => {
+  letterOrder.set(letter, index);
+});
+
+function tokenize(word: string, letters: string[]): string[] {
+  const tokens: string[] = [];
+  let i = 0;
+
+  while (i < word.length) {
+    let matched = false;
+
+    // Attempt to match the longest valid letter/multigraph
+    for (const letter of letters) {
+      // If the substring matches this custom letter
+      if (word.startsWith(letter, i)) {
+        tokens.push(letter);
+        i += letter.length;
+        matched = true;
+        break;
+      }
+    }
+
+    // If we found no matching multigraph, just treat the single char as a fallback
+    if (!matched) {
+      tokens.push(word[i]);
+      i++;
+    }
+  }
+
+  return tokens;
+}
+
+function compareWords(a: CollapsedLexeme, b: CollapsedLexeme): number {
+  const aTokens = tokenize(a.lexeme, customAlphabet);
+  const bTokens = tokenize(b.lexeme, customAlphabet);
+
+  const minLen = Math.min(aTokens.length, bTokens.length);
+  
+  for (let i = 0; i < minLen; i++) {
+    const aPriority = letterOrder.get(aTokens[i]) ?? -1;
+    const bPriority = letterOrder.get(bTokens[i]) ?? -1;
+
+    if (aPriority !== bPriority) {
+      return aPriority - bPriority;
+    }
+  }
+  
+  // If all matched tokens so far are the same, the shorter token list “wins”
+  return aTokens.length - bTokens.length;
 }
 
 // Function to fetch and parse TSV file from URL
@@ -181,8 +265,6 @@ onMounted(() => {
   font-family: inherit;
   color: var(--text-color);
   background-color: var(--bg-color);
-  max-width: 1200px;
-  width: calc(200px*4 + 20px*4);
   margin: 20px auto;
   padding: 20px;
   border-radius: 10px;
@@ -350,4 +432,39 @@ h4 {
   font-weight: 100;
   font-style: italic;
 }
+
+.dictionary {
+  max-width: 1200px;
+  width: calc(240px*1);
+}
+
+@media only screen and (min-width: 480px) {
+.dictionary {
+  max-width: 1200px;
+  width: calc(240px*2);
+}
+}
+
+@media only screen and (min-width: 768px) {
+.dictionary {
+  max-width: 1200px;
+  width: calc(240px*3);
+}
+}
+
+@media only screen and (min-width: 1024px) {
+.dictionary {
+  max-width: 1200px;
+  width: calc(240px*4);
+}
+}
+
+@media only screen and (min-width: 1224px) {
+.dictionary {
+  max-width: 1200px;
+  width: calc(240px*5);
+}
+}
+
+
 </style>
