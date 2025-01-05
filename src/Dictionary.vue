@@ -2,59 +2,67 @@
 
   <h1>Dictionary</h1>
   <div class="dictionary">
-    <div
-      v-for="entry in tsvData"
-      :key="entry.lexeme"
-      class="dictionary-entry"
+    <div class="letter"
+      v-for="(lexemes, letter) in tsvData"
+        :key="letter"
     >
-      <h2>{{ entry.lexeme }}</h2>
-      <h4>{{ entry.simple }}</h4>
-      <ul class="definitions-list">
-        <li
-          v-for="(definition, index) in entry.entries"
-          :key="index"
-          class="definition-holder"
+      <div v-if="lexemes.length > 0"
+      class="lexemes">
+        <div
+          v-for="entry in lexemes"
+          :key="entry.lexeme"
+          class="dictionary-entry"
         >
-          <div class="definition">
-            <div class="definition-header">
-              <span style="font-weight: bold;">{{ index + 1 }}</span>
-              <span>&nbsp;</span>
-              <span
-                v-if="definition.partOfSpeech === 'n.'"
-                style="font-style: italic;"
-              >
-                n.
-              </span>
-              <span
-                v-if="definition.partOfSpeech === 'v.'"
-                style="font-style: italic;"
-              >
-                v.
-              </span>
-              <span>&nbsp;</span>
-              <span>{{ definition.description }}</span>
-            </div>
-            <template v-if="definition.examples && definition.examples.length > 0">
-              <div class="examples-container">
-                <ul class="examples-list">
-                  <li
-                    v-for="(example, exIndex) in definition.examples"
-                    :key="exIndex"
-                    class="example"
+          <h2>{{ entry.lexeme }}</h2>
+          <h4>{{ entry.simple }}</h4>
+          <ul class="definitions-list">
+            <li
+              v-for="(definition, index) in entry.entries"
+              :key="index"
+              class="definition-holder"
+            >
+              <div class="definition">
+                <div class="definition-header">
+                  <span style="font-weight: bold;">{{ index + 1 }}</span>
+                  <span>&nbsp;</span>
+                  <span
+                    v-if="definition.partOfSpeech === 'n.'"
+                    style="font-style: italic;"
                   >
-                    <div class="example-lang">{{ example.ex }}</div>
-                    <!--
-                      <div><strong>Gloss I:</strong> {{ example.glossI || "N/A" }}</div>
-                      <div><strong>Gloss II:</strong> {{ example.glossII || "N/A" }}</div>
-                    -->
-                    <div class="english">"{{ example.english }}"</div>
-                  </li>
-                </ul>
+                    n.
+                  </span>
+                  <span
+                    v-if="definition.partOfSpeech === 'v.'"
+                    style="font-style: italic;"
+                  >
+                    v.
+                  </span>
+                  <span>&nbsp;</span>
+                  <span>{{ definition.description }}</span>
+                </div>
+                <template v-if="definition.examples && definition.examples.length > 0">
+                  <div class="examples-container">
+                    <ul class="examples-list">
+                      <li
+                        v-for="(example, exIndex) in definition.examples"
+                        :key="exIndex"
+                        class="example"
+                      >
+                        <div class="example-lang">{{ example.ex }}</div>
+                        <!--
+                          <div><strong>Gloss I:</strong> {{ example.glossI || "N/A" }}</div>
+                          <div><strong>Gloss II:</strong> {{ example.glossII || "N/A" }}</div>
+                        -->
+                        <div class="english">"{{ example.english }}"</div>
+                      </li>
+                    </ul>
+                  </div>
+                </template>
               </div>
-            </template>
-          </div>
-        </li>
-      </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -65,6 +73,7 @@ type CollapsedLexeme = {
   simple: string;
   entries: {
     partOfSpeech: string;
+    seeAlsos: string[];
     nounClass?: string;
     description: string;
     examples: {
@@ -80,7 +89,7 @@ import Papa from "papaparse";
 import { ref, onMounted } from "vue";
 
 // Ref for storing TSV data
-const tsvData = ref<CollapsedLexeme[]>([]);
+const tsvData = ref<{ [key: string]: CollapsedLexeme[]; }>({});
 
 function collapseLexemes(rows: string[][]): CollapsedLexeme[] {
   const result: Record<string, CollapsedLexeme> = {};
@@ -89,7 +98,9 @@ function collapseLexemes(rows: string[][]): CollapsedLexeme[] {
     // Split the row by tabs
     const [
       lexeme, simple,
-      partOfSpeech, nounClass, description,
+      partOfSpeech, nounClass,
+      seeAlsos,
+      description,
       ex1, eng1,
       ex2, eng2,
       ex3, eng3
@@ -131,6 +142,7 @@ function collapseLexemes(rows: string[][]): CollapsedLexeme[] {
     result[lexeme].entries.push({
       partOfSpeech: partOfSpeech || "",
       nounClass: nounClass || undefined,
+      seeAlsos: seeAlsos.split(",").map(x => x.trim()),
       description: description || "",
       examples
     });
@@ -237,9 +249,21 @@ const fetchTSVFromURL = async (url: string) => {
       delimiter: "\t",
       skipEmptyLines: true,
       complete: (results: { data: string[][]; }) => {
-        console.log(results)
-        tsvData.value = collapseLexemes(results.data as string[][]);
-        console.log("Parsed TSV Data:", tsvData.value);
+        let lexemesList = collapseLexemes(results.data as string[][]);
+
+        let separated: { [key: string]: CollapsedLexeme[]; } = {};
+
+        for (let letter of customAlphabet) {
+          //like superset, but it's a list
+          let superlists = customAlphabet.filter(x => x != letter && x.indexOf(letter) == 0)
+          separated[letter] = lexemesList.filter(
+            x => 
+              x.lexeme.indexOf(letter) == 0 
+              && superlists.filter(y => x.lexeme.indexOf(y) == 0)
+                .length == 0
+          )
+        }
+        tsvData.value = separated
       },
     });
   } catch (error) {
@@ -257,7 +281,7 @@ onMounted(() => {
 
 <style scoped>
 /* General Styles */
-.dictionary {
+.lexemes {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -433,35 +457,30 @@ h4 {
   font-style: italic;
 }
 
-.dictionary {
-  max-width: 1200px;
+.lexemes {
   width: calc(240px*1);
 }
 
 @media only screen and (min-width: 480px) {
-.dictionary {
-  max-width: 1200px;
+.lexemes {
   width: calc(240px*2);
 }
 }
 
 @media only screen and (min-width: 768px) {
-.dictionary {
-  max-width: 1200px;
+.lexemes {
   width: calc(240px*3);
 }
 }
 
 @media only screen and (min-width: 1024px) {
-.dictionary {
-  max-width: 1200px;
+.lexemes {
   width: calc(240px*4);
 }
 }
 
 @media only screen and (min-width: 1224px) {
-.dictionary {
-  max-width: 1200px;
+.lexemes {
   width: calc(240px*5);
 }
 }
