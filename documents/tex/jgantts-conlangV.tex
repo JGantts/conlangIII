@@ -1,0 +1,235 @@
+\documentclass{ctexart}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{ruby} 
+
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{calc}
+
+\usepackage{etoolbox,xstring}
+
+\definecolor{primary}{RGB}{47, 128, 190}    % Muted Blue
+\definecolor{secondary}{RGB}{192, 57, 43}   % Deep Red
+\definecolor{accent}{RGB}{39, 174, 96}      % Cool Green
+\definecolor{background}{RGB}{255, 255, 255} % Softer Light Gray
+\definecolor{link}{RGB}{128, 0, 128}       % Regal Purple
+
+%\definecolor{page}{RGB}{0, 0, 0}            %black
+%\definecolor{text}{RGB}{234, 234, 234}      %grey
+
+\definecolor{page}{RGB}{255, 255, 255}            %white
+\definecolor{text}{RGB}{0, 0, 0}            %black
+
+\pagecolor{page}
+\color{text}
+
+\setmainfont{NotoSans}[
+  Path               = fonts/,
+  Extension          = .ttf,
+  UprightFont        = *-Light,
+  ItalicFont         = *-LightItalic,
+  BoldFont           = *-Bold,
+  BoldItalicFont     = *-BoldItalic,
+]
+
+\setCJKmainfont{NotoSansJP}[
+  Path               = fonts/,
+  Extension          = .ttf,
+  UprightFont        = *-Light,
+  BoldFont           = *-Bold,
+]
+
+\newfontfamily\textserif{NotoSerif}[
+  Path               = fonts/,
+  Extension          = .ttf,
+  UprightFont        = *-Light,
+  ItalicFont         = *-LightItalic,
+  BoldFont           = *-Bold,
+  BoldItalicFont     = *-BoldItalic,
+]
+
+\newCJKfontfamily\textCJKserif{NotoSerifJP}[
+  Path               = fonts/,
+  Extension          = .ttf,
+  UprightFont        = *-Light,
+  BoldFont           = *-Bold,
+]
+
+\newfontfamily\textfancy{NotoSerif}[
+  Path               = fonts/,
+  Extension          = .ttf,
+  UprightFont        = *-Light,
+  ItalicFont         = *-LightItalic,
+  BoldFont           = *-Bold,
+  BoldItalicFont     = *-BoldItalic,
+]
+
+\newCJKfontfamily\textCJKfancy{KaiseiHarunoUmi}[
+  Path               = fonts/,
+  Extension          = .ttf,
+  UprightFont        = *-Regular,
+  BoldFont           = *-Bold,
+]
+
+% define \cjruby{漢字}{かんじ}
+\NewDocumentCommand{\cjruby}{mm}{%
+  {%
+    \ruby{\textCJKserif{}#1}{#2}
+  }%
+}
+
+
+%\NewDocumentCommand{\frby}[2][1]{
+%    \ruby{\textCJKfancy{}#1}{#2}
+%}
+
+\NewDocumentCommand{\internalfrby}{m m}{%
+  \ruby{\textCJKfancy{}#1}{#2}
+}
+
+\NewDocumentCommand{\frby}{m O{}}{%
+  \textcolor{page}{\makebox[0pt][l]{\internalfrby{語}{M}}}%
+  \internalfrby{#1}{#2}
+}
+
+\ExplSyntaxOn
+\NewDocumentCommand\fruby{>{\SplitList{~}}m}{\ProcessList{#1}{\fruby_map}}
+\NewDocumentCommand\fruby_map{>{\SplitArgument{1}{=}}m}{{\fruby_impl #1}}
+\NewDocumentCommand\fruby_impl{m m}{\IfNoValueTF{#2}{\frby{#1}}{\frby{#1}[#2]}}
+\ExplSyntaxOff
+
+\begin{document}
+
+\begin{center}
+    \vspace*{2cm}
+    {\Huge\bfseries\color{primary}\textCJKserif{} 語新}\\
+    \vspace{0.5cm}
+    {\Large\textserif{} toki sin}\\
+    \vspace{1cm}
+\end{center}
+\vspace{1cm}
+\hrule
+\vspace{1cm}
+
+
+% Introduction Section
+\section{Intro}
+This is 語新 {\it{}(toki sin)}.
+
+The "core" setting is a far-future world where a generation ship landed;
+but about 6 years after landing, there was a coordinated act of sabotage.
+The sabotage destroyed all power generation stations, a significant portion
+of the power grid, and all (3D) printers capable of printing circuitry.
+
+
+\textbf{\frby{語}[toki]\frby{新}[sin]}
+
+
+\frby{私}[mi]\frby{君}[sina]\frby{其}[ona]
+
+\frby{因}[tan]\frby{去}[tawa]\frby{要}[wili]\frby{集}[alasa]\frby{待}[awin]\frby{来}[kama]\frby{能}[kin]
+
+\frby{ら}[la]\frby{り}[li]\frby{ろ}[lo]
+
+\frby{い}[i]\frby{か}[ka]
+
+\frby{いん}[in]\frby{あぬ}[anu]\frby{ひ}[pi]\frby{許}[taso]
+
+\frby{不}[ala]
+
+\frby{人}[jan]\frby{于}[lon]\frby{去}[tawa]
+
+
+\newpage
+\section[人去ら]{\ruby{人}{jan}\ruby{去}{tawa}\ruby{ら}{la}}
+
+
+{
+\noindent
+\begin{minipage}[t]{3.25cm}
+{\textCJKfancy{}\LARGE
+  \fruby{人 去 ら}\\
+  \fruby{り 去 市=ison}\\
+  \fruby{り 市=ison 食=moko}\\
+  \fruby{り 開 去}\\
+}
+
+{\large
+  jan tawa la:\\
+  li tawa ison・\\
+  li ison moko・\\
+  li opin tawa／\\
+}
+
+{\scriptsize
+  There was a traveler;\\
+  she entered the market,\\
+  she bought some food,\\
+  she began to leave...\\
+}
+\end{minipage}
+\begin{minipage}[t]{3.25cm}
+{\textCJKfancy{}\LARGE
+  り\frby{終}[pini]・\\
+  り\frby{丸}[siki]\frby{切}[kipisi]、\\
+  于\frby{音}[kalama]\frby{大}[soli]・\\
+  于\frby{獣}[akisi]\frby{大}[soli]！\\
+}
+
+{\large
+  li pini・\\
+  li siki kipisi,\\
+  lon kalama soli・\\
+  lon akisi soli!\\
+}
+
+{\scriptsize
+  she stopped.\\
+  She turned around,\\
+  There was a loud sound.\\
+  There was a huge creature!\\
+}
+\end{minipage}
+\begin{minipage}[t]{3.75cm}
+\frby{獣}[akisi]ら：\\
+り\frby{黄}[jelo]\frby{木}[kasi]、\\
+り\frby{大}[soli]\frby{大}[soli]！\\
+り\frby{有}[jo]い\frby{空}[kon]\frby{悪}[iki]！\\
+\end{minipage}}
+
+{
+\large
+\noindent
+\begin{minipage}[t]{3.5cm}
+li pini,\\
+li siki kipisi,\\
+li kalama suli,\\
+li akisi suli!\\
+\end{minipage}
+\begin{minipage}[t]{3.75cm}
+akisi la,\\
+li jelo kasi,\\
+li suli suli!\\
+li jo i kon iki!\\
+\end{minipage}
+}
+
+\noindent
+\begin{minipage}[t]{6cm}
+\frby{獣}{akisi}ろ\frby{黄}{jelo}\frby{木}{kasi}ら：\\
+り\frby{要}{wili}／り\frby{要}{wili}\frby{食}{moko}、\\
+い\frby{食}{moko}ろい\frby{市}{ison}、\\
+い人ろ\frby{市}{ison}、\\
+り\frby{要}{wili}\frby{食}{moko}い\frby{家}{tomo}\frby{市}{ison}！\\
+\end{minipage}
+\begin{minipage}[t]{7cm}
+\frby{獣}{akisi}り\frby{見}{lokin}い人\frby{市}{ison}、\\
+り\frby{食}{moko}い人\frby{市}{ison}！\\
+り\frby{食}{moko}い人去！\\
+\end{minipage}
+
+
+
+\end{document}

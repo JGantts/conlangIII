@@ -5,7 +5,7 @@ const path = require("path");
 // Config
 const TEXDIR = "./documents/tex";
 const OUTDIR = `latex-aux`;
-const TEXFILE = `jgantts-conlangIII`;
+const TEXFILE = `jgantts-conlangV`;
 
 // Ensure output directory exists
 const outputPath = path.join(TEXDIR, OUTDIR);
