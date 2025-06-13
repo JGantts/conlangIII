@@ -39,6 +39,7 @@
   BoldFont           = *-Bold,
   BoldItalicFont     = *-BoldItalic,
 ]
+\newcommand\textrmlf[1]{{\NHLight#1}}
 
 \setCJKmainfont{NotoSansJP}[
   Path               = fonts/,
@@ -106,20 +107,32 @@
 \NewDocumentCommand\fruby_impl{m m}{\IfNoValueTF{#2}{\frby{#1}}{\frby{#1}[#2]}}
 \ExplSyntaxOff
 
+\def\maxvalue(#1,#2){\ifnum #1>#2 #1\else #2\fi}
+
+\NewDocumentCommand{\englishundertokisin}{m m}{%
+  \begin{minipage}[c]{\maxof{\widthof{#1}}{\widthof{#2}}}
+    \centering{#1}\scriptsize\\\centering{#2}
+  \end{minipage}%
+}
+
+
 \begin{document}
 
 \begin{center}
     \vspace*{2cm}
-    {\Huge\bfseries\color{primary}\textCJKfancy{}獣あぬ狸}\\
-    \vspace{0.5cm}
-    {\Large\textserif{}akisi anu sowili}\\
+    {\Huge\bfseries\color{primary}\fruby{獣=akisi あぬ=ano 狸=sowili}}\large\\
+    {\Large\textserif{}Akisi or Sowili?}
     \vspace{1cm}
 \end{center}
 \vspace{1cm}
 \hrule
 \vspace{1cm}
 
-\section[人去ら]{\fruby{人=jan 去=tawa ら=la}}
+\section[人去ら]{
+\englishundertokisin
+  {\fruby{人=jan 去=tawa ら=la}}
+  {\footnotesize\normalfont{}The Traveler}
+}
 {
 \noindent
 \begin{minipage}[t]{3.25cm}
@@ -178,7 +191,12 @@
 \end{minipage}
 }
 
-\section[獣ろ黄木]{\fruby{獣=akisi ろ=lo 黄=jelo 木=kasi}}
+\section[獣ろ黄木]{
+  \fruby{}
+  \englishundertokisin
+    {\fruby{獣=akisi ろ=lo 黄=jelo 木=kasi}}
+    {\footnotesize\normalfont{}The Green Creature}
+}
 {
 \noindent
 \begin{minipage}[t]{5.25cm}
