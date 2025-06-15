@@ -8,6 +8,8 @@
 \usepackage{xparse}
 \usepackage{calc}
 
+\usepackage{relsize}
+
 \usepackage{etoolbox,xstring}
 
 \usepackage{geometry}
@@ -25,8 +27,8 @@
 \definecolor{pagelight}{RGB}{255, 255, 255}            %white
 \definecolor{textlight}{RGB}{0, 0, 0}            %black
 
-\colorlet{page}{pagelight}
-\colorlet{text}{textlight}
+\colorlet{page}{pagedark}
+\colorlet{text}{textdark}
 
 \pagecolor{page}
 \color{text}
@@ -73,6 +75,12 @@
   BoldItalicFont     = *-BoldItalic,
 ]
 
+\newfontfamily\textcharm{EagleLake}[
+  Path               = fonts/,
+  Extension          = .ttf,
+  UprightFont        = *-Regular,
+]
+
 \newCJKfontfamily\textCJKfancy{KaiseiHarunoUmi}[
   Path               = fonts/,
   Extension          = .ttf,
@@ -93,11 +101,11 @@
 %}
 
 \NewDocumentCommand{\internalfrby}{m m}{%
-  \ruby{\textCJKfancy{}#1}{#2}
+  \ruby{\textCJKfancy{}#1}{\smaller\smaller\textcharm{}#2}
 }
 
 \NewDocumentCommand{\frby}{m O{}}{%
-  \textcolor{page}{\makebox[0pt][l]{\internalfrby{語}{M}}}%
+  \vphantom{\makebox[0pt][l]{\internalfrby{語}{M}}}%
   \internalfrby{#1}{#2}
 }
 
@@ -111,7 +119,7 @@
 
 \NewDocumentCommand{\englishundertokisin}{m m}{%
   \begin{minipage}[c]{\maxof{\widthof{#1}}{\widthof{#2}}}
-    \centering{#1}\scriptsize\\\centering{#2}
+    \centering{#1}\small\\\centering{#2}
   \end{minipage}%
 }
 
@@ -120,8 +128,71 @@
 
 \begin{center}
     \vspace*{2cm}
-    {\Huge\bfseries\color{primary}\fruby{獣=akisi あぬ=ano 狸=sowili}}\large\\
-    {\Large\textserif{}Akisi or Sowili?}
+    {\fontsize{48}{60}\bfseries\color{primary}\fruby{獣=akisi あの 狸=sowili}}
+    \vspace{1cm}
+\end{center}
+\vspace{1cm}
+\hrule
+\vspace{1cm}
+
+\section[人去ら]{\Huge\fruby{人 去 ら}}
+{
+\noindent
+\begin{minipage}[t]{3.25cm}
+{\textCJKfancy{}\LARGE
+  \fruby{人 去 ら ：}\\
+  \fruby{り 去 市=ison ・}\\
+  \fruby{り 市=ison い 食=moko ・}\\
+  \fruby{り 開 去 ／}\\
+}
+\end{minipage}
+\begin{minipage}[t]{3.25cm}
+{\textCJKfancy{}\LARGE
+  \fruby{り 終=pini 多=moti ・}\\
+  \fruby{り 丸=siki 切=kipisi 、}\\
+  \fruby{于 音=kalama 大=soli ・}\\
+  \fruby{于 獣=akisi 大=soli ！}\\
+}
+\end{minipage}
+\begin{minipage}[t]{3.75cm}
+{\textCJKfancy{}\LARGE
+  \fruby{獣=akisi ら ：}\\
+  \fruby{り 黄=silo 木=kasi 、}\\
+  \fruby{り 大=soli 大=soli ！}\\
+  \fruby{り 有=jo い 空=kon 悪=iki ！}\\
+}
+\end{minipage}
+}
+
+\section[獣ろ鬥い人]{\Huge\fruby{獣=akisi ろ 鬥=otala い 人}}
+
+\noindent
+\begin{minipage}[t]{5.25cm}
+{\textCJKfancy{}\LARGE
+  \fruby{獣=akisi ろ 黄=silo 木=kasi ら 、}
+  \fruby{り 要=wili ／ り 要=wili 食=moko 、}\\
+  \fruby{い 食=moko ろ い 市=ison 、}\\
+  \fruby{い 人=jan ろ 市=ison 、}\\
+  \fruby{り 要=wili 食=moko い 家=tomo 市=ison ！}\\
+}
+\end{minipage}
+\begin{minipage}[t]{3.75cm}
+{\textCJKfancy{}\LARGE
+  \fruby{人 去=tawa り 去=tawa 許=taso 不=ala}\\
+  \fruby{人 去=tawa り 人 鬥=otala ！}\\
+  \fruby{人 鬥=otala ろ 去=tawa ら}\\
+  \fruby{り 開=opin 有=jo い 具=ilo 鬥=otala}\\
+  \fruby{り 作=pali い 穴=lopa ひ 内 獣=akisi 、}\\
+  \fruby{獣=akisi ろ 黄=silo 木=kasi 、}\\
+}
+\end{minipage}
+
+\newpage
+\setcounter{section}{0}
+\begin{center}
+    \vspace*{2cm}
+    {\fontsize{48}{60}\bfseries\color{primary}\fruby{獣=akisi あの 狸=sowili}}\LARGE\\
+    {\Huge\textserif{}Akisi or Sowili?}
     \vspace{1cm}
 \end{center}
 \vspace{1cm}
@@ -129,9 +200,9 @@
 \vspace{1cm}
 
 \section[人去ら]{
-\englishundertokisin
-  {\fruby{人=jan 去=tawa ら=la}}
-  {\footnotesize\normalfont{}The Traveler}
+\Huge\englishundertokisin
+  {\fruby{人 去 ら}}
+  {\large\normalfont{}The Traveler}
 }
 {
 \noindent
@@ -141,11 +212,6 @@
   \fruby{り 去 市=ison ・}\\
   \fruby{り 市=ison い 食=moko ・}\\
   \fruby{り 開 去 ／}\\
-  \large
-  jan tawa la：\\
-  li tawa ison・\\
-  li ison i moko・\\
-  li opin tawa／\\
   \scriptsize
   There was a traveler;\\
   she entered the market,\\
@@ -159,11 +225,6 @@
   \fruby{り 丸=siki 切=kipisi 、}\\
   \fruby{于 音=kalama 大=soli ・}\\
   \fruby{于 獣=akisi 大=soli ！}\\
-  \large
-  li pini moti・\\
-  li siki kipisi、\\
-  lon kalama soli・\\
-  lon akisi soli！\\
   \scriptsize
   she stopped suddenly.\\
   She turned around,\\
@@ -177,11 +238,6 @@
   \fruby{り 黄=jelo 木=kasi 、}\\
   \fruby{り 大=soli 大=soli ！}\\
   \fruby{り 有=jo い 空=kon 悪=iki ！}\\
-  \large
-  akisi la：\\
-  li jelo kasi、\\
-  li suli suli！\\
-  li jo i kon iki！\\
   \scriptsize
   This creature, \\
   it was green like a tree,\\
@@ -192,12 +248,11 @@
 }
 
 \section[獣ろ黄木]{
-  \fruby{}
-  \englishundertokisin
-    {\fruby{獣=akisi ろ=lo 黄=jelo 木=kasi}}
-    {\footnotesize\normalfont{}The Green Creature}
+  \Huge\englishundertokisin
+    {\fruby{獣=akisi ろ 黄=jelo 木=kasi}}
+    {\large\normalfont{}The Green Creature}
 }
-{
+
 \noindent
 \begin{minipage}[t]{5.25cm}
 {\textCJKfancy{}\LARGE
@@ -206,85 +261,38 @@
   \fruby{い 食=moko ろ い 市=ison 、}\\
   \fruby{い 人=jan ろ 市=ison 、}\\
   \fruby{り 要=wili 食=moko い 家=tomo 市=ison ！}\\
-  \large
-  akisi lo jelo kasi la、\\
-  li wili／li wili moko、\\
-  i moko lo i ison、\\
-  i jan lo ison、\\
-  li wili moko i tomo ison！\\
   \scriptsize
   This creature, green like a tree,\\
-  it wanted... it wanted to eat\\
-  the market food,\\
-  the market people.\\
+  it wanted... it wanted to eat,\\
+  to eat the market food,\\
+  to eat the market people.\\
   It wanted to eat the market house!\\
 }
 \end{minipage}
-\begin{minipage}[t]{5.25cm}
-{\textCJKfancy{}\LARGE
-  \fruby{獣=akisi り 見=lokin い 人 市=ison、}\\
-  \fruby{り 開=opin 有=jo い 人 市=ison ！}\\
-  \fruby{り 食=moko い 人 市=ison ！}\\
-  \fruby{り 開=opin 見=lokin い 人 去 ／}\\
-  \large
-  akisi li lokin i jan ison、\\
-  li opin jo i jan ison！\\
-  li moko i jan ison！\\
-  li opin lokin i jan tawa／\\
-  \scriptsize
-  The creature saw the salesperson.\\
-  It grabbed the salesperson!\\
-  It ate the salesperson!\\
-  It turned to the traveler...\\
-}
-\end{minipage}
-\begin{minipage}[t]{6.25cm}
-{\textCJKfancy{}\LARGE
-  \fruby{獣=akisi り 見=lokin い 人 市=ison、}\\
-  \fruby{り 開=opin 有=jo い 人 市=ison ！}\\
-  \fruby{り 食=moko い 人 市=ison ！}\\
-  \fruby{り 開=opin 見=lokin い 人 去 ／}\\
-  \large
-  akisi li lokin i jan ison、\\
-  li opin jo i jan ison！\\
-  li moko i jan ison！\\
-  li opin lokin i jan tawa／\\
-  \scriptsize
-  The creature saw the salesperson.\\
-  It grabbed the salesperson!\\
-  It ate the salesperson!\\
-  It turned to the traveler...\\
-}
-\end{minipage}
-}
 
 \newpage
 % Introduction Section
-\section{Appindex}
-This is 語新 {\it{}(toki sin)}.
+\section[Appendix]{\Huge{}Appendix}
+This is written in 言新 {\it{}(toki sin)}.\\
 
-The "core" setting is a far-future world where a generation ship landed;
-but about 6 years after landing, there was a coordinated act of sabotage.
-The sabotage destroyed all power generation stations, a significant portion
-of the power grid, and all (3D) printers capable of printing circuitry.
+Here are the 画多 {\it{}(sitilin moti)},
+common 画字 {\it{}(sitilin kansi)}.
+画 {\it{}(sitilin)} which aren't on this list will frequently have ruby text above them to assist in reading.\\
 
+\Huge
+\fruby{私=mi 君=sina 其=ona}
 
-\textbf{\frby{語}[toki]\frby{新}[sin]}
+\fruby{因=tan 去=tawa 要=wili 集=alasa 待=awin 来=kama 能=kin}
 
+\fruby{ら=la り=li ろ=lo}
 
-\frby{私}[mi]\frby{君}[sina]\frby{其}[ona]
+\fruby{い=i か=ka}
 
-\frby{因}[tan]\frby{去}[tawa]\frby{要}[wili]\frby{集}[alasa]\frby{待}[awin]\frby{来}[kama]\frby{能}[kin]
+\fruby{いん=in あの=ano ひ=pi 許=taso 内=insa}
 
-\frby{ら}[la]\frby{り}[li]\frby{ろ}[lo]
+\fruby{不=ala}
 
-\frby{い}[i]\frby{か}[ka]
-
-\frby{いん}[in]\frby{あぬ}[anu]\frby{ひ}[pi]\frby{許}[taso]
-
-\frby{不}[ala]
-
-\frby{人}[jan]\frby{于}[lon]\frby{去}[tawa]
+\fruby{人=jan 于=lon 去=tawa}
 
 
 
