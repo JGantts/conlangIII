@@ -9,10 +9,18 @@
 \usepackage{calc}
 
 \usepackage{relsize}
+\usepackage{fancyhdr}
 
 \usepackage{etoolbox,xstring}
 
 \usepackage{geometry}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{獣あぬ狸}
+\fancyhead[R]{akesi anu soweli}
+\fancyfoot[L]{Akesi or Soweli?}
+
 \geometry{legalpaper, portrait, margin=2cm}
 
 \definecolor{primary}{RGB}{47, 128, 190}    % Muted Blue
@@ -27,8 +35,8 @@
 \definecolor{pagelight}{RGB}{255, 255, 255}            %white
 \definecolor{textlight}{RGB}{0, 0, 0}            %black
 
-\colorlet{page}{pagedark}
-\colorlet{text}{textdark}
+\colorlet{page}{pagelight}
+\colorlet{text}{textlight}
 
 \pagecolor{page}
 \color{text}
@@ -89,7 +97,7 @@
 ]
 
 % define \cjruby{漢字}{かんじ}
-\NewDocumentCommand{\cjruby}{mm}{%
+\NewDocumentCommand{\cjruby}{m O{}}{%
   {%
     \ruby{\textCJKserif{}#1}{#2}
   }%
@@ -115,6 +123,12 @@
 \NewDocumentCommand\fruby_impl{m m}{\IfNoValueTF{#2}{\frby{#1}}{\frby{#1}[#2]}}
 \ExplSyntaxOff
 
+\ExplSyntaxOn
+\NewDocumentCommand\rruby{>{\SplitList{~}}m}{\ProcessList{#1}{\rruby_map}}
+\NewDocumentCommand\rruby_map{>{\SplitArgument{1}{=}}m}{{\rruby_impl #1}}
+\NewDocumentCommand\rruby_impl{m m}{\IfNoValueTF{#2}{\cjruby{#1}}{\cjruby{#1}[#2]}}
+\ExplSyntaxOff
+
 \def\maxvalue(#1,#2){\ifnum #1>#2 #1\else #2\fi}
 
 \NewDocumentCommand{\englishundertokisin}{m m}{%
@@ -128,7 +142,7 @@
 
 \begin{center}
     \vspace*{2cm}
-    {\fontsize{48}{60}\bfseries\color{primary}\fruby{獣=akisi あの 狸=sowili}}
+    {\fontsize{48}{60}\bfseries\color{primary}\fruby{獣=akesi あぬ 狸=soweli}}
     \vspace{1cm}
 \end{center}
 \vspace{1cm}
@@ -138,80 +152,170 @@
 \section[人去ら]{\Huge\fruby{人 去 ら}}
 {
 \noindent
-\begin{minipage}[t]{3.25cm}
-{\textCJKfancy{}\LARGE
+\begin{minipage}[t]{5.75cm}
+{\textCJKfancy{}\huge
   \fruby{人 去 ら ：}\\
-  \fruby{り 去 市=ison ・}\\
-  \fruby{り 市=ison い 食=moko ・}\\
+  \fruby{り 去 市=esun ・}\\
+  \fruby{り 市=esun え 食=moku ・}\\
   \fruby{り 開 去 ／}\\
 }
 \end{minipage}
-\begin{minipage}[t]{3.25cm}
-{\textCJKfancy{}\LARGE
-  \fruby{り 終=pini 多=moti ・}\\
-  \fruby{り 丸=siki 切=kipisi 、}\\
-  \fruby{于 音=kalama 大=soli ・}\\
-  \fruby{于 獣=akisi 大=soli ！}\\
+\begin{minipage}[t]{5.75cm}
+{\textCJKfancy{}\huge
+  \fruby{り 終=pini 多=mute ・}\\
+  \fruby{り 丸=sike 切=kipisi 、}\\
+  \fruby{于 音=kalama 大=suli ・}\\
+  \fruby{于 獣=akesi 大=suli ！}\\
 }
 \end{minipage}
-\begin{minipage}[t]{3.75cm}
-{\textCJKfancy{}\LARGE
-  \fruby{獣=akisi ら ：}\\
-  \fruby{り 黄=silo 木=kasi 、}\\
-  \fruby{り 大=soli 大=soli ！}\\
-  \fruby{り 有=jo い 空=kon 悪=iki ！}\\
+\begin{minipage}[t]{5.75cm}
+{\textCJKfancy{}\huge
+  \fruby{獣=akesi ら ：}\\
+  \fruby{り 黄=jelo 木=kasi 、}\\
+  \fruby{り 大=suli 大=suli ！}\\
+  \fruby{り 有=jo え 空=kon 悪=ike ！}\\
 }
 \end{minipage}
 }
 
-\section[獣ろ鬥い人]{\Huge\fruby{獣=akisi ろ 鬥=otala い 人}}
+\section[獣ひ鬥え人]{\Huge\fruby{獣=akesi ひ 鬥=utala え 人}}
 
 \noindent
-\begin{minipage}[t]{5.25cm}
-{\textCJKfancy{}\LARGE
-  \fruby{獣=akisi ろ 黄=silo 木=kasi ら 、}
-  \fruby{り 要=wili ／ り 要=wili 食=moko 、}\\
-  \fruby{い 食=moko ろ い 市=ison 、}\\
-  \fruby{い 人=jan ろ 市=ison 、}\\
-  \fruby{り 要=wili 食=moko い 家=tomo 市=ison ！}\\
+\begin{minipage}[t]{5.75cm}
+{\textCJKfancy{}\huge
+  \fruby{獣=akesi ひ 黄=jelo 木=kasi ら 、}
+  \fruby{り 要 ／ り 要 食=moku 、}\\
+  \fruby{え 食=moku え ひ 市=esun 、}\\
+  \fruby{え 人=jan ひ 市=esun 、}\\
+  \fruby{り 要 食=moku え 家=tomo 市=esun ！}\\
+  \fruby{獣=akesi ひ 黄=jelo 木=kasi ・}\\
 }
+\end{minipage}
+\begin{minipage}[t]{5.75cm}
+{\textCJKfancy{}\huge
+  \fruby{人 去 り 去 許=taso 不=ala 、}\\
+  \fruby{人 去 り 人 鬥=utala ！}\\
+  \fruby{人 鬥=utala ひ 去 ら ：}\\
+  \fruby{り 開=open 有=jo え 支=palisa}\hspace{0.1em}\fruby{鬥=utala 、}\\
+  \fruby{り 穴=lupa 力=wawa え 獣=akesi 、}\\
+  \fruby{獣=akesi ひ 黄=jelo 木=kasi ・}\\
+}
+
 \end{minipage}
 \begin{minipage}[t]{3.75cm}
-{\textCJKfancy{}\LARGE
-  \fruby{人 去=tawa り 去=tawa 許=taso 不=ala}\\
-  \fruby{人 去=tawa り 人 鬥=otala ！}\\
-  \fruby{人 鬥=otala ろ 去=tawa ら}\\
-  \fruby{り 開=opin 有=jo い 具=ilo 鬥=otala}\\
-  \fruby{り 作=pali い 穴=lopa ひ 内 獣=akisi 、}\\
-  \fruby{獣=akisi ろ 黄=silo 木=kasi 、}\\
+{\textCJKfancy{}\huge
+  \fruby{獣=akesi り 音=kalama 悪=ike 大=suli  ；}\\
+  \fruby{獣=akesi え り 打=pakala ！}\\
+  \fruby{獣=akesi り 音=kalama 悪=ike 小=lili  ；}\\
+  \fruby{獣=akesi え り 打=pakala ！}\\
+  \fruby{獣=akesi り 来 音=kalama 不=ala ；}\\
+  \fruby{獣=akesi え り 打=pakala ！}\\
+  \fruby{獣=akesi え り 死=moli 因 人 ・}\\
+  \fruby{獣=akesi ひ 黄=jelo 木=kasi ・}\\
 }
 \end{minipage}
+
+\section[獣り打不]{\Huge\fruby{獣=akesi り 打=pakala 不}}
+
+\noindent
+\begin{minipage}[t]{5.75cm}
+{\textCJKfancy{}\huge
+  \fruby{獣=akesi ひ 黄=jelo 木=kasi 、}\\
+  \fruby{え り 死=moli  、}\\
+  \fruby{因 人 ひ 去 、}\\
+  \fruby{ひ 鬥=utala え 面=supa え 前=sinpin ・}\\
+}
+\end{minipage}
+\begin{minipage}[t]{5.75cm}
+{\textCJKfancy{}\huge
+  \fruby{獣=akesi ひ 黄=jelo 木=kasi 、}\\
+  \fruby{り 来 赤=loje 、}\\
+  \fruby{り 来 赤=loje ひ 水=telo 体=sijelo ・}\\
+}
+\end{minipage}
+\begin{minipage}[t]{5.75cm}
+{\textCJKfancy{}\huge
+  \fruby{許 ／}\\
+  \fruby{獣=akesi り 鬥=utala 不、}\\
+  \fruby{獣=akesi り 打=pakala 不、}\\
+  \fruby{獣=akesi ひ 黄=jelo 木=kasi 、}\\
+  \fruby{り 獣=akesi 良=pona 良=pona ・}\\
+  \fruby{許 ／ 　 獣=akesi ／}\\
+  \fruby{り 獣=akesi 无=weka ・}\\
+}
+\end{minipage}
+
+\section[人鬥ひ去]{\Huge\fruby{人 鬥=utala ひ 去}}
+{
+\noindent
+\begin{minipage}[t]{5.75cm}
+{\textCJKfancy{}\huge
+  \fruby{人 鬥=utala ひ 去 り 去 ・}\\
+}
+\end{minipage}
+}
+
+\newpage
+
+
+\section[Appendix]{\Huge{}Appendix}
+This is written in 言新 {\it{}(toki sin)}.\\
+
+\section[画多 – Common Characters]{
+  \Huge\englishundertokisin
+    {\rruby{画=sitelen}\hspace{0.3em}\rruby{多=mute}}
+    {\small\normalfont{}Common Characters}
+}
+
+Here are the 画多 {\it{}(sitelen mute)},
+common 画字 {\it{}(sitelen kansi)}.
+画 {\it{}(sitelen)} which aren't on this list will frequently have ruby text above them to assist in reading.\\
+
+{
+\Huge
+\rruby{私=mi 君=sina 其=ona}
+
+\rruby{因=tan 要=wile 来=kama 能=kin 開=open}
+
+\rruby{ら=la り=li ひ=pi}
+
+\rruby{え=e}
+
+\rruby{えん=en あぬ=anu 許=taso 内=insa}
+
+\rruby{不=ala}
+
+\rruby{人=jan 于=lon 去=tawa}
+}
+
 
 \newpage
 \setcounter{section}{0}
+  \vspace*{2cm}
 \begin{center}
-    \vspace*{2cm}
-    {\fontsize{48}{60}\bfseries\color{primary}\fruby{獣=akisi あの 狸=sowili}}\LARGE\\
-    {\Huge\textserif{}Akisi or Sowili?}
-    \vspace{1cm}
+    {\fontsize{48}{60}\bfseries\color{primary}\rruby{獣=akesi あぬ=anu 狸=soweli}}\LARGE\\
 \end{center}
+\begin{center}
+    {\Huge\textserif{}Friend or Foe}
+\end{center}
+\vspace{1cm}
 \vspace{1cm}
 \hrule
 \vspace{1cm}
 
 \section[人去ら]{
 \Huge\englishundertokisin
-  {\fruby{人 去 ら}}
+  {\rruby{人=jan 去=tawa ら=la}}
   {\large\normalfont{}The Traveler}
 }
 {
 \noindent
-\begin{minipage}[t]{3.25cm}
-{\textCJKfancy{}\LARGE
-  \fruby{人 去 ら ：}\\
-  \fruby{り 去 市=ison ・}\\
-  \fruby{り 市=ison い 食=moko ・}\\
-  \fruby{り 開 去 ／}\\
+\begin{minipage}[t]{5.75cm}
+{\textCJKserif\large
+  \rruby{人=jan 去=tawa ら=la ：}\\
+  \rruby{り=li 去=tawa 市=esun ・}\\
+  \rruby{り=li 市=esun え=e 食=moku ・}\\
+  \rruby{り=li 開=open 去=tawa ／}\\
   \scriptsize
   There was a traveler;\\
   she entered the market,\\
@@ -219,12 +323,12 @@
   she began to leave...\\
 }
 \end{minipage}
-\begin{minipage}[t]{3.25cm}
-{\textCJKfancy{}\LARGE
-  \fruby{り 終=pini 多=moti ・}\\
-  \fruby{り 丸=siki 切=kipisi 、}\\
-  \fruby{于 音=kalama 大=soli ・}\\
-  \fruby{于 獣=akisi 大=soli ！}\\
+\begin{minipage}[t]{5.75cm}
+{\textCJKserif{}\large
+  \rruby{り=li 終=pini 多=mute ・}\\
+  \rruby{り=li 丸=sike 切=kipisi 、}\\
+  \rruby{于=lon 音=kalama 大=suli ・}\\
+  \rruby{于=lon 獣=akesi 大=suli ！}\\
   \scriptsize
   she stopped suddenly.\\
   She turned around,\\
@@ -232,12 +336,12 @@
   There was a huge creature!\\
 }
 \end{minipage}
-\begin{minipage}[t]{3.75cm}
-{\textCJKfancy{}\LARGE
-  \fruby{獣=akisi ら ：}\\
-  \fruby{り 黄=jelo 木=kasi 、}\\
-  \fruby{り 大=soli 大=soli ！}\\
-  \fruby{り 有=jo い 空=kon 悪=iki ！}\\
+\begin{minipage}[t]{5.75cm}
+{\textCJKserif{}\large
+  \rruby{獣=akesi ら=la ：}\\
+  \rruby{り=li 黄=jelo 木=kasi 、}\\
+  \rruby{り=li 大=suli 大=suli ！}\\
+  \rruby{り=li 有=jo え=e 空=kon 悪=ike ！}\\
   \scriptsize
   This creature, \\
   it was green like a tree,\\
@@ -247,57 +351,139 @@
 \end{minipage}
 }
 
-\section[獣ろ黄木]{
+\section[獣ひ鬥え人]{
   \Huge\englishundertokisin
-    {\fruby{獣=akisi ろ 黄=jelo 木=kasi}}
-    {\large\normalfont{}The Green Creature}
+    {\rruby{獣=akesi ひ=pi 鬥=utala え=e 人=jan}}
+    {\large\normalfont{}When the Creature Attacked}
 }
 
 \noindent
-\begin{minipage}[t]{5.25cm}
-{\textCJKfancy{}\LARGE
-  \fruby{獣=akisi ろ 黄=jelo 木=kasi ら 、}
-  \fruby{り 要=wili ／ り 要=wili 食=moko 、}\\
-  \fruby{い 食=moko ろ い 市=ison 、}\\
-  \fruby{い 人=jan ろ 市=ison 、}\\
-  \fruby{り 要=wili 食=moko い 家=tomo 市=ison ！}\\
+\begin{minipage}[t]{5.75cm}
+{\textCJKserif{}\large
+  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi ら=la 、}\\
+  \rruby{り=li 要=wile ／ り=li 要=wile 食=moku 、}\\
+  \rruby{え=e 食=moku え=e ひ=pi 市=esun 、}\\
+  \rruby{え=e 人=jan ひ=pi 市=esun 、}\\
+  \rruby{り=li 要=wile 食=moku え=e 家=tomo 市=esun ！}\\
+  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi ・}\\
   \scriptsize
   This creature, green like a tree,\\
   it wanted... it wanted to eat,\\
   to eat the market food,\\
   to eat the market people.\\
   It wanted to eat the market house!\\
+  This tree-green creature.\\
+}
+\end{minipage}
+\begin{minipage}[t]{5.75cm}
+{\textCJKserif{}\large
+  \rruby{人=jan 去=tawa り=li 去=tawa 許=taso 不=ala 、}\\
+  \rruby{人=jan 去=tawa り=li 人=jan 鬥=utala ！}\\
+  \rruby{人=jan 鬥=utala ひ=pi 去=tawa ら=la ：}\\
+  \rruby{り=li 開=open 有=jo え=e 支=palisa 鬥=utala 、}\\
+  \rruby{り=li 穴=lupa え=e 獣=akesi 、}\\
+  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi ・}\\
+    \scriptsize
+  The traveler was not just a traveler.\\
+  She was a warrior!\\
+  This traveling warrior,\\
+  she grabbed her weapon,\\
+  she pierced the beast,\\
+  the tree-green creature.\\
+}
+\end{minipage}
+\begin{minipage}[t]{5.75cm}
+{\textCJKserif{}\large
+  \rruby{獣=akesi り=li 音=kalama 悪=ike 大=suli  ；}\\
+  \rruby{獣=akesi え=e り=li 打=pakala ！}\\
+  \rruby{獣=akesi り=li 音=kalama 悪=ike 小=lili  ；}\\
+  \rruby{獣=akesi え=e り=li 打=pakala ！}\\
+  \rruby{獣=akesi り=li 来=kama}\hspace{0.2em}\rruby{音=kalama 不=ala ；}\\
+  \rruby{獣=akesi え=e り=li 打=pakala ！}\\
+  \rruby{獣=akesi え=e り=li 死=moli 因=tan 人=jan 、}\\
+  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi ・}\\
+  \scriptsize
+  The creature let out a loud, horrid, sound;\\
+  the creature is wounded!\\
+  The creature let out a small, weak, sound;\\
+  the creature is wounded!\\
+  The creature fell silent;\\
+  the creature is wounded!\\
+  the creature is dead, killed by humans,\\
+  the tree-green creature.\\
 }
 \end{minipage}
 
+\section[獣り打不]{
+  \Huge\englishundertokisin
+    {\rruby{獣=akesi り=li 打=pakala 不=ala}}
+    {\large\normalfont{}The Creature Never Fought}
+}
+
+\noindent
+\begin{minipage}[t]{5.75cm}
+{\textCJKserif{}\large
+  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi 、}\\
+  \rruby{え=e り=li 死=moli  、}\\
+  \rruby{因=tan 人=jan ひ=pi 去=tawa 、}\\
+  \rruby{ひ=pi 鬥=utala え=e 面=supa え 前=sinpin ・}\\
+  \scriptsize
+  The creature, the tree-green creature,\\
+  it was killed
+  by the one who traveled,\\
+  the one who fought, against the floor and the wall.\\
+}
+\end{minipage}
+\begin{minipage}[t]{5.75cm}
+{\textCJKserif{}\large
+  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi 、}\\
+  \rruby{り=li 来=kama 赤=loje 、}\\
+  \rruby{り=li 来=kama 赤=loje ひ=pi 水=telo 体=sijelo ・}\\
+  \scriptsize
+  The creature, the tree-green creature,\\
+  it was red,\\
+  it was blood red.\\
+}
+\end{minipage}
+\begin{minipage}[t]{5.75cm}
+{\textCJKserif{}\large
+  \rruby{許=taso ／}\\
+  \rruby{獣=akesi り=li 鬥=utala 不=ala、}\\
+  \rruby{獣=akesi り=li 打=pakala 不=ala、}\\
+  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi 、}\\
+  \rruby{り=li 獣=akesi 良=pona 良=pona ・}\\
+  \rruby{許=taso ／ 　 獣=akesi ／}\\
+  \rruby{り=li 獣=akesi 无=weka ・}\\
+  \scriptsize
+  But...\\
+  the creature had never fought,\\
+  the creature had never attacked,\\
+  the creature, the tree-green creature,\\
+  it was a good, good creature.\\
+  But... the creature...\\
+  it was no more.\\
+}
+\end{minipage}
+
+\section[人去ひ鬥]{
+  \Huge\englishundertokisin
+    {\rruby{人=jan 鬥=utala ひ=pi 去=tawa}}
+    {\large\normalfont{}The Traveling Warrior}
+}
+{
+\noindent
+\begin{minipage}[t]{5.75cm}
+{\textCJKserif{}\large
+  \rruby{人=jan 鬥=utala ひ=pi 去=tawa り=li 去=tawa ・}\\
+    \scriptsize
+  The traveling warrior left.\\
+}
+\end{minipage}
+}
+
 \newpage
-% Introduction Section
+
 \section[Appendix]{\Huge{}Appendix}
 This is written in 言新 {\it{}(toki sin)}.\\
-
-Here are the 画多 {\it{}(sitilin moti)},
-common 画字 {\it{}(sitilin kansi)}.
-画 {\it{}(sitilin)} which aren't on this list will frequently have ruby text above them to assist in reading.\\
-
-\Huge
-\fruby{私=mi 君=sina 其=ona}
-
-\fruby{因=tan 去=tawa 要=wili 集=alasa 待=awin 来=kama 能=kin}
-
-\fruby{ら=la り=li ろ=lo}
-
-\fruby{い=i か=ka}
-
-\fruby{いん=in あの=ano ひ=pi 許=taso 内=insa}
-
-\fruby{不=ala}
-
-\fruby{人=jan 于=lon 去=tawa}
-
-
-
-\newpage
-
-
 
 \end{document}
