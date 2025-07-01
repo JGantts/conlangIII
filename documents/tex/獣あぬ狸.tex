@@ -14,7 +14,8 @@
 \usepackage{etoolbox,xstring}
 
 \usepackage{geometry}
-
+\usepackage{gb4e}
+\usepackage{expex}
 
 \geometry{a4paper, portrait, margin=1.5cm}
 
@@ -36,8 +37,8 @@
 \definecolor{pagelight}{RGB}{255, 255, 255}            %white
 \definecolor{textlight}{RGB}{0, 0, 0}            %black
 
-\colorlet{page}{pagelight}
-\colorlet{text}{textlight}
+\colorlet{page}{pagedark}
+\colorlet{text}{textdark}
 
 \pagecolor{page}
 \color{text}
@@ -141,6 +142,66 @@
 
 \begin{document}
 
+Hello, \myname!
+
+{
+\ex
+\begingl
+\glpreamble 人去ら：り去市・り来市え食火・//
+\gla 人 去 ら : り 去 市 . り 来 市 え 食 火 . //
+\glb jan tawa la : li tawa esun . li kama esun e moku seli . //
+\glb person move TOP : VBLZ move market . VBLZ begin market DO food hot . //
+\glft ‘Regarding (a) traveler: (She) entered (a) market. (She) began to purchase (some) street food.’//
+\endgl
+\xe
+}{
+\ex
+\begingl
+\glpreamble 画添り于皮手・り終市・于音大！//
+\gla 画 添 り 于 皮 手 ・ り 終 市 ・ 于 音 大 ! //
+\glb sitelen namako li lon selo luka . li pini esun . lon kalama suli ! //
+\glb marking ornamental VBLZ exist skin arm . VBLZ finish market . exist sound large ! //
+\glft ‘Tattoos were on (her) arm. (She) finished (her) purchase. There was a loud sound!’//
+\endgl
+\xe
+}{
+\ex
+\begingl
+\glpreamble 魚ろ要食・//
+\gla 魚 ろ 要 食 //
+\glb kala lo wile moku//
+\glb fish LO want {food/eat}//
+\glft ‘fish which want to eat’//
+\endgl
+\xe
+}{
+\ex
+\begingl
+\glpreamble 魚ひ要食・//
+\gla 魚 ひ 要 食//
+\glb kala pi wile moku//
+\glb fish PI want {food/eat}//
+\glft ‘fish of hunger’//
+\endgl
+\xe
+}
+
+{\Huge{}
+\noindent%
+\rruby{人=jan カント=kanto}\\
+\\
+\begin{center}
+\rruby{人=jan カント=kanto 因=tan}\\
+\rruby{土=ma 山=nena アハラシヤ=apalasija}\\
+\end{center}
+\begin{center}
+\fruby{人=jan カント=kanto 因=tan}\\
+\fruby{土=ma 山=nena アハラシヤ=apalasija}\\
+\end{center}
+}
+
+\newpage
+
 \begin{center}
     \vspace*{2cm}
     {\fontsize{48}{60}\bfseries\color{primary}\fruby{獣=akesi あぬ 狸=soweli}}
@@ -155,23 +216,30 @@
 \noindent%
 \begin{minipage}[t]{5.3633cm}
 {\textCJKfancy{}\huge
-  \fruby{人 去 ら :}\\
-  \fruby{り 去 市=esun ･}\\
-  \fruby{り 有=jo え 画=sitelen 体=sijelo ･}\\
-  \fruby{り 来 市=esun 、}\\
-  \fruby{え 食=moku 添=namako ･}\\
+  \fruby{人 去 ら ：}
+  \fruby{り 去 土 市=esun ・}\\
+  \fruby{り 市=esun え 食=moku 新=sin ・}\\
+  \fruby{食=moku ひ 米=pan 甜=suwi ・}\\
+  \\
+  \fruby{画=sitelen 皮=selo ら ：}\\
+  \fruby{り 于 手=luka 人 ･}\\
+  \fruby{画=sitelen り 魚=kala 去 二=tu ・}\\
+  \fruby{魚=kala ろ 去 丸=sike ・}\\
 }
 \end{minipage}
 \hspace{0.75cm}%
 \noindent%
 \begin{minipage}[t]{5.3633cm}
 {\textCJKfancy{}\huge
-  \fruby{于 音=kalama 大=suli !}\\
-  \fruby{人 去 ら :}\\
-  \fruby{り 開 見=lukin /}\\
-  \fruby{り 終=pini 多=mute ･ り 丸=sike 切=kipisi ､}\\
-  \fruby{于 音=kalama 大=suli ･}\\
-  \fruby{于 獣=akesi 大=suli !}\\
+  \fruby{人 去 ら ：}
+  \fruby{り 来 集=alasa 市=esun 、}\\
+  \fruby{え 物=ijo 多=mute え 米=pan 、}\\
+  \fruby{え 添=namako え 布=len ・}\\
+  \\
+  \fruby{于 音=kalama 大=suli ！}\\
+  \fruby{人 去 り 終=pini ･}
+  \fruby{り 開=open 多=mute え 口=uta ・}\\
+  \fruby{于 獣=akesi 大=suli ら !}\\
 }
 \end{minipage}
 \hspace{0.75cm}%
@@ -277,7 +345,7 @@ This is written in 言新 {\it{}(toki sin)}.\\
 
 Here are the 画多 {\it{}(sitelen mute)},
 common 画字 {\it{}(sitelen kansi)}.
-画 {\it{}(sitelen)} which aren't on this list will frequently have ruby text above them to assist in reading.\\
+画 {\it{}(sitelen)} which arent on this list will frequently have ruby text above them to assist in reading.\\
 
 {
 \Huge
@@ -289,14 +357,88 @@ common 画字 {\it{}(sitelen kansi)}.
 
 \rruby{え=e}
 
-\rruby{えん=en あぬ=anu 許=taso 内=insa}
+\rruby{あ=a えん=en あぬ=anu 許=taso 内=insa}
 
-\rruby{不=ala}
+\rruby{不=ala 何=seme}
 
 \rruby{人=jan 于=lon 去=tawa 土=ma}
 }
 
+\newpage
+\section[画ひ名无 – sitelen pi nimi weka]{
+  \Huge\englishundertokisin
+    {\rruby{画=sitelen ひ=pi 名=nimi 无=weka}}
+    {\small\normalfont{}Characters for Foreign Words}
+}
 
+
+
+\section[画片仮名 – Sitelen Katakana]{
+  \Huge\englishundertokisin
+    {\rruby{画=sitelen カタカナ=katakana}}
+    {\small\normalfont{}Katakana Characters}
+}
+
+{
+\Huge
+\noindent
+\rruby{ア=a イ=i ウ=u エ=e オ=o}\\
+  \rruby{マ=ma ミ=mi ム=mu メ=me モ=mo}\\
+  \rruby{ナ=na ニ=ni ヌ=nu ネ=ne ノ=no}\\
+  \rruby{パ=pa ピ=pi プ=pu ペ=pe ポ=po}\\
+  \rruby{タ=ta 　 ツ=tu テ=te ト=to}\\
+  \rruby{カ=ka キ=ki ク=ku ケ=ke コ=ko}\\
+  \rruby{サ=sa シ=si ス=su セ=se ソ=so}\\
+  \rruby{ラ=la リ=li ル=lu レ=le ロ=lo}\\
+  \rruby{ヤ=ya 　 ユ=yu イエ=ye ヨ=yo}\\
+  \rruby{ワ=wa ヰ=wi 　 ヱ=we 　}\\
+  \rruby{　 　 ン=n}\\
+}
+\newpage
+{
+\noindent
+\begin{minipage}[t]{4cm}
+\noindent
+{\it{}kanji} \rruby{首=lawa}\hspace{0.1em}\rruby{電=konpo}\\
+{\it{}katakana} \rruby{首=lawa コンポ=konpo}\\
+\end{minipage}
+
+
+}{
+
+\noindent
+\begin{minipage}[t]{2cm}
+\noindent
+  {\it{}kanji}\\
+  \rruby{人えり 无=weka}\\
+  \rruby{因 首=lawa}\hspace{0.1em}\rruby{電=konpo}\\
+  \rruby{于 旦=tenpo 小=lili}\\
+\end{minipage}
+}{
+\noindent
+\begin{minipage}[t]{2cm}
+\noindent
+  {\it{}katakana}\\
+  \rruby{人えり 无=weka}\\
+  \rruby{因 首=lawa コンポ=konpo}\\
+  \rruby{于 旦=tenpo 小=lili}\\
+\end{minipage}
+}{
+\\
+
+\noindent
+{\it{}kanji} \rruby{人えり 无=weka 因 首=lawa}\hspace{0.1em}\rruby{電=konpo 于 旦=tenpo 小=lili}\\
+
+\noindent
+{\it{}katakana} \rruby{人えり 无=weka 因 首=lawa コンポ=konpo 于 旦=tenpo 小=lili}\\
+\\
+
+\noindent
+jan e li weka tan lawa konpo lon tenpo lili.\\
+
+\noindent
+People will be removed by computers in short time.
+}
 \newpage
 \setcounter{section}{0}
   \vspace*{2cm}
@@ -320,15 +462,25 @@ common 画字 {\it{}(sitelen kansi)}.
 \noindent
 \begin{minipage}[t]{5.75cm}
 {\textCJKserif\large
-  \rruby{人=jan 去=tawa ら=la :}\\
-  \rruby{り=li 去=tawa 市=esun ･}\\
-  \rruby{り=li 市=esun え=e 食=moku ･}\\
-  \rruby{り=li 開=open 去=tawa /}\\
+  \rruby{人=jan 去=tawa ら=la ：}\\
+  \rruby{り=li 去=tawa 市=esun ・}\\
+  \rruby{り=li 来=kama 市=esun 、}\\
+  \rruby{え=e 食=moku 火=seli ・}\\\\
+  \rruby{画=sitelen 皮=selo}\hspace{0.15em}\rruby{添=namako 、}\\
+  \rruby{り=li 于=lon 手=luka ・}\\
+  \rruby{り=li 終=pini 市=esun ・}\\
+  \rruby{于=lon 音=kalama 大=suli !}\\
   \scriptsize
-  There was a traveler;\\
-  she entered the market,\\
-  she bought some food,\\
-  she began to leave...\\
+
+  {There was a traveler:\\
+  She entered the market.\\
+  She began to buy\\
+  some street food.}\\
+  \\
+  {Tattoos adorned\\
+  her arm.\\
+  She finished her purchase.\\
+  There was a loud sound!}
 }
 \end{minipage}
 \begin{minipage}[t]{5.75cm}
@@ -489,9 +641,164 @@ common 画字 {\it{}(sitelen kansi)}.
 \end{minipage}
 }
 
+\colorlet{page}{pagelight}
+\colorlet{text}{textlight}
 \newpage
 
 \section[Appendix]{\Huge{}Appendix}
 This is written in 言新 {\it{}(toki sin)}.\\
+
+\fancyhead[L]{画カンシ - v1.2}
+\fancyhead[R]{sitelen kansi - v1.2}
+\fancyfoot[L]{}
+
+\newpage
+\begin{center}
+    {\fontsize{48}{60}\bfseries\color{primary}\rruby{画=sitelen カンシ=kansi}}\LARGE\\
+\end{center}
+\begin{center}
+    {\Huge\textserif{}Kansi Characters}
+\end{center}
+\hrule{}
+\vspace{1cm}
+{\huge\noindent
+\rruby{あ=a}\hspace{0.3em}\rruby{
+獣=akesi}\hspace{0.3em}\rruby{
+不=ala}\hspace{0.3em}\rruby{
+集=alasa}\hspace{0.3em}\rruby{
+全=ale}\hspace{0.3em}\rruby{
+下=anpa}\hspace{0.3em}\rruby{
+化=ante}\hspace{0.3em}\rruby{
+あぬ=anu}\hspace{0.3em}\rruby{
+待=awen}\hspace{0.3em}\\
+\rruby{
+え=e}\hspace{0.3em}\rruby{
+えん=en}\hspace{0.3em}\rruby{
+市=esun}\hspace{0.3em}\\
+\rruby{
+物=ijo}\hspace{0.3em}\rruby{
+悪=ike}\hspace{0.3em}\rruby{
+具=ilo}\hspace{0.3em}\rruby{
+内=insa}\hspace{0.3em}\\
+\rruby{
+汚=jaki}\hspace{0.3em}\rruby{
+人=jan}\hspace{0.3em}\rruby{
+黄=jelo}\hspace{0.3em}\rruby{
+有=jo}\hspace{0.3em}\\
+\rruby{
+魚=kala}\hspace{0.3em}\rruby{
+音=kalama}\hspace{0.3em}\rruby{
+来=kama}\hspace{0.3em}\rruby{
+木=kasi}\hspace{0.3em}\rruby{
+能=ken}\hspace{0.3em}\rruby{
+使=kepeken}\hspace{0.3em}\rruby{
+果=kili}\hspace{0.3em}\rruby{
+又=kin}\hspace{0.3em}\rruby{
+切=kipisi}\hspace{0.3em}\rruby{
+石=kiwen}\hspace{0.3em}\rruby{
+粉=ko}\hspace{0.3em}\rruby{
+空=kon}\hspace{0.3em}\rruby{
+色=kule}\hspace{0.3em}\rruby{
+群=kulupu}\hspace{0.3em}\rruby{
+聞=kute}\hspace{0.3em}\\
+\rruby{
+ら=la}\hspace{0.3em}\rruby{
+眠=lape}\hspace{0.3em}\rruby{
+青=laso}\hspace{0.3em}\rruby{
+首=lawa}\hspace{0.3em}\rruby{
+布=len}\hspace{0.3em}\rruby{
+冷=lete}\hspace{0.3em}\rruby{
+り=li}\hspace{0.3em}\rruby{
+小=lili}\hspace{0.3em}\rruby{
+糸=linja}\hspace{0.3em}\rruby{
+葉=lipu}\hspace{0.3em}\rruby{
+赤=loje}\hspace{0.3em}\rruby{
+ろ=lo}\hspace{0.3em}\rruby{
+于=lon}\hspace{0.3em}\rruby{
+手=luka}\hspace{0.3em}\rruby{
+見=lukin}\hspace{0.3em}\rruby{
+穴=lupa}\hspace{0.3em}\\
+\rruby{
+土=ma}\hspace{0.3em}\rruby{
+母=mama}\hspace{0.3em}\rruby{
+貝=mani}\hspace{0.3em}\rruby{
+女=meli}\hspace{0.3em}\rruby{
+私=mi}\hspace{0.3em}\rruby{
+男=mije}\hspace{0.3em}\rruby{
+も=mo}\hspace{0.3em}\rruby{
+食=moku}\hspace{0.3em}\rruby{
+死=moli}\hspace{0.3em}\rruby{
+後=monsi}\hspace{0.3em}\rruby{
+吽=mu}\hspace{0.3em}\rruby{
+月=mun}\hspace{0.3em}\rruby{
+楽=musi}\hspace{0.3em}\rruby{
+多=mute}\hspace{0.3em}\\
+\rruby{
+添=namako}\hspace{0.3em}\rruby{
+番=nanpa}\hspace{0.3em}\rruby{
+狂=nasa}\hspace{0.3em}\rruby{
+道=nasin}\hspace{0.3em}\rruby{
+山=nena}\hspace{0.3em}\rruby{
+此=ni}\hspace{0.3em}\rruby{
+名=nimi}\hspace{0.3em}\rruby{
+足=noka}\hspace{0.3em}\rruby{
+お=o}\hspace{0.3em}\\
+\rruby{
+愛=olin}\hspace{0.3em}\rruby{
+其=ona}\hspace{0.3em}\rruby{
+開=open}\hspace{0.3em}\rruby{
+打=pakala}\hspace{0.3em}\\
+\rruby{
+作=pali}\hspace{0.3em}\rruby{
+支=palisa}\hspace{0.3em}\rruby{
+米=pan}\hspace{0.3em}\rruby{
+授=pana}\hspace{0.3em}\rruby{
+ぴ=pi}\hspace{0.3em}\rruby{
+心=pilin}\hspace{0.3em}\rruby{
+黒=pimeja}\hspace{0.3em}\rruby{
+終=pini}\hspace{0.3em}\rruby{
+虫=pipi}\hspace{0.3em}\rruby{
+側=poka}\hspace{0.3em}\rruby{
+箱=poki}\hspace{0.3em}\rruby{
+良=pona}\hspace{0.3em}\\
+\rruby{
+同=sama}\hspace{0.3em}\rruby{
+火=seli}\hspace{0.3em}\rruby{
+皮=selo}\hspace{0.3em}\rruby{
+何=seme}\hspace{0.3em}\rruby{
+上=sewi}\hspace{0.3em}\rruby{
+体=sijelo}\hspace{0.3em}\rruby{
+丸=sike}\hspace{0.3em}\rruby{
+新=sin}\hspace{0.3em}\rruby{
+君=sina}\hspace{0.3em}\rruby{
+前=sinpin}\hspace{0.3em}\rruby{
+画=sitelen}\hspace{0.3em}\rruby{
+知=sona}\hspace{0.3em}\rruby{
+狸=soweli}\hspace{0.3em}\rruby{
+大=suli}\hspace{0.3em}\rruby{
+日=suno}\hspace{0.3em}\rruby{
+面=supa}\hspace{0.3em}\rruby{
+甜=suwi}\hspace{0.3em}\\
+\rruby{
+因=tan}\hspace{0.3em}\rruby{
+許=taso}\hspace{0.3em}\rruby{
+去=tawa}\hspace{0.3em}\rruby{
+水=telo}\hspace{0.3em}\rruby{
+旦=tenpo}\hspace{0.3em}\rruby{
+語=toki}\hspace{0.3em}\rruby{
+家=tomo}\hspace{0.3em}\rruby{
+二=tu}\hspace{0.3em}\\
+\rruby{
+性=unpa}\hspace{0.3em}\rruby{
+口=uta}\hspace{0.3em}\rruby{
+鬥=utala}\hspace{0.3em}\\
+\rruby{
+白=walo}\hspace{0.3em}\rruby{
+一=wan}\hspace{0.3em}\rruby{
+鴨=waso}\hspace{0.3em}\rruby{
+力=wawa}\hspace{0.3em}\rruby{
+无=weka}\hspace{0.3em}\rruby{
+要=wile}
+}
 
 \end{document}

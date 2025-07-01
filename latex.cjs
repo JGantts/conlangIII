@@ -20,7 +20,8 @@ const env = {
 };
 
 // Commands
-const texCommand = `xelatex -output-directory=${OUTDIR} ${TEXFILE}.tex`;
+const name = 'Jacob';
+const texCommand = `xelatex -output-directory=${OUTDIR} "\\def\\myname{${name}}\\input{${TEXFILE}.tex}"`;
 const glossCommand = `makeglossaries -d ${OUTDIR} ${path.basename(TEXFILE)}`;
 
 try {
@@ -29,11 +30,11 @@ try {
   execSync(texCommand, { stdio: "inherit", cwd: TEXDIR });
 
   // Step 2: Run makeglossaries
-  console.log(`Running: ${glossCommand}`);
-  execSync(glossCommand, { stdio: "inherit", cwd: TEXDIR, env });
+  //console.log(`Running: ${glossCommand}`);
+  //execSync(glossCommand, { stdio: "inherit", cwd: TEXDIR, env });
 
   // Step 3: Run xelatex again (final pass)
-  console.log(`Running: ${texCommand}`);
+  //console.log(`Running: ${texCommand}`);
   execSync(texCommand, { stdio: "inherit", cwd: TEXDIR });
 
   console.log("Build complete.");
