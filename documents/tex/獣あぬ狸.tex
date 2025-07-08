@@ -37,8 +37,13 @@
 \definecolor{pagelight}{RGB}{255, 255, 255}            %white
 \definecolor{textlight}{RGB}{0, 0, 0}            %black
 
-\colorlet{page}{pagedark}
-\colorlet{text}{textdark}
+\ifnum\lightMode=1
+  \colorlet{page}{pagelight}
+  \colorlet{text}{textlight}
+\else
+  \colorlet{page}{pagedark}
+  \colorlet{text}{textdark}
+\fi
 
 \pagecolor{page}
 \color{text}
@@ -141,47 +146,14 @@
 
 
 \begin{document}
-
-Hello, \myname!
-
 {
 \ex
 \begingl
-\glpreamble 人去ら：り去市・り来市え食火・//
-\gla 人 去 ら : り 去 市 . り 来 市 え 食 火 . //
-\glb jan tawa la : li tawa esun . li kama esun e moku seli . //
-\glb person move TOP : VBLZ move market . VBLZ begin market DO food hot . //
-\glft ‘Regarding (a) traveler: (She) entered (a) market. (She) began to purchase (some) street food.’//
-\endgl
-\xe
-}{
-\ex
-\begingl
-\glpreamble 画添り于皮手・り終市・于音大！//
-\gla 画 添 り 于 皮 手 ・ り 終 市 ・ 于 音 大 ! //
-\glb sitelen namako li lon selo luka . li pini esun . lon kalama suli ! //
-\glb marking ornamental VBLZ exist skin arm . VBLZ finish market . exist sound large ! //
-\glft ‘Tattoos were on (her) arm. (She) finished (her) purchase. There was a loud sound!’//
-\endgl
-\xe
-}{
-\ex
-\begingl
-\glpreamble 魚ろ要食・//
-\gla 魚 ろ 要 食 //
-\glb kala lo wile moku//
-\glb fish LO want {food/eat}//
-\glft ‘fish which want to eat’//
-\endgl
-\xe
-}{
-\ex
-\begingl
-\glpreamble 魚ひ要食・//
-\gla 魚 ひ 要 食//
-\glb kala pi wile moku//
-\glb fish PI want {food/eat}//
-\glft ‘fish of hunger’//
+\glpreamble 人{\textbf{ろ}}食え果り去家・//
+\gla 人 {\textbf{ろ}} 食 え 果 り 去 家 //
+\glb jan {\textbf{lo}} moku e kili li tawa tomo //
+\glb person {\textbf{REL}} eat DO fruit PRED move house //
+\glft ‘The woman {\textbf{who}} ate the fruit is going home.’//
 \endgl
 \xe
 }
@@ -192,11 +164,11 @@ Hello, \myname!
 \\
 \begin{center}
 \rruby{人=jan カント=kanto 因=tan}\\
-\rruby{土=ma 山=nena アハラシヤ=apalasija}\\
+\rruby{土=ma 山=nena アパラシヤ=apalasija}\\
 \end{center}
 \begin{center}
 \fruby{人=jan カント=kanto 因=tan}\\
-\fruby{土=ma 山=nena アハラシヤ=apalasija}\\
+\fruby{土=ma 山=nena アパラシヤ=apalasija}\\
 \end{center}
 }
 
@@ -219,7 +191,7 @@ Hello, \myname!
   \fruby{人 去 ら ：}
   \fruby{り 去 土 市=esun ・}\\
   \fruby{り 市=esun え 食=moku 新=sin ・}\\
-  \fruby{食=moku ひ 米=pan 甜=suwi ・}\\
+  \fruby{食=moku ぴ 米=pan 甜=suwi ・}\\
   \\
   \fruby{画=sitelen 皮=selo ら ：}\\
   \fruby{り 于 手=luka 人 ･}\\
@@ -254,27 +226,27 @@ Hello, \myname!
 \end{minipage}
 }
 
-\section[獣ひ鬥え人]{\Huge\fruby{獣=akesi ひ 鬥=utala え 人}}
+\section[獣ぴ鬥え人]{\Huge\fruby{獣=akesi ぴ 鬥=utala え 人}}
 
 \noindent
 \begin{minipage}[t]{5.75cm}
 {\textCJKfancy{}\huge
-  \fruby{獣=akesi ひ 黄=jelo 木=kasi ら ､}
+  \fruby{獣=akesi ぴ 黄=jelo 木=kasi ら ､}
   \fruby{り 要 / り 要 食=moku ､}\\
-  \fruby{え 食=moku え ひ 市=esun ､}\\
-  \fruby{え 人=jan ひ 市=esun ､}\\
+  \fruby{え 食=moku え ぴ 市=esun ､}\\
+  \fruby{え 人=jan ぴ 市=esun ､}\\
   \fruby{り 要 食=moku え 家=tomo 市=esun !}\\
-  \fruby{獣=akesi ひ 黄=jelo 木=kasi ･}\\
+  \fruby{獣=akesi ぴ 黄=jelo 木=kasi ･}\\
 }
 \end{minipage}
 \begin{minipage}[t]{5.75cm}
 {\textCJKfancy{}\huge
   \fruby{人 去 り 去 許=taso 不=ala ､}\\
   \fruby{人 去 り 人 鬥=utala !}\\
-  \fruby{人 鬥=utala ひ 去 ら :}\\
+  \fruby{人 鬥=utala ぴ 去 ら :}\\
   \fruby{り 開=open 有=jo え 支=palisa}\hspace{0.1em}\fruby{鬥=utala ､}\\
   \fruby{り 穴=lupa 力=wawa え 獣=akesi ､}\\
-  \fruby{獣=akesi ひ 黄=jelo 木=kasi ･}\\
+  \fruby{獣=akesi ぴ 黄=jelo 木=kasi ･}\\
 }
 
 \end{minipage}
@@ -287,7 +259,7 @@ Hello, \myname!
   \fruby{獣=akesi り 来 音=kalama 不=ala ;}\\
   \fruby{獣=akesi え り 打=pakala !}\\
   \fruby{獣=akesi え り 死=moli 因 人 ･}\\
-  \fruby{獣=akesi ひ 黄=jelo 木=kasi ･}\\
+  \fruby{獣=akesi ぴ 黄=jelo 木=kasi ･}\\
 }
 \end{minipage}
 
@@ -296,17 +268,17 @@ Hello, \myname!
 \noindent
 \begin{minipage}[t]{5.75cm}
 {\textCJKfancy{}\huge
-  \fruby{獣=akesi ひ 黄=jelo 木=kasi ､}\\
+  \fruby{獣=akesi ぴ 黄=jelo 木=kasi ､}\\
   \fruby{え り 死=moli  ､}\\
-  \fruby{因 人 ひ 去 ､}\\
-  \fruby{ひ 鬥=utala え 面=supa え 前=sinpin ･}\\
+  \fruby{因 人 ぴ 去 ､}\\
+  \fruby{ぴ 鬥=utala え 面=supa え 前=sinpin ･}\\
 }
 \end{minipage}
 \begin{minipage}[t]{5.75cm}
 {\textCJKfancy{}\huge
-  \fruby{獣=akesi ひ 黄=jelo 木=kasi ､}\\
+  \fruby{獣=akesi ぴ 黄=jelo 木=kasi ､}\\
   \fruby{り 来 赤=loje ､}\\
-  \fruby{り 来 赤=loje ひ 水=telo 体=sijelo ･}\\
+  \fruby{り 来 赤=loje ぴ 水=telo 体=sijelo ･}\\
 }
 \end{minipage}
 \begin{minipage}[t]{5.75cm}
@@ -314,19 +286,19 @@ Hello, \myname!
   \fruby{許 /}\\
   \fruby{獣=akesi り 鬥=utala 不､}\\
   \fruby{獣=akesi り 打=pakala 不､}\\
-  \fruby{獣=akesi ひ 黄=jelo 木=kasi ､}\\
+  \fruby{獣=akesi ぴ 黄=jelo 木=kasi ､}\\
   \fruby{り 獣=akesi 良=pona 良=pona ･}\\
   \fruby{許 / 　 獣=akesi /}\\
   \fruby{り 獣=akesi 无=weka ･}\\
 }
 \end{minipage}
 
-\section[人鬥ひ去]{\Huge\fruby{人 鬥=utala ひ 去}}
+\section[人鬥ぴ去]{\Huge\fruby{人 鬥=utala ぴ 去}}
 {
 \noindent
 \begin{minipage}[t]{5.75cm}
 {\textCJKfancy{}\huge
-  \fruby{人 鬥=utala ひ 去 り 去 ･}\\
+  \fruby{人 鬥=utala ぴ 去 り 去 ･}\\
 }
 \end{minipage}
 }
@@ -339,13 +311,13 @@ This is written in 言新 {\it{}(toki sin)}.\\
 
 \section[画多 – Common Characters]{
   \Huge\englishundertokisin
-    {\rruby{画=sitelen}\hspace{0.3em}\rruby{多=mute}}
-    {\small\normalfont{}Common Characters}
+    {\rruby{画=sitelen カンシ=kansi 多=mute}}
+    {\small\normalfont{}Common kansi Characters}
 }
 
-Here are the 画多 {\it{}(sitelen mute)},
-common 画字 {\it{}(sitelen kansi)}.
-画 {\it{}(sitelen)} which arent on this list will frequently have ruby text above them to assist in reading.\\
+Here are the 画カンシ多 {\it{}(sitelen kansi mute)},
+common 画カンシ {\it{}(sitelen kansi)}.
+画 {\it{}(sitelen)} which aren't on this list will frequently have ruby text above them to assist in reading.\\
 
 {
 \Huge
@@ -353,7 +325,7 @@ common 画字 {\it{}(sitelen kansi)}.
 
 \rruby{因=tan 要=wile 来=kama 能=kin}
 
-\rruby{ら=la り=li ひ=pi}
+\rruby{ら=la り=li ぴ=pi}
 
 \rruby{え=e}
 
@@ -365,9 +337,9 @@ common 画字 {\it{}(sitelen kansi)}.
 }
 
 \newpage
-\section[画ひ名无 – sitelen pi nimi weka]{
+\section[画ぴ名无 – sitelen pi nimi weka]{
   \Huge\englishundertokisin
-    {\rruby{画=sitelen ひ=pi 名=nimi 无=weka}}
+    {\rruby{画=sitelen ぴ=pi 名=nimi 无=weka}}
     {\small\normalfont{}Characters for Foreign Words}
 }
 
@@ -511,21 +483,21 @@ People will be removed by computers in short time.
 \end{minipage}
 }
 
-\section[獣ひ鬥え人]{
+\section[獣ぴ鬥え人]{
   \Huge\englishundertokisin
-    {\rruby{獣=akesi ひ=pi 鬥=utala え=e 人=jan}}
+    {\rruby{獣=akesi ぴ=pi 鬥=utala え=e 人=jan}}
     {\large\normalfont{}When the Creature Attacked}
 }
 
 \noindent
 \begin{minipage}[t]{5.75cm}
 {\textCJKserif{}\large
-  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi ら=la ､}\\
+  \rruby{獣=akesi ぴ=pi 黄=jelo 木=kasi ら=la ､}\\
   \rruby{り=li 要=wile / り=li 要=wile 食=moku ､}\\
-  \rruby{え=e 食=moku え=e ひ=pi 市=esun ､}\\
-  \rruby{え=e 人=jan ひ=pi 市=esun ､}\\
+  \rruby{え=e 食=moku え=e ぴ=pi 市=esun ､}\\
+  \rruby{え=e 人=jan ぴ=pi 市=esun ､}\\
   \rruby{り=li 要=wile 食=moku え=e 家=tomo 市=esun !}\\
-  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi ･}\\
+  \rruby{獣=akesi ぴ=pi 黄=jelo 木=kasi ･}\\
   \scriptsize
   This creature, green like a tree,\\
   it wanted... it wanted to eat,\\
@@ -539,10 +511,10 @@ People will be removed by computers in short time.
 {\textCJKserif{}\large
   \rruby{人=jan 去=tawa り=li 去=tawa 許=taso 不=ala ､}\\
   \rruby{人=jan 去=tawa り=li 人=jan 鬥=utala !}\\
-  \rruby{人=jan 鬥=utala ひ=pi 去=tawa ら=la :}\\
+  \rruby{人=jan 鬥=utala ぴ=pi 去=tawa ら=la :}\\
   \rruby{り=li 開=open 有=jo え=e 支=palisa 鬥=utala ､}\\
   \rruby{り=li 穴=lupa え=e 獣=akesi ､}\\
-  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi ･}\\
+  \rruby{獣=akesi ぴ=pi 黄=jelo 木=kasi ･}\\
     \scriptsize
   The traveler was not just a traveler.\\
   She was a warrior!\\
@@ -561,7 +533,7 @@ People will be removed by computers in short time.
   \rruby{獣=akesi り=li 来=kama}\hspace{0.2em}\rruby{音=kalama 不=ala ;}\\
   \rruby{獣=akesi え=e り=li 打=pakala !}\\
   \rruby{獣=akesi え=e り=li 死=moli 因=tan 人=jan ､}\\
-  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi ･}\\
+  \rruby{獣=akesi ぴ=pi 黄=jelo 木=kasi ･}\\
   \scriptsize
   The creature let out a loud, horrid, sound;\\
   the creature is wounded!\\
@@ -583,10 +555,10 @@ People will be removed by computers in short time.
 \noindent
 \begin{minipage}[t]{5.75cm}
 {\textCJKserif{}\large
-  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi ､}\\
+  \rruby{獣=akesi ぴ=pi 黄=jelo 木=kasi ､}\\
   \rruby{え=e り=li 死=moli  ､}\\
-  \rruby{因=tan 人=jan ひ=pi 去=tawa ､}\\
-  \rruby{ひ=pi 鬥=utala え=e 面=supa え 前=sinpin ･}\\
+  \rruby{因=tan 人=jan ぴ=pi 去=tawa ､}\\
+  \rruby{ぴ=pi 鬥=utala え=e 面=supa え 前=sinpin ･}\\
   \scriptsize
   The creature, the tree-green creature,\\
   it was killed
@@ -596,9 +568,9 @@ People will be removed by computers in short time.
 \end{minipage}
 \begin{minipage}[t]{5.75cm}
 {\textCJKserif{}\large
-  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi ､}\\
+  \rruby{獣=akesi ぴ=pi 黄=jelo 木=kasi ､}\\
   \rruby{り=li 来=kama 赤=loje ､}\\
-  \rruby{り=li 来=kama 赤=loje ひ=pi 水=telo 体=sijelo ･}\\
+  \rruby{り=li 来=kama 赤=loje ぴ=pi 水=telo 体=sijelo ･}\\
   \scriptsize
   The creature, the tree-green creature,\\
   it was red,\\
@@ -610,7 +582,7 @@ People will be removed by computers in short time.
   \rruby{許=taso /}\\
   \rruby{獣=akesi り=li 鬥=utala 不=ala､}\\
   \rruby{獣=akesi り=li 打=pakala 不=ala､}\\
-  \rruby{獣=akesi ひ=pi 黄=jelo 木=kasi ､}\\
+  \rruby{獣=akesi ぴ=pi 黄=jelo 木=kasi ､}\\
   \rruby{り=li 獣=akesi 良=pona 良=pona ･}\\
   \rruby{許=taso / 　 獣=akesi /}\\
   \rruby{り=li 獣=akesi 无=weka ･}\\
@@ -625,16 +597,16 @@ People will be removed by computers in short time.
 }
 \end{minipage}
 
-\section[人去ひ鬥]{
+\section[人去ぴ鬥]{
   \Huge\englishundertokisin
-    {\rruby{人=jan 鬥=utala ひ=pi 去=tawa}}
+    {\rruby{人=jan 鬥=utala ぴ=pi 去=tawa}}
     {\large\normalfont{}The Traveling Warrior}
 }
 {
 \noindent
 \begin{minipage}[t]{5.75cm}
 {\textCJKserif{}\large
-  \rruby{人=jan 鬥=utala ひ=pi 去=tawa り=li 去=tawa ･}\\
+  \rruby{人=jan 鬥=utala ぴ=pi 去=tawa り=li 去=tawa ･}\\
     \scriptsize
   The traveling warrior left.\\
 }
@@ -652,9 +624,17 @@ This is written in 言新 {\it{}(toki sin)}.\\
 \fancyhead[R]{sitelen kansi - v1.2}
 \fancyfoot[L]{}
 
+
+
 \newpage
 \begin{center}
-    {\fontsize{48}{60}\bfseries\color{primary}\rruby{画=sitelen カンシ=kansi}}\LARGE\\
+    {\fontsize{48}{60}\bfseries\color{primary}\rruby{画 カンシ}}\LARGE\\
+\end{center}
+\begin{center}
+    {\fontsize{48}{60}\bfseries\color{primary}\rruby{画=シテレン 字=カンシ}}\LARGE\\
+\end{center}
+\begin{center}
+    {\fontsize{48}{60}\bfseries\color{primary}\rruby{画=sitelen 字=kansi}}\LARGE\\
 \end{center}
 \begin{center}
     {\Huge\textserif{}Kansi Characters}

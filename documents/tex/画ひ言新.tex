@@ -1,0 +1,444 @@
+\documentclass[twoside, 12pt]{ctexart}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{ruby} 
+
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{calc}
+
+\usepackage{relsize}
+\usepackage{fancyhdr}
+
+\usepackage{etoolbox,xstring}
+
+\usepackage{geometry}
+\usepackage[gb4e]{expex-glossonly}
+\usepackage{expex}
+
+\usepackage{booktabs}
+\usepackage{array}
+
+\usepackage{lipsum}
+
+\usepackage{etoolbox}
+
+\usepackage{booktabs,array}
+\usepackage{caption}
+% globally for all tables:
+\captionsetup[table]{%
+  name=,        % no “Table”
+  labelsep=colon% “1: Caption” 
+}
+
+\geometry{a5paper, portrait, margin=2cm}
+
+\pagestyle{fancy}
+\fancypagestyle{firstpage}
+{
+    \fancyhead[L]{}    
+    \fancyhead[R]{}
+    \fancyfoot[L]{}
+    \fancyfoot[C]{JGantts · 人カント}
+}
+\fancyhf{}
+\fancyhead[LE]{画ひ言新}
+\fancyhead[LO]{sitelen pi toki sin}
+\fancyhead[RE]{Toki Sin Writing}
+\fancyfoot[LO]{jan kanto}
+\fancyfoot[RE]{人カント}
+\fancyfoot[LE,RO]{\thepage}
+
+\definecolor{primary}{RGB}{47, 128, 190}    % Muted Blue
+\definecolor{secondary}{RGB}{192, 57, 43}   % Deep Red
+\definecolor{accent}{RGB}{39, 174, 96}      % Cool Green
+\definecolor{background}{RGB}{255, 255, 255} % Softer Light Gray
+\definecolor{link}{RGB}{128, 0, 128}       % Regal Purple
+
+\definecolor{pagedark}{RGB}{0, 0, 0}            %black
+\definecolor{textdark}{RGB}{234, 234, 234}      %grey
+
+\definecolor{pagelight}{RGB}{255, 255, 255}            %white
+\definecolor{textlight}{RGB}{0, 0, 0}            %black
+
+\ifnum\lightMode=1
+  \colorlet{page}{pagelight}
+  \colorlet{text}{textlight}
+\else
+  \colorlet{page}{pagedark}
+  \colorlet{text}{textdark}
+\fi
+
+\pagecolor{page}
+\color{text}
+
+\setmainfont{NotoSerif}[
+  Path = fonts/,
+  Extension = .ttf,
+  UprightFont = *-Light,
+  ItalicFont = *-LightItalic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]
+
+\setsansfont{NotoSans}[
+  Path = fonts/,
+  Extension = .ttf,
+  UprightFont = *-Light,
+  ItalicFont = *-LightItalic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]
+
+\setCJKmainfont{NotoSerifJP}[
+  Path = fonts/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Black,
+]
+
+\newCJKfontfamily\cjksans{NotoSansJP}[
+  Path = fonts/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Black,
+]
+
+\NewDocumentCommand{\jgruby}{m O{}}{%
+  \ruby{#1}{\upshape\sffamily{#2}}
+}
+
+\ExplSyntaxOn
+\NewDocumentCommand\rby{>{\SplitList{~}}m}{\ProcessList{#1}{\rby_map}}
+\NewDocumentCommand\rby_map{>{\SplitArgument{1}{=}}m}{{\rby_impl #1}}
+\NewDocumentCommand\rby_impl{m m}{\IfNoValueTF{#2}{\jgruby{#1}}{\jgruby{#1}[#2]}}
+\ExplSyntaxOff
+
+\NewDocumentCommand{\srby}{m O{}}{%
+  \mbox{\rby{#1}{#2}}
+}
+
+\def\maxvalue(#1,#2){\ifnum #1>#2 #1\else #2\fi}
+
+\NewDocumentCommand{\englishundertokisin}{m m}{%
+  \begin{minipage}[c]{\maxof{\widthof{#1}}{\widthof{#2}}}
+    \centering{#1}\small\\\centering{#2}
+  \end{minipage}%
+}
+
+
+\begin{document}
+%\lipsum[1-20]
+
+
+
+% {\Huge{}
+% \noindent%
+% \rby{人=jan カント=kanto}\\
+% \\
+% \begin{center}
+% \rby{人=jan カント=kanto 因=tan}\\
+% \rby{土=ma ひ=pi 山=nena アハラシヤ=apalasija}\\
+% \end{center}
+% \begin{center}
+% \rby{人 カント=kanto 因}\\
+% \rby{土 ひ 山=nena アハラシヤ=apalasija}\\
+% \end{center}
+% }
+
+% \newpage
+\sffamily{}
+\thispagestyle{firstpage}
+\vspace{1cm}
+
+\begin{center}
+    {\fontsize{48}{60}\bfseries\rmfamily\color{primary}\rby{画=sitelen ひ=pi 言=toki 新=sin}}\LARGE\\
+\end{center}
+\begin{center}
+    {\Huge\rmfamily\textsf{}Toki Sin Writing}
+\end{center}
+
+\section[Overview]{\Huge{}Overview}
+This document covers \rby{画=sitelen ひ=pi 言=toki 新=sin}, or toki sin writing.
+There are three sets of characters used.\\
+{{\textbf{\rby{画=sitelen ラシナ=lasina}} is a portion of the {\textbf{Latin Alphabet}}, the same letters used in English, French, German, etc.}\\
+{{\textbf{\rby{画=sitelen 漢=kan}} is a portion of {\textbf{Chinese characters, 漢字 (hanzi/kanji)}}; with some particles being {\textbf{Japanese Hiragana}}.}\\
+{{\textbf{\rby{画=sitelen 片=kata}} is simply {\textbf{Japanese Katakana}}.}\\
+
+\begin{table}[ht]
+  \centering
+  \caption{The phrase 「\rby{言=toki 新=sin}」 in the three toki sin writing systems}
+  \begin{tabular}{@{} m{6cm} l @{}}
+    \toprule
+    \textbf{Writing System} & \textbf{Representation} \\
+    \midrule
+    \rby{画=sitelen ラシナ=lasina} & {toki sin} \\
+    \rby{画=sitelen 漢=kan}        & {言新}    \\
+    \rby{画=sitelen 片=kata}       & {トキシン} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section[画ラシナ – Latin Characters]{
+  \Huge\englishundertokisin
+    {\rby{画=sitelen ラシナ=lasina}}
+    {\small\normalfont{}Latin Characters}
+}
+
+\noindent
+\begin{minipage}[t]{3.5cm}
+\centering
+\textbf{Consonants}\par\vspace{2pt}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+m & n &   \\
+p & t & k \\
+  & s &   \\
+w & l & j \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\begin{minipage}[t]{2cm}
+\centering
+\textbf{Vowels}\par\vspace{2pt}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+i &   & u \\
+e &   & o \\
+  & a &   \\
+\bottomrule
+\end{tabular}
+\end{minipage}\\
+\vspace{0.5cm}\\
+
+Characters called
+\textbf{\rby{画=sitelen ラシナ=lasina}}, or \textbf{Latin characters},
+are used to indicate pronunciation in \rby{画=sitelen ひ=pi 言=toki 新=sin} {\textit{(toki sin writing)}}.
+They will typically be displayed above the corresponding 
+\rby{画=sitelen 漢=kan} or \rby{画=sitelen 片=kata}.
+They are mainly used in material intended for learners;
+but they are also used for \rby{画=sitelen 漢=kan ひ=pi 多=mute 不=ala} {\textit{(uncommon \rby{画=sitelen 漢=kan})}}.
+
+\newpage
+\section[画漢 – Sitelen Kan]{
+  \Huge\englishundertokisin
+    {\rby{画=sitelen 漢=kan}}
+    {\small\normalfont{}Kan Characters}
+}
+
+{
+\begin{exe}
+\ex[]{\label{foo}
+\begingl
+\gls \rby{人=jan り=li 食=moku え=e 果=kili 。}\\
+\gla \sffamily{人} \sffamily{り} \sffamily{食} \sffamily{え} \sffamily{果}//
+\glb jan li moku e kili//
+\glc person PRED eat DO fruit//
+\glft 'Person eat fruit.'//
+\endgl
+}
+\end{exe}
+}
+
+In the above example, the \rby{画=sitelen 漢=kan} are used to write the words in toki sin.
+The ruby text above the \rby{画=sitelen 漢=kan} indicates how to pronounce them.
+
+\newpage
+\section[画多 – Common Characters]{
+  \Huge\englishundertokisin
+    {\rby{画=sitelen 漢=kan 多=mute}}
+    {\small\normalfont{}Common Kan Characters}
+}
+
+Here are the \rby{画=sitelen 漢=kan 多=mute},
+common \rby{画=sitelen 漢=kan}.
+\rby{画=sitelen} which aren't on this list will frequently have ruby text above them to assist in reading.\\
+
+{
+\Huge
+\rby{私=mi 君=sina 其=ona}
+
+\rby{因=tan 要=wile 来=kama 能=kin}
+
+\rby{ら=la り=li ひ=pi}
+
+\rby{え=e}
+
+\rby{あ=a えん=en あぬ=anu 許=taso 内=insa}
+
+\rby{不=ala 何=seme}
+
+\rby{人=jan 于=lon 去=tawa 土=ma}
+}
+
+\newpage
+\section[画片 – Sitelen Kata]{
+  \Huge\englishundertokisin
+    {\rby{画=sitelen 片=kata}}
+    {\small\normalfont{}Kata Characters}
+}
+
+{
+\Huge
+\noindent
+\rby{ア=a イ=i ウ=u エ=e オ=o}\\
+  \rby{マ=ma ミ=mi ム=mu メ=me モ=mo}\\
+  \rby{ナ=na ニ=ni ヌ=nu ネ=ne ノ=no}\\
+  \rby{ハ=pa ヒ=pi フ=pu へ=pe ホ=po}\\
+  \rby{タ=ta 　 ツ=tu テ=te ト=to}\\
+  \rby{カ=ka キ=ki ク=ku ケ=ke コ=ko}\\
+  \rby{サ=sa シ=si ス=su セ=se ソ=so}\\
+  \rby{ラ=la リ=li ル=lu レ=le ロ=lo}\\
+  \rby{ヤ=ya 　 ユ=yu イエ=ye ヨ=yo}\\
+  \rby{ワ=wa ヰ=wi 　 ヱ=we 　}\\
+  \rby{　 　 ン=n}\\
+}
+
+\newpage
+\section[画漢 – Sitelen Kan]{
+  \Huge\englishundertokisin
+    {\rby{画=sitelen 漢=kan 全=ale}}
+    {\small\normalfont{}Kan Characters, Exhaustive}
+}
+{\huge\noindent
+\rby{あ=a}\hspace{0.3em}\rby{
+獣=akesi}\hspace{0.3em}\rby{
+不=ala}\hspace{0.3em}\rby{
+集=alasa}\hspace{0.3em}\rby{
+全=ale}\hspace{0.3em}\rby{
+下=anpa}\hspace{0.3em}\rby{
+化=ante}\hspace{0.3em}\rby{
+あぬ=anu}\hspace{0.3em}\rby{
+待=awen}\hspace{0.3em}\\
+\rby{
+え=e}\hspace{0.3em}\rby{
+えん=en}\hspace{0.3em}\rby{
+市=esun}\hspace{0.3em}\\
+\rby{
+物=ijo}\hspace{0.3em}\rby{
+悪=ike}\hspace{0.3em}\rby{
+具=ilo}\hspace{0.3em}\rby{
+内=insa}\hspace{0.3em}\\
+\rby{
+汚=jaki}\hspace{0.3em}\rby{
+人=jan}\hspace{0.3em}\rby{
+黄=jelo}\hspace{0.3em}\rby{
+有=jo}\hspace{0.3em}\\
+\rby{
+魚=kala}\hspace{0.3em}\rby{
+音=kalama}\hspace{0.3em}\rby{
+来=kama}\hspace{0.3em}\rby{
+木=kasi}\hspace{0.3em}\rby{
+能=ken}\hspace{0.3em}\rby{
+使=kepeken}\hspace{0.3em}\rby{
+果=kili}\hspace{0.3em}\rby{
+又=kin}\hspace{0.3em}\rby{
+切=kipisi}\hspace{0.3em}\rby{
+石=kiwen}\hspace{0.3em}\rby{
+粉=ko}\hspace{0.3em}\rby{
+空=kon}\hspace{0.3em}\rby{
+色=kule}\hspace{0.3em}\rby{
+群=kulupu}\hspace{0.3em}\rby{
+聞=kute}\hspace{0.3em}\\
+\rby{
+ら=la}\hspace{0.3em}\rby{
+眠=lape}\hspace{0.3em}\rby{
+青=laso}\hspace{0.3em}\rby{
+首=lawa}\hspace{0.3em}\rby{
+布=len}\hspace{0.3em}\rby{
+冷=lete}\hspace{0.3em}\rby{
+り=li}\hspace{0.3em}\rby{
+小=lili}\hspace{0.3em}\rby{
+糸=linja}\hspace{0.3em}\rby{
+葉=lipu}\hspace{0.3em}\rby{
+赤=loje}\hspace{0.3em}\rby{
+ろ=lo}\hspace{0.3em}\rby{
+于=lon}\hspace{0.3em}\rby{
+手=luka}\hspace{0.3em}\rby{
+見=lukin}\hspace{0.3em}\rby{
+穴=lupa}\hspace{0.3em}\\
+\rby{
+土=ma}\hspace{0.3em}\rby{
+母=mama}\hspace{0.3em}\rby{
+貝=mani}\hspace{0.3em}\rby{
+女=meli}\hspace{0.3em}\rby{
+私=mi}\hspace{0.3em}\rby{
+男=mije}\hspace{0.3em}\rby{
+も=mo}\hspace{0.3em}\rby{
+食=moku}\hspace{0.3em}\rby{
+死=moli}\hspace{0.3em}\rby{
+後=monsi}\hspace{0.3em}\rby{
+吽=mu}\hspace{0.3em}\rby{
+月=mun}\hspace{0.3em}\rby{
+楽=musi}\hspace{0.3em}\rby{
+多=mute}\hspace{0.3em}\\
+\rby{
+添=namako}\hspace{0.3em}\rby{
+番=nanpa}\hspace{0.3em}\rby{
+狂=nasa}\hspace{0.3em}\rby{
+道=nasin}\hspace{0.3em}\rby{
+山=nena}\hspace{0.3em}\rby{
+此=ni}\hspace{0.3em}\rby{
+名=nimi}\hspace{0.3em}\rby{
+足=noka}\hspace{0.3em}\rby{
+お=o}\hspace{0.3em}\\
+\rby{
+愛=olin}\hspace{0.3em}\rby{
+其=ona}\hspace{0.3em}\rby{
+開=open}\hspace{0.3em}\rby{
+打=pakala}\hspace{0.3em}\\
+\rby{
+作=pali}\hspace{0.3em}\rby{
+支=palisa}\hspace{0.3em}\rby{
+米=pan}\hspace{0.3em}\rby{
+授=pana}\hspace{0.3em}\rby{
+ひ=pi}\hspace{0.3em}\rby{
+心=pilin}\hspace{0.3em}\rby{
+黒=pimeja}\hspace{0.3em}\rby{
+終=pini}\hspace{0.3em}\rby{
+虫=pipi}\hspace{0.3em}\rby{
+側=poka}\hspace{0.3em}\rby{
+箱=poki}\hspace{0.3em}\rby{
+良=pona}\hspace{0.3em}\\
+\rby{
+同=sama}\hspace{0.3em}\rby{
+火=seli}\hspace{0.3em}\rby{
+皮=selo}\hspace{0.3em}\rby{
+何=seme}\hspace{0.3em}\rby{
+上=sewi}\hspace{0.3em}\rby{
+体=sijelo}\hspace{0.3em}\rby{
+丸=sike}\hspace{0.3em}\rby{
+新=sin}\hspace{0.3em}\rby{
+君=sina}\hspace{0.3em}\rby{
+前=sinpin}\hspace{0.3em}\rby{
+画=sitelen}\hspace{0.3em}\rby{
+知=sona}\hspace{0.3em}\rby{
+狸=soweli}\hspace{0.3em}\rby{
+大=suli}\hspace{0.3em}\rby{
+日=suno}\hspace{0.3em}\rby{
+面=supa}\hspace{0.3em}\rby{
+甜=suwi}\hspace{0.3em}\\
+\rby{
+因=tan}\hspace{0.3em}\rby{
+許=taso}\hspace{0.3em}\rby{
+去=tawa}\hspace{0.3em}\rby{
+水=telo}\hspace{0.3em}\rby{
+旦=tenpo}\hspace{0.3em}\rby{
+語=toki}\hspace{0.3em}\rby{
+家=tomo}\hspace{0.3em}\rby{
+二=tu}\hspace{0.3em}\\
+\rby{
+性=unpa}\hspace{0.3em}\rby{
+口=uta}\hspace{0.3em}\rby{
+鬥=utala}\hspace{0.3em}\\
+\rby{
+白=walo}\hspace{0.3em}\rby{
+一=wan}\hspace{0.3em}\rby{
+鴨=waso}\hspace{0.3em}\rby{
+力=wawa}\hspace{0.3em}\rby{
+无=weka}\hspace{0.3em}\rby{
+要=wile}
+}
+
+\end{document}
